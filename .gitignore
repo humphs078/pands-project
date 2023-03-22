@@ -171,6 +171,9 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
+# Lock files
+.~lock.Assignment Plan.ods#
+
 ### Intellij Patch ###
 # Comment Reason: https://github.com/joeblau/gitignore.io/issues/186#issuecomment-215987721
 
