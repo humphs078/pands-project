@@ -43,6 +43,11 @@ in Canada. Two of the three species were collected from the same meadow, by the 
 in order to minimise the risk of variation in the data samples arising from the way in which it was collected and 
 measured. Dr. Anderson is recognised as a significant contributor in the field of botanical genetics.
 
+As can be seen from the picture below the appearance of each species is similar. Sir Fisher's Analysis of the data set
+enabled accurate classification of the species from petal and sepal measurement and as a result the data set is 
+routinely used as a beginners dataset for machine learning purposes.
+
+![image](images/iris_image.png "Iris Species")
 
 
 
@@ -57,6 +62,6 @@ measured. Dr. Anderson is recognised as a significant contributor in the field o
 1. https://digital.library.adelaide.edu.au/dspace/bitstream/2440/15227/1/138.pdf - accessed 27/03/2023
 2. https://en.wikipedia.org/wiki/Edgar_Anderson - accessed 27/03/2023
 3. https://en.wikipedia.org/wiki/Iris_flower_data_set - accessed 27/03/2023
-2. https://en.wikipedia.org/wiki/Ronald_Fisher - accessed 27/03/2023
-3. https://en.wikipedia.org/wiki/Sepal accessed 27/03/2023
-4. https://www.kaggle.com/code/amrut11/iris-dataset-univariate-bivariate-multivariate access27/03/2023
+4. https://en.wikipedia.org/wiki/Ronald_Fisher - accessed 27/03/2023
+5. https://en.wikipedia.org/wiki/Sepal accessed 27/03/2023
+6. https://www.kaggle.com/code/amrut11/iris-dataset-univariate-bivariate-multivariate access27/03/2023
