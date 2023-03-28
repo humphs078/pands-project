@@ -3,6 +3,8 @@
 ## Contents
 [Description](#Description)
 
+[Problem Statement](#Problem-Statement)
+
 [Definitions](#Definitions)
 
 [Background](#Background)
@@ -17,6 +19,17 @@
 
 ## Description
 
+This repository contains the files for the submission of the module assignment in the Programming and Scripting module
+for the ATU Mayo & Galway Higher Diploma in Computer Programming and Data Analytics.
+
+### Problem Statement
+This project concerns the well-known [Fisher’s Iris data set](#Background).
+
+Imagine that your manager has asked you to investigate the data set, with a
+view to explaining it to your colleagues. Imagine that you are to give a presentation on the
+data set in a few weeks’ time, where you explain what investigating a data set entails and how
+Python can be used to do it. 
+---
 ## Definitions
 
 + [Multivariate Statistics](https://en.wikipedia.org/wiki/Iris_flower_data_set) - is a branch of statistics that is 
@@ -25,7 +38,7 @@ Cluster Analysis, Factor Analysis, Multiple Regression Analysis, Principal Compo
 20 ways to perform multivariate analysis.
 + [Sepal](https://en.wikipedia.org/wiki/Sepal) - in plants that flower the sepal is the part of the flower that 
 functions as protection for the flower in bud and often as support for the petals when the flower is in bloom.
-
+---
 ## Background
 
 The [Iris Data Set](https://en.wikipedia.org/wiki/Iris_flower_data_set) is a data set that consists 50 samples from 
@@ -48,7 +61,7 @@ enabled accurate classification of the species from petal and sepal measurement 
 routinely used as a beginners dataset for machine learning purposes.
 
 ![image](images/iris_image.png "Iris Species")
-
+---
 
 
 ## analysis.py
