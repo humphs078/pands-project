@@ -29,6 +29,7 @@ Imagine that your manager has asked you to investigate the data set, with a
 view to explaining it to your colleagues. Imagine that you are to give a presentation on the
 data set in a few weeks’ time, where you explain what investigating a data set entails and how
 Python can be used to do it. 
+
 ---
 ## Definitions
 
