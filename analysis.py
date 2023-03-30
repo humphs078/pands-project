@@ -4,10 +4,22 @@
 
 # import the pandas module used to read in the data set file as a data frame
 import pandas as pd
-
+# import plotly module used to create a table of the data for display in the README.md file
+import plotly.figure_factory as ff
 
 # Define data frame as variable df to read in file 'iris.data' with a separator ',' and the column names as defined in
-# the the list variable called "names"
+# the list variable called "names"
 # Reference https://gist.github.com/curran/a08a1080b88344b0c8a7#file-iris-csv - accessed 30/03/2023
 df = pd.read_csv('iris.data', sep=',', names=["sepal_length", "sepal_width", "petal_length", "petal_width", "class"])
-print(df)  # validation test
+
+# ? need to remove next 2 statements for final submission
+# print(df)  # validation test
+# data.shape # validation test to make sure that there 150 rows of data and number of columns
+
+# following code snippet from https://www.delftstack.com/howto/python-pandas/pandas-png/ - accessed 30/03/2023
+# variable called fig to define function to create a table using plotly module for the dataframe "df"
+fig = ff.create_table(df)
+#  method to change the look and feel of the table
+fig.update_layout(autosize=True)
+# write the table_plotly.png file to the images folder
+fig.write_image("images/table_plotly.png", scale=1)
