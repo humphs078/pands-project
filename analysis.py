@@ -6,12 +6,18 @@
 import pandas as pd
 # import plotly module used to create a table of the data for display in the README.md file
 import plotly.figure_factory as ff
+# import the seaborn module as sns used for plotting data representation - more advanced functionality that matplotlib
+import seaborn as sns
+# import the matplotlib module used to plot data for visual representation
+import matplotlib.pyplot as plt
 
 # Define data frame as variable df to read in file 'iris.data' with a separator ',' and the column names as defined in
 # the list variable called "names"
 # Reference https://gist.github.com/curran/a08a1080b88344b0c8a7#file-iris-csv - accessed 30/03/2023
-df = pd.read_csv('iris.data', sep=',', names=["sepal_length_cms", "sepal_width_cms", "petal_length_cms",
-                                              "petal_width_cms", "class"])
+df = pd.read_csv('iris.data', sep=',', names=["Sepal Length cms", "Sepal Width cms", "Petal Length cms",
+                                              "Petal Width cms", "Species"])
+
+# # # # # Output to txt file # # # # #
 
 # Output a summary of each variable to a text file - https://www.statology.org/pandas-to-text-file/ accessed 30/03/2023
 # variable that species path for outputting of .txt file
@@ -29,6 +35,8 @@ with open(path, 'w') as f:
 # print(df)  # validation test
 # data.shape # validation test to make sure that there 150 rows of data and number of columns
 
+# # # # # Create summary table of data # # # # #
+
 # following code snippet from https://www.delftstack.com/howto/python-pandas/pandas-png/ - accessed 30/03/2023
 # variable called fig to define function to create a table using plotly module for the dataframe "df"
 fig = ff.create_table(df)
@@ -36,3 +44,31 @@ fig = ff.create_table(df)
 fig.update_layout(autosize=True)
 # write the table_plotly.png file to the images folder
 fig.write_image("images/table_plotly.png", scale=1)
+
+# # # # # Create & save histograms # # # # #
+
+# define theme for sns - https://seaborn.pydata.org/generated/seaborn.set_theme.html - accessed 30/03/2023
+sns.set_theme(context='notebook', style='darkgrid', palette='pastel', font='sans-serif', font_scale=1,
+              color_codes=True, rc=None)
+# code to create histograms using seaborn module - https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+# - accessed 30/03/2023
+plot = sns.FacetGrid(df, hue="Species")
+# originally used distplot function but got message that it is being depreciated, when code was run, so used
+# histplot function instead - https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751 - accessed 30/03/2023
+plot.map(sns.histplot, "Sepal Length cms", kde=True).add_legend()
+# save output to images folder - https://www.marsja.se/how-to-save-a-seaborn-plot-as-a-file-e-g-png-pdf-eps-tiff/
+# - accessed 30/03/2023
+plt.savefig('images/plots/histograms/sepal_length_histogram.png')
+
+plot = sns.FacetGrid(df, hue="Species")
+plot.map(sns.histplot, "Sepal Width cms", kde=True).add_legend()
+plt.savefig('images/plots/histograms/sepal_width_histogram.png')
+
+plot = sns.FacetGrid(df, hue="Species")
+plot.map(sns.histplot, "Petal Length cms", kde=True).add_legend()
+plt.savefig('images/plots/histograms/petal_length_histogram.png')
+
+plot = sns.FacetGrid(df, hue="Species")
+plot.map(sns.histplot, "Petal Width cms", kde=True).add_legend()
+plt.savefig('images/plots/histograms/petal_width_histogram.png')
+plt.show()

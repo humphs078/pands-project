@@ -13,8 +13,8 @@ import matplotlib.pyplot as plt
 # url = 'http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
 # df = pd.read_csv(url, names=['sepal_length', 'sepal_width', 'petal_length', 'petal_width', 'class'])
 # print(df)
-df = pd.read_csv('iris.data', sep=',', names=["sepal_length_cm", "sepal_width_cm", "petal_length_cm",
-                                              "petal_width_cm", "class"])
+df = pd.read_csv('iris.data', sep=',', names=["Sepal Length cm", "Sepal Width cm", "Petal Length cm",
+                                              "Petal Width cm", "Species"])
 # fig = ff.create_table(df)
 # fig.update_layout(autosize=True)
 # fig.write_image("table_plotly.png", scale=1)
@@ -41,16 +41,19 @@ df = pd.read_csv('iris.data', sep=',', names=["sepal_length_cm", "sepal_width_cm
 #axes[1, 1].set_title("Petal Width")
 #axes[1, 1].hist(df['petal_width_cm'], bins=6);
 
-plot = sns.FacetGrid(df, hue="class")
-plot.map(sns.histplot, "sepal_length_cm", kde=True).add_legend()
+plot = sns.FacetGrid(df, hue="Species")
+plot.map(sns.histplot, "Sepal Length cm", kde=True).add_legend()
+plt.savefig('images/plots/histograms/sepal_length_histogram.png')
 
-plot = sns.FacetGrid(df, hue="class")
-plot.map(sns.histplot, "sepal_width_cm", kde=True).add_legend()
+plot = sns.FacetGrid(df, hue="Species")
+plot.map(sns.histplot, "Sepal Width cm", kde=True).add_legend()
+plt.savefig('images/plots/histograms/sepal_width_histogram.png')
 
-plot = sns.FacetGrid(df, hue="class")
-plot.map(sns.histplot, "petal_length_cm", kde=True).add_legend()
+plot = sns.FacetGrid(df, hue="Species")
+plot.map(sns.histplot, "Petal Length cm", kde=True).add_legend()
+plt.savefig('images/plots/histograms/petal_length_histogram.png')
 
-plot = sns.FacetGrid(df, hue="class")
-plot.map(sns.histplot, "petal_width_cm", kde=True).add_legend()
-
+plot = sns.FacetGrid(df, hue="Species")
+plot.map(sns.histplot, "Petal Width cm", kde=True).add_legend()
+plt.savefig('images/plots/histograms/petal_width_histogram.png')
 plt.show()
