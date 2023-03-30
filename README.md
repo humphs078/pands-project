@@ -65,7 +65,8 @@ As can be seen from the picture below the appearance of each species is similar.
 enabled accurate classification of the species from petal and sepal measurement and as a result the data set is 
 routinely used as a beginners dataset for machine learning purposes.
 
-![image 1](images/iris_image.png "Iris Species")
+![image 1](images/illustrations/Iris_Image.png "Iris Species")
+
 ---
 
 
