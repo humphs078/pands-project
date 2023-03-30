@@ -17,6 +17,8 @@
 
 [References](#References)
 
+[Appendix 1](#Appendix-1)
+
 ## Description
 
 This repository contains the files for the submission of the module assignment in the Programming and Scripting module
@@ -61,21 +63,32 @@ As can be seen from the picture below the appearance of each species is similar.
 enabled accurate classification of the species from petal and sepal measurement and as a result the data set is 
 routinely used as a beginners dataset for machine learning purposes.
 
-![image](images/iris_image.png "Iris Species")
+![image 1](images/iris_image.png "Iris Species")
 ---
 
 
 ## analysis.py
 
 ## Discussion
+Please see [Appendix 1](#appendix-1) for a summary of the Iris Data set in table format.
 
 ## Conclusion
 
 ## References
 
+### Code Sources
+
+1. https://www.delftstack.com/howto/python-pandas/pandas-png/ - accessed 30/03/2023
+2. https://gist.github.com/curran/a08a1080b88344b0c8a7#file-iris-csv - accessed 30/03/2023
+
+### Background Information
 1. https://digital.library.adelaide.edu.au/dspace/bitstream/2440/15227/1/138.pdf - accessed 27/03/2023
 2. https://en.wikipedia.org/wiki/Edgar_Anderson - accessed 27/03/2023
 3. https://en.wikipedia.org/wiki/Iris_flower_data_set - accessed 27/03/2023
 4. https://en.wikipedia.org/wiki/Ronald_Fisher - accessed 27/03/2023
 5. https://en.wikipedia.org/wiki/Sepal accessed 27/03/2023
 6. https://www.kaggle.com/code/amrut11/iris-dataset-univariate-bivariate-multivariate access27/03/2023
+---
+
+## Appendix 1
+![image 1](images/table_plotly.png "Summary of Source Data")
