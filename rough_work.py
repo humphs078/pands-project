@@ -15,3 +15,11 @@ df = pd.read_csv('iris.data', sep=',', names=["sepal_length_cm", "sepal_width_cm
 # fig = ff.create_table(df)
 # fig.update_layout(autosize=True)
 # fig.write_image("table_plotly.png", scale=1)
+
+# specify path for export
+path = r'data_summary.txt'
+
+# export DataFrame to text file
+with open(path, 'a') as f:
+    df_string = df.to_string(header=True, index=False)
+    f.write(df_string)

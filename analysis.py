@@ -10,9 +10,22 @@ import plotly.figure_factory as ff
 # Define data frame as variable df to read in file 'iris.data' with a separator ',' and the column names as defined in
 # the list variable called "names"
 # Reference https://gist.github.com/curran/a08a1080b88344b0c8a7#file-iris-csv - accessed 30/03/2023
-df = pd.read_csv('iris.data', sep=',', names=["sepal_length", "sepal_width", "petal_length", "petal_width", "class"])
+df = pd.read_csv('iris.data', sep=',', names=["sepal_length_cms", "sepal_width_cms", "petal_length_cms",
+                                              "petal_width_cms", "class"])
 
-# ? need to remove next 2 statements for final submission
+# Output a summary of each variable to a text file
+# variable that species path for outputting of .txt file
+path = r'data_summary.txt'
+# open path defined above and w to file
+with open(path, 'w') as f:
+    # define variable to convert the dataframe to a string, include the header and exclude the index
+    df_string = df.to_string(header=True, index=False)
+    # write the df_string variable to the file path
+    f.write(df_string)
+
+# ? need to remove next statements for final submission
+# f = open("data_summary.txt") # validation test
+# print(f.read()) # validation test
 # print(df)  # validation test
 # data.shape # validation test to make sure that there 150 rows of data and number of columns
 
