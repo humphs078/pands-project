@@ -4,6 +4,8 @@
 
 # import the pandas module used to read in the data set file as a data frame
 import pandas as pd
+# import table from pandas.plotting
+from pandas.plotting import table
 # import plotly module used to create a table of the data for display in the README.md file
 import plotly.figure_factory as ff
 # import the seaborn module as sns used for plotting data representation - more advanced functionality that matplotlib
@@ -14,7 +16,7 @@ import matplotlib.pyplot as plt
 # Define data frame as variable df to read in file 'iris.data' with a separator ',' and the column names as defined in
 # the list variable called "names"
 # Reference https://gist.github.com/curran/a08a1080b88344b0c8a7#file-iris-csv - accessed 30/03/2023
-df = pd.read_csv('iris.data', sep=',', names=["Sepal Length cms", "Sepal Width cms", "Petal Length cms",
+iris = pd.read_csv('iris.data', sep=',', names=["Sepal Length cms", "Sepal Width cms", "Petal Length cms",
                                               "Petal Width cms", "Species"])
 
 # # # # # Output to txt file # # # # #
@@ -25,9 +27,9 @@ path = r'data_summary.txt'
 # open path defined above and w to file
 with open(path, 'w') as f:
     # define variable to convert the dataframe to a string, include the header and exclude the index
-    df_string = df.to_string(header=True, index=False)
-    # write the df_string variable to the file path
-    f.write(df_string)
+    iris_string = iris.to_string(header=True, index=False)
+    # write the iris_string variable to the file path
+    f.write(iris_string)
 
 # ? need to remove next statements for final submission
 # f = open("data_summary.txt") # validation test
@@ -35,15 +37,26 @@ with open(path, 'w') as f:
 # print(df)  # validation test
 # data.shape # validation test to make sure that there 150 rows of data and number of columns
 
-# # # # # Create summary table of data # # # # #
+# # # # # Create a summary table for analysis section # # # # #
+# create a summary of the iris data set - min, max, mean, median, SD, etc
+# - https://www.delftstack.com/howto/python-pandas/pandas-png/ accessed 30/03/2023
+summary = iris.describe()
+
+ax = plt.subplot(111, frame_on=False)  # no visible frame
+ax.xaxis.set_visible(False)  # hide the x axis
+ax.yaxis.set_visible(False)  # hide the y axis
+table(ax, summary, loc='center')  # where ax is the data frame
+plt.savefig('images/tables/summary.png')  # save file to path
+
+# # # # # Create summary table of data for appendix 1 # # # # #
 
 # following code snippet from https://www.delftstack.com/howto/python-pandas/pandas-png/ - accessed 30/03/2023
 # variable called fig to define function to create a table using plotly module for the dataframe "df"
-fig = ff.create_table(df)
+fig = ff.create_table(iris)
 #  method to change the look and feel of the table
 fig.update_layout(autosize=True)
 # write the table_plotly.png file to the images folder
-fig.write_image("images/table_plotly.png", scale=1)
+fig.write_image("images/tables/iris_data_set_full.png", scale=1)
 
 # # # # # Create & save histograms # # # # #
 
@@ -52,7 +65,7 @@ sns.set_theme(context='notebook', style='darkgrid', palette='pastel', font='sans
               color_codes=True, rc=None)
 # code to create histograms using seaborn module - https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 # - accessed 30/03/2023
-plot = sns.FacetGrid(df, hue="Species")
+plot = sns.FacetGrid(iris, hue="Species", height=5)
 # originally used distplot function but got message that it is being depreciated, when code was run, so used
 # histplot function instead - https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751 - accessed 30/03/2023
 plot.map(sns.histplot, "Sepal Length cms", kde=True).add_legend()
@@ -60,15 +73,16 @@ plot.map(sns.histplot, "Sepal Length cms", kde=True).add_legend()
 # - accessed 30/03/2023
 plt.savefig('images/plots/histograms/sepal_length_histogram.png')
 
-plot = sns.FacetGrid(df, hue="Species")
+plot = sns.FacetGrid(iris, hue="Species", height=5)
 plot.map(sns.histplot, "Sepal Width cms", kde=True).add_legend()
 plt.savefig('images/plots/histograms/sepal_width_histogram.png')
 
-plot = sns.FacetGrid(df, hue="Species")
+plot = sns.FacetGrid(iris, hue="Species", height=5)
 plot.map(sns.histplot, "Petal Length cms", kde=True).add_legend()
 plt.savefig('images/plots/histograms/petal_length_histogram.png')
 
-plot = sns.FacetGrid(df, hue="Species")
+plot = sns.FacetGrid(iris, hue="Species", height=5)
 plot.map(sns.histplot, "Petal Width cms", kde=True).add_legend()
 plt.savefig('images/plots/histograms/petal_width_histogram.png')
+
 plt.show()

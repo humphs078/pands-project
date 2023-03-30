@@ -3,11 +3,12 @@
 # This file is for testing different approaches
 
 import pandas as pd
-# from pandas.plotting import table
-# import plotly.figure_factory as ff
+from pandas.plotting import table
+import plotly.figure_factory as ff
 import seaborn as sns
 sns.set_theme(context='notebook', style='darkgrid', palette='pastel', font='sans-serif', font_scale=1, color_codes=True, rc=None)
 import matplotlib.pyplot as plt
+import numpy as py
 
 # download iris data and read it into a dataframe
 # url = 'http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
@@ -41,19 +42,37 @@ df = pd.read_csv('iris.data', sep=',', names=["Sepal Length cm", "Sepal Width cm
 #axes[1, 1].set_title("Petal Width")
 #axes[1, 1].hist(df['petal_width_cm'], bins=6);
 
-plot = sns.FacetGrid(df, hue="Species")
-plot.map(sns.histplot, "Sepal Length cm", kde=True).add_legend()
-plt.savefig('images/plots/histograms/sepal_length_histogram.png')
+#plot = sns.FacetGrid(df, hue="Species")
+#plot.map(sns.histplot, "Sepal Length cm", kde=True).add_legend()
+#plt.savefig('images/plots/histograms/sepal_length_histogram.png')
 
-plot = sns.FacetGrid(df, hue="Species")
-plot.map(sns.histplot, "Sepal Width cm", kde=True).add_legend()
-plt.savefig('images/plots/histograms/sepal_width_histogram.png')
+#plot = sns.FacetGrid(df, hue="Species")
+#plot.map(sns.histplot, "Sepal Width cm", kde=True).add_legend()
+#plt.savefig('images/plots/histograms/sepal_width_histogram.png')
 
-plot = sns.FacetGrid(df, hue="Species")
-plot.map(sns.histplot, "Petal Length cm", kde=True).add_legend()
-plt.savefig('images/plots/histograms/petal_length_histogram.png')
+#plot = sns.FacetGrid(df, hue="Species")
+#plot.map(sns.histplot, "Petal Length cm", kde=True).add_legend()
+#plt.savefig('images/plots/histograms/petal_length_histogram.png')
 
-plot = sns.FacetGrid(df, hue="Species")
-plot.map(sns.histplot, "Petal Width cm", kde=True).add_legend()
-plt.savefig('images/plots/histograms/petal_width_histogram.png')
-plt.show()
+#plot = sns.FacetGrid(df, hue="Species")
+#plot.map(sns.histplot, "Petal Width cm", kde=True).add_legend()
+#plt.savefig('images/plots/histograms/petal_width_histogram.png')
+#plt.show()
+
+#mini = df.min(
+df.max()
+df.mean(numeric_only=True)
+df.median(numeric_only=True)
+df.std(numeric_only=True)
+#print(mini)
+
+
+
+summary = df.describe()
+#print(summary)
+
+ax = plt.subplot(111, frame_on=False) # no visible frame
+ax.xaxis.set_visible(False) # hide the x axis
+ax.yaxis.set_visible(False) # hide the y axis
+table(ax, summary, loc='center') # where df is your data frame
+plt.savefig('mytable.png')
