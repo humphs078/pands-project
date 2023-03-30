@@ -91,4 +91,7 @@ Please see [Appendix 1](#appendix-1) for a summary of the Iris Data set in table
 ---
 
 ## Appendix 1
+
+**Table 1 - Iris Data Set Summary** 
+
 ![image 1](images/table_plotly.png "Summary of Source Data")
