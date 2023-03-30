@@ -13,7 +13,7 @@ import plotly.figure_factory as ff
 df = pd.read_csv('iris.data', sep=',', names=["sepal_length_cms", "sepal_width_cms", "petal_length_cms",
                                               "petal_width_cms", "class"])
 
-# Output a summary of each variable to a text file
+# Output a summary of each variable to a text file - https://www.statology.org/pandas-to-text-file/ accessed 30/03/2023
 # variable that species path for outputting of .txt file
 path = r'data_summary.txt'
 # open path defined above and w to file

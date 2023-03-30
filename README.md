@@ -88,6 +88,7 @@ Please see [Appendix 1](#appendix-1) for a summary of the Iris Data set in table
 
 1. https://www.delftstack.com/howto/python-pandas/pandas-png/ - accessed 30/03/2023
 2. https://gist.github.com/curran/a08a1080b88344b0c8a7#file-iris-csv - accessed 30/03/2023
+3. https://www.statology.org/pandas-to-text-file/ - accessed 30/03/2023
 
 ### Background Information
 1. https://digital.library.adelaide.edu.au/dspace/bitstream/2440/15227/1/138.pdf - accessed 27/03/2023
