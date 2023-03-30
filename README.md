@@ -110,8 +110,8 @@ Please see [Appendix 1](#appendix-1) for a summary of the Iris Data set in table
 2. https://en.wikipedia.org/wiki/Edgar_Anderson - accessed 27/03/2023
 3. https://en.wikipedia.org/wiki/Iris_flower_data_set - accessed 27/03/2023
 4. https://en.wikipedia.org/wiki/Ronald_Fisher - accessed 27/03/2023
-5. https://en.wikipedia.org/wiki/Sepal accessed 27/03/2023
-6. https://www.kaggle.com/code/amrut11/iris-dataset-univariate-bivariate-multivariate access27/03/2023
+5. https://en.wikipedia.org/wiki/Sepal - accessed 27/03/2023
+6. https://www.kaggle.com/code/amrut11/iris-dataset-univariate-bivariate-multivariate - accessed 27/03/2023
 ---
 
 ## Appendix 1
