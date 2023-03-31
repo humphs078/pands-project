@@ -4,20 +4,19 @@
 
 # import the pandas module used to read in the data set file as a data frame
 import pandas as pd
-# import table from pandas.plotting
-from pandas.plotting import table
 # import plotly module used to create a table of the data for display in the README.md file
 import plotly.figure_factory as ff
 # import the seaborn module as sns used for plotting data representation - more advanced functionality that matplotlib
 import seaborn as sns
 # import the matplotlib module used to plot data for visual representation
 import matplotlib.pyplot as plt
+import csv
 
 # Define data frame as variable df to read in file 'iris.data' with a separator ',' and the column names as defined in
 # the list variable called "names"
 # Reference https://gist.github.com/curran/a08a1080b88344b0c8a7#file-iris-csv - accessed 30/03/2023
 iris = pd.read_csv('iris.data', sep=',', names=["Sepal Length cms", "Sepal Width cms", "Petal Length cms",
-                                              "Petal Width cms", "Species"])
+                                                "Petal Width cms", "Species"])
 
 # # # # # Output to txt file # # # # #
 
@@ -38,15 +37,30 @@ with open(path, 'w') as f:
 # data.shape # validation test to make sure that there 150 rows of data and number of columns
 
 # # # # # Create a summary table for analysis section # # # # #
-# create a summary of the iris data set - min, max, mean, median, SD, etc
-# - https://www.delftstack.com/howto/python-pandas/pandas-png/ accessed 30/03/2023
-summary = iris.describe()
 
-ax = plt.subplot(111, frame_on=False)  # no visible frame
-ax.xaxis.set_visible(False)  # hide the x axis
-ax.yaxis.set_visible(False)  # hide the y axis
-table(ax, summary, loc='center')  # where ax is the data frame
-plt.savefig('images/tables/summary.png')  # save file to path
+# create a summary of the iris data set - min, max, mean, median, SD, etc
+summary = iris.describe()
+summary_round = iris.describe().T
+summary_round.transpose().to_csv('summary_stats.csv', sep=',')
+# adding header
+header = [' ', 'Sepal Length cm', 'Sepal Width cm', 'Petal Length cm', 'Petal Width cm']
+with open('summary_stats.csv', 'r') as fp:
+    reader = csv.DictReader(fp, fieldnames=header)
+
+    # use newline='' to avoid adding new CR at end of line
+    with open('output.csv', 'w', newline='') as fh:
+        writer = csv.DictWriter(fh, fieldnames=reader.fieldnames)
+        writer.writeheader()
+        header_mapping = next(reader)
+        writer.writerows(reader)
+
+data_summary = pd.read_csv('output.csv', sep=',')
+
+fig2 = ff.create_table(data_summary)
+#  method to change the look and feel of the table
+fig2.update_layout(autosize=False, width=700, height=200)
+# write the table_plotly.png file to the images folder
+fig2.write_image("images/tables/data_summary.png", scale=1)
 
 # # # # # Create summary table of data for appendix 1 # # # # #
 

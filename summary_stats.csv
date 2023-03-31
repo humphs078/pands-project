@@ -1,4 +1,4 @@
-,Sepal Length cm,Sepal Width cm,Petal Length cm,Petal Width cm
+,Sepal Length cms,Sepal Width cms,Petal Length cms,Petal Width cms
 count,150.0,150.0,150.0,150.0
 mean,5.843333333333334,3.0540000000000003,3.758666666666666,1.1986666666666668
 std,0.828066127977863,0.4335943113621737,1.7644204199522626,0.7631607417008411
