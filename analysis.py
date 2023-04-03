@@ -20,25 +20,35 @@ iris = pd.read_csv('iris.data', sep=',', names=["Sepal Length cms", "Sepal Width
 
 # # # # # Check source data quality # # # # #
 # The code in this section checks the quality of the source data
+
+# Define a variable to use the check for missing data using the isnull() method
 # https://www.geeksforgeeks.org/exploratory-data-analysis-on-iris-dataset/
+missing_values_table = iris.isnull().sum().T
+# Transpose the table to a csv file
+missing_values_table.transpose().to_csv('missing_values.csv', sep=',')
 
-# Define variable to for function to show columns and data types
-# data_set_info = iris.info()
+# define headers for the csv file
+header = ['Species', 'Missing Values']
+# open the csv file in read mode
+with open('missing_values.csv', 'r') as fp:
+    reader = csv.DictReader(fp, fieldnames=header)
 
-# fig1 = ff.create_table(data_set_info)
+    # use newline='' to avoid adding new CR at end of line
+    with open('missing_values_2.csv', 'w', newline='') as fh:
+        writer = csv.DictWriter(fh, fieldnames=reader.fieldnames)
+        writer.writeheader()
+        header_mapping = next(reader)
+        writer.writerows(reader)
+
+# variable to define a data frame for the table
+missing_values_table_csv = pd.read_csv('missing_values_2.csv', sep=',')
+
+# declare a variable for the ff.create table method
+fig = ff.create_table(missing_values_table_csv)
 #  method to change the look and feel of the table
-#fig1.update_layout(autosize=False, width=700, height=200)
+fig.update_layout(autosize=True, width=500, height=200)
 # write the table_plotly.png file to the images folder
-#fig1.write_image("images/tables/data_set_info.png", scale=1)
-
-# Define variable for function to check for missing values in the data set
-#missing_values = iris.isnull().sum()
-
-#fig2 = ff.create_table(missing_values)
-#  method to change the look and feel of the table
-#fig2.update_layout(autosize=False, width=700, height=200)
-# write the table_plotly.png file to the images folder
-#fig2.write_image("images/tables/data_set_info.png", scale=1)
+fig.write_image("images/tables/missing_values.png", scale=2)
 
 # # # # # Output to txt file # # # # #
 
