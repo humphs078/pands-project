@@ -18,6 +18,28 @@ import csv
 iris = pd.read_csv('iris.data', sep=',', names=["Sepal Length cms", "Sepal Width cms", "Petal Length cms",
                                                 "Petal Width cms", "Species"])
 
+# # # # # Check source data quality # # # # #
+# The code in this section checks the quality of the source data
+# https://www.geeksforgeeks.org/exploratory-data-analysis-on-iris-dataset/
+
+# Define variable to for function to show columns and data types
+# data_set_info = iris.info()
+
+# fig1 = ff.create_table(data_set_info)
+#  method to change the look and feel of the table
+#fig1.update_layout(autosize=False, width=700, height=200)
+# write the table_plotly.png file to the images folder
+#fig1.write_image("images/tables/data_set_info.png", scale=1)
+
+# Define variable for function to check for missing values in the data set
+#missing_values = iris.isnull().sum()
+
+#fig2 = ff.create_table(missing_values)
+#  method to change the look and feel of the table
+#fig2.update_layout(autosize=False, width=700, height=200)
+# write the table_plotly.png file to the images folder
+#fig2.write_image("images/tables/data_set_info.png", scale=1)
+
 # # # # # Output to txt file # # # # #
 
 # Output a summary of each variable to a text file - https://www.statology.org/pandas-to-text-file/ accessed 30/03/2023
@@ -56,21 +78,21 @@ with open('summary_stats.csv', 'r') as fp:
 
 data_summary = pd.read_csv('output.csv', sep=',')
 
-fig2 = ff.create_table(data_summary)
+fig3 = ff.create_table(data_summary)
 #  method to change the look and feel of the table
-fig2.update_layout(autosize=False, width=700, height=200)
+fig3.update_layout(autosize=False, width=700, height=200)
 # write the table_plotly.png file to the images folder
-fig2.write_image("images/tables/data_summary.png", scale=1)
+fig3.write_image("images/tables/data_summary.png", scale=1)
 
 # # # # # Create summary table of data for appendix 1 # # # # #
 
 # following code snippet from https://www.delftstack.com/howto/python-pandas/pandas-png/ - accessed 30/03/2023
 # variable called fig to define function to create a table using plotly module for the dataframe "df"
-fig = ff.create_table(iris)
+fig4 = ff.create_table(iris)
 #  method to change the look and feel of the table
-fig.update_layout(autosize=True)
+fig4.update_layout(autosize=True)
 # write the table_plotly.png file to the images folder
-fig.write_image("images/tables/iris_data_set_full.png", scale=1)
+fig4.write_image("images/tables/iris_data_set_full.png", scale=1)
 
 # # # # # Create & save histograms # # # # #
 

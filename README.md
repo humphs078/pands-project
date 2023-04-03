@@ -26,6 +26,8 @@
 This repository contains the files for the submission of the module assignment in the Programming and Scripting module
 for the ATU Mayo & Galway Higher Diploma in Computer Programming and Data Analytics.
 
+To run the script from the command line type - *"python analysis.py"*
+
 ### Problem Statement
 This project concerns the well-known [Fisher’s Iris data set](#Background).
 
@@ -110,6 +112,7 @@ For the full tabulated Iris Data set please see [Appendix 1](#appendix-1).
 2. https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751 - accessed 30/03/2023
 3. https://seaborn.pydata.org/generated/seaborn.set_theme.html - accessed 30/03/2023
 4. https://www.delftstack.com/howto/python-pandas/pandas-png/ - accessed 30/03/2023
+5. https://www.geeksforgeeks.org/exploratory-data-analysis-on-iris-dataset/ - accessed 03/04/2023
 5. https://www.marsja.se/how-to-save-a-seaborn-plot-as-a-file-e-g-png-pdf-eps-tiff/ - accessed 30/03/2023
 6. https://www.statology.org/pandas-to-text-file/ - accessed 30/03/2023
 
