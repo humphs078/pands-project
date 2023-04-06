@@ -110,6 +110,34 @@ fig4.update_layout(autosize=True)
 # write the table_plotly.png file to the images folder
 fig4.write_image("images/tables/iris_data_set_full.png", scale=1)
 
+# # # # # Create & save box plots # # # # #
+# Reference - https://www.geeksforgeeks.org/exploratory-data-analysis-on-iris-dataset/
+
+# function to pass arguments to sns.boxplot
+def graph(y):
+    sns.boxplot(x="Species", y=y, data=iris)
+
+
+# plot size
+plt.figure(figsize=(10, 10))
+
+# Adding the subplot at the specified
+# grid position
+plt.subplot(221)
+graph('Sepal Length cms')
+
+plt.subplot(222)
+graph('Sepal Width cms')
+
+plt.subplot(223)
+graph('Petal Length cms')
+
+plt.subplot(224)
+graph('Petal Width cms')
+
+# Save plot to file
+plt.savefig('images/plots/histograms/box_plots.png')
+
 # # # # # Create & save histograms # # # # #
 
 # define theme for sns - https://seaborn.pydata.org/generated/seaborn.set_theme.html - accessed 30/03/2023
