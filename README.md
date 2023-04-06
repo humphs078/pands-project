@@ -39,6 +39,8 @@ Python can be used to do it.
 ---
 ## Definitions
 
++ [Histogram](https://en.wikipedia.org/wiki/Histogram) - is a representation of the approximated distribution of 
+numerical data.
 + [Multivariate Statistics](https://en.wikipedia.org/wiki/Iris_flower_data_set) - is a branch of statistics that is 
 used when two or more variables have to be analysed simultaneously. Types of Multivariate Analysis include 
 Cluster Analysis, Factor Analysis, Multiple Regression Analysis, Principal Component Analysis, etc. There is more than
@@ -49,7 +51,7 @@ functions as protection for the flower in bud and often as support for the petal
 ## Background
 
 The [Iris Data Set](https://en.wikipedia.org/wiki/Iris_flower_data_set) is a data set that consists 50 samples from 
-three species of Iris - Iris setosa, Iris virginica and Iris versicolor. Each sample contains 4 measurements:
+three species of Iris - Iris-setosa, Iris-virginica and Iris-versicolor. Each sample contains 4 measurements:
 1. Petal width
 2. Petal length
 3. Sepal width
@@ -82,10 +84,11 @@ set.
 + Reads in the Iris Data Set CSV from a URL
 + Checks for missing values in the data and outputs the results to a summary table
 + Outputs the Iris Data Set variables to a text file
-+ Creates a summary of the data in the tablular form
++ Creates a summary of the data in the tabular form
 + Outputs the full data set in tabular form
 + Creates histograms used to analyse the data set
-+ 
++ Creates and outputs box plots of the data set
++ Demonstrates an example of removing the outliers and re-plotting a box plot
 
 ### Libraries used:
 
@@ -104,37 +107,70 @@ file of histogram for sepal length
 histogram for sepal width
 ---
 ## Discussion
-Python is an extremely powerful tool for automating the handling of large data sets. Using Python scripting the Irish 
-Data set was automatically read in to a module within Python, Pandas, from an online data repository. All of the tables 
-summarising the data set were produced using the Plotly & Kaleido modules within python. These tools automate the 
-creation of formatted tables. For the full tabulated Iris Data set please see [Appendix 1](#appendix-1).
+Python is an extremely powerful tool for automating the handling of large data sets. Using Python scripting the Iris 
+Data Set was automatically read in as a dataframe by a module within Python from an online data repository. The 
+Pandas module was used to achieve this. Pandas is a library that can be imported into Python that allows for data 
+analysis through the use of specifically designed tools that automate complex functions on data sets. 
 
-The quality of the source data can be checked using a number of python methods imported from the Pandas module. The 
-Pandas module is a module within Python that allows for data analysis through the use of specifically designed tools 
-that automate complex function on data sets.
 
+All the tables summarising data set were produced using the Plotly & Kaleido modules within python. These tools 
+automate the creation of formatted tables. For the full tabulated Iris Data set please see [Appendix 1](#appendix-1).
+
+### Data Quality
+
+The quality of the source data was checked using a number of python methods imported from the Pandas module.
 The "isnull" method within Pandas allows the source data set to be checked for any missing values. 
-[Table](images/tables/missing_values.png) demonstrates the completeness of the data set and the absense of any missing 
+[Table 1](images/tables/missing_values.png) demonstrates the completeness of the data set and the absense of any missing 
 values.
 
-**Table - Missing Values**
+**Table 1 - Missing Values**
 
 ![Missing Values](images/tables/missing_values.png "Irish Data Set Missing Values Count")
 
 
-The "describe" method crates a summary of the min, max, mean, std, etc. as demonstrated in Table . This allows for a 
-summary of the distribution of the data within the data set. This method can also be used to validate the count of the
-number of rows in the data set. As can be seen from the table this equals 150, as expected. 
+The Pandas "describe" method crates a summary of the min, max, mean, std, etc. as demonstrated in Table . This allows 
+for a summary of the distribution of the data within the data set. This method can also be used to validate the count 
+of the number of rows in the data set. As can be seen from the table this equals 150, as expected. 
 
-**Table** 
+**Table 2 - Data Summary** 
 
 ![Data Summary](images/tables/data_summary.png "Iris Data Set Summary")
 
+ 
 
 
 **Note to self** - Data set quality - need to discuss duplicated and trueness
 
-**Note to self** - Heading Univariate analysis
+### Univariate Analysis
+The Seaborn library was used to create [histograms](#definitions). [Seaborn](https://seaborn.pydata.org/index.html) is 
+a Python data visualization library based on matplotlib. It allows for drawing attractive and informative statistical
+graphics.
+
+**Plot 1 - Petal Length Distribution Histogram**
+
+![Histogram 1](images/plots/histograms/petal_length_histogram.png "Iris Data Set Petal Length Distribution")
+
+Plot 1 demonstrates that Iris-setosa has the smallest petal length falling roughly between 1-2cms. There is some 
+overlap in Petal Length between Iris-versicolor and Iris-virginica. 
+
+**Plot 2 - Petal Width Distribution Histogram**
+
+![Histogram 2](images/plots/histograms/petal_width_histogram.png "Iris Data Set Petal Width Distribution")
+
+Plot 2 demonstrates that Iris-setosa has the smallest petal width. There is some overlap in the petal width upper 
+values of Iris-versicolor and the lower values of Iris-virginica. 
+
+**Plot 3 - Sepal Length Distribution Histogram**
+
+![Histogram 3](images/plots/histograms/sepal_length_histogram.png "Iris Data Set Sepal Length Distribution")
+
+Plot 3 & 4 demonstrate that there is overlap in the range of values for sepal length & sepal width for all species 
+measured. Based on this observation sepal width and sepal length are less accurate identifiers of species than petal 
+length and width.
+
+**Plot 4 - Sepal Width Distribution Histogram**
+
+![Histogram 4](images/plots/histograms/sepal_width_histogram.png "Iris Data Set Sepal Width Distribution")
 
 ## Conclusion
 
@@ -154,9 +190,11 @@ number of rows in the data set. As can be seen from the table this equals 150, a
 1. https://digital.library.adelaide.edu.au/dspace/bitstream/2440/15227/1/138.pdf - accessed 27/03/2023
 2. https://en.wikipedia.org/wiki/Edgar_Anderson - accessed 27/03/2023
 3. https://en.wikipedia.org/wiki/Iris_flower_data_set - accessed 27/03/2023
-4. https://en.wikipedia.org/wiki/Ronald_Fisher - accessed 27/03/2023
-5. https://en.wikipedia.org/wiki/Sepal - accessed 27/03/2023
-6. https://www.kaggle.com/code/amrut11/iris-dataset-univariate-bivariate-multivariate - accessed 27/03/2023
+4. https://en.wikipedia.org/wiki/Histogram - accessed 06/04/2023
+5. https://en.wikipedia.org/wiki/Ronald_Fisher - accessed 27/03/2023
+6. https://en.wikipedia.org/wiki/Sepal - accessed 27/03/2023
+7. https://seaborn.pydata.org/index.html - accessed 06/04/2023
+8. https://www.kaggle.com/code/amrut11/iris-dataset-univariate-bivariate-multivariate - accessed 27/03/2023
 ---
 
 ## Appendix 1
