@@ -11,12 +11,18 @@ import seaborn as sns
 # import the matplotlib module used to plot data for visual representation
 import matplotlib.pyplot as plt
 import csv
+url = 'http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data' # declare a vairiable to define the
+# Iris Data Set URL
 
-# Define data frame as variable df to read in file 'iris.data' with a separator ',' and the column names as defined in
-# the list variable called "names"
+# # # # # Read in the data set set from URL # # # # #
+
+# Define data frame as variable iris. Use Pandas to read in file from the URL variable with the column names as defined
+# in the list variable called "names"
 # Reference https://gist.github.com/curran/a08a1080b88344b0c8a7#file-iris-csv - accessed 30/03/2023
-iris = pd.read_csv('iris.data', sep=',', names=["Sepal Length cms", "Sepal Width cms", "Petal Length cms",
-                                                "Petal Width cms", "Species"])
+
+iris = pd.read_csv(url, names=["Sepal Length cms", "Sepal Width cms", "Petal Length cms",
+                                     "Petal Width cms", "Species"])
+# print(iris) # validation check ? remove
 
 # # # # # Check source data quality # # # # #
 # The code in this section checks the quality of the source data

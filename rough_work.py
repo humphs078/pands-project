@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # download iris data and read it into a dataframe
-# url = 'http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
+url = 'http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
 # df = pd.read_csv(url, names=['sepal_length', 'sepal_width', 'petal_length', 'petal_width', 'class'])
 # print(df)
 df = pd.read_csv('iris.data', sep=',', names=["Sepal Length cm", "Sepal Width cm", "Petal Length cm",
