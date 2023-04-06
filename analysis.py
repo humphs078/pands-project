@@ -65,9 +65,9 @@ missing_values_table_csv = pd.read_csv('missing_values_2.csv', sep=',')
 # declare a variable for the ff.create table method
 fig = ff.create_table(missing_values_table_csv)
 #  method to change the look and feel of the table
-fig.update_layout(autosize=True, width=500, height=200)
+fig.update_layout(autosize=False, width=300, height=200)
 # write the table_plotly.png file to the images folder
-fig.write_image("images/tables/missing_values.png", scale=2)
+fig.write_image("images/tables/missing_values.png", scale=1)
 
 # # # # # Output to txt file # # # # #
 
@@ -136,19 +136,19 @@ plot = sns.FacetGrid(iris, hue="Species", height=5)
 plot.map(sns.histplot, "Sepal Length cms", kde=True).add_legend().set(title='Sepal Length Distribution')
 # save output to images folder - https://www.marsja.se/how-to-save-a-seaborn-plot-as-a-file-e-g-png-pdf-eps-tiff/
 # - accessed 30/03/2023
-plt.savefig('images/plots/histograms/sepal_length_histogram.png')
+plt.savefig('images/plots/histograms/sepal_length_histogram.png', bbox_inches='tight')
 
 plot = sns.FacetGrid(iris, hue="Species", height=5)
 plot.map(sns.histplot, "Sepal Width cms", kde=True).add_legend().set(title='Sepal Width Distribution')
-plt.savefig('images/plots/histograms/sepal_width_histogram.png')
+plt.savefig('images/plots/histograms/sepal_width_histogram.png', bbox_inches='tight')
 
 plot = sns.FacetGrid(iris, hue="Species", height=5)
 plot.map(sns.histplot, "Petal Length cms", kde=True).add_legend().set(title='Petal Length Distribution')
-plt.savefig('images/plots/histograms/petal_length_histogram.png')
+plt.savefig('images/plots/histograms/petal_length_histogram.png', bbox_inches='tight')
 
 plot = sns.FacetGrid(iris, hue="Species", height=5)
 plot.map(sns.histplot, "Petal Width cms", kde=True).add_legend().set(title='Petal Width Distribution')
-plt.savefig('images/plots/histograms/petal_width_histogram.png')
+plt.savefig('images/plots/histograms/petal_width_histogram.png', bbox_inches='tight')
 
 plt.show()
 
