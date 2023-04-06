@@ -123,6 +123,35 @@ fig4.update_layout(autosize=True)
 # write the table_plotly.png file to the images folder
 fig4.write_image("images/tables/iris_data_set_full.png", scale=1)
 
+# # # # # Create & save histograms # # # # #
+
+# define theme for sns - https://seaborn.pydata.org/generated/seaborn.set_theme.html - accessed 30/03/2023
+sns.set_theme(context='notebook', style='darkgrid', palette='pastel', font='sans-serif', font_scale=1,
+              color_codes=True, rc=None)
+# code to create histograms using seaborn module - https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+# - accessed 30/03/2023
+plot = sns.FacetGrid(iris, hue="Species", height=5)
+# originally used distplot function but got message that it is being depreciated, when code was run, so used
+# histplot function instead - https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751 - accessed 30/03/2023
+plot.map(sns.histplot, "Sepal Length cms", kde=True).add_legend().set(title='Sepal Length Distribution')
+# save output to images folder - https://www.marsja.se/how-to-save-a-seaborn-plot-as-a-file-e-g-png-pdf-eps-tiff/
+# - accessed 30/03/2023
+plt.savefig('images/plots/histograms/sepal_length_histogram.png')
+
+plot = sns.FacetGrid(iris, hue="Species", height=5)
+plot.map(sns.histplot, "Sepal Width cms", kde=True).add_legend().set(title='Sepal Width Distribution')
+plt.savefig('images/plots/histograms/sepal_width_histogram.png')
+
+plot = sns.FacetGrid(iris, hue="Species", height=5)
+plot.map(sns.histplot, "Petal Length cms", kde=True).add_legend().set(title='Petal Length Distribution')
+plt.savefig('images/plots/histograms/petal_length_histogram.png')
+
+plot = sns.FacetGrid(iris, hue="Species", height=5)
+plot.map(sns.histplot, "Petal Width cms", kde=True).add_legend().set(title='Petal Width Distribution')
+plt.savefig('images/plots/histograms/petal_width_histogram.png')
+
+plt.show()
+
 # # # # # Create & save box plots # # # # #
 # Reference - https://www.geeksforgeeks.org/exploratory-data-analysis-on-iris-dataset/
 
@@ -155,6 +184,7 @@ plt.savefig('images/plots/box_plots/box_plots.png')
 plt.show()
 
 # # # # # Outliers Demo # # # # #
+
 outliers = sns.boxplot(x='Sepal Width cms', data=iris).set_title("Sepal Width Outliers")
 plt.savefig('images/plots/box_plots/outliers_box_plots.png')
 plt.show()
@@ -182,33 +212,4 @@ iris.drop(lower[0], inplace=True)
 # plot box plot with outliers removed and save file
 sns.boxplot(x='Sepal Width cms', data=iris).set_title("Sepal Width Outliers Removed")
 plt.savefig('images/plots/box_plots/no_outliers_box_plots.png')
-plt.show()
-
-# # # # # Create & save histograms # # # # #
-
-# define theme for sns - https://seaborn.pydata.org/generated/seaborn.set_theme.html - accessed 30/03/2023
-sns.set_theme(context='notebook', style='darkgrid', palette='pastel', font='sans-serif', font_scale=1,
-              color_codes=True, rc=None)
-# code to create histograms using seaborn module - https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
-# - accessed 30/03/2023
-plot = sns.FacetGrid(iris, hue="Species", height=5)
-# originally used distplot function but got message that it is being depreciated, when code was run, so used
-# histplot function instead - https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751 - accessed 30/03/2023
-plot.map(sns.histplot, "Sepal Length cms", kde=True).add_legend().set(title='Sepal Length Distribution')
-# save output to images folder - https://www.marsja.se/how-to-save-a-seaborn-plot-as-a-file-e-g-png-pdf-eps-tiff/
-# - accessed 30/03/2023
-plt.savefig('images/plots/histograms/sepal_length_histogram.png')
-
-plot = sns.FacetGrid(iris, hue="Species", height=5)
-plot.map(sns.histplot, "Sepal Width cms", kde=True).add_legend().set(title='Sepal Width Distribution')
-plt.savefig('images/plots/histograms/sepal_width_histogram.png')
-
-plot = sns.FacetGrid(iris, hue="Species", height=5)
-plot.map(sns.histplot, "Petal Length cms", kde=True).add_legend().set(title='Petal Length Distribution')
-plt.savefig('images/plots/histograms/petal_length_histogram.png')
-
-plot = sns.FacetGrid(iris, hue="Species", height=5)
-plot.map(sns.histplot, "Petal Width cms", kde=True).add_legend().set(title='Petal Width Distribution')
-plt.savefig('images/plots/histograms/petal_width_histogram.png')
-
 plt.show()
