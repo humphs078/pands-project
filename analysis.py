@@ -249,11 +249,17 @@ plt.show()
 
 # # # # # Generate Heatmap # # # # #
 
+# Read in the dtaa set
 iris_heatmap = pd.read_csv(url, names=["Sepal Length cms", "Sepal Width cms", "Petal Length cms",
                                      "Petal Width cms", "Species"])
-
+# Drop the species column - solved issue using this post
+# https://stackoverflow.com/questions/69660844/count-not-conver-string-to-float-using-iris-dataset - accessed 10/04/2023
 iris_heatmap.drop('Species', axis=1, inplace=True)
+# Pandas dataframe.corr() method used to find the pairwise correlation of all columns in the dataframe
+# https://www.geeksforgeeks.org/exploratory-data-analysis-on-iris-dataset/ - accessed 10/04/2023
 corr = iris_heatmap.corr()
+# The following lines of code to format the heatmap were taken from here
+# https://www.analyticsvidhya.com/blog/2021/06/guide-to-data-visualization-with-python-part-1/ - accessed 10/04/2023
 fig, ax = plt.subplots()
 img = ax.imshow(corr.values,cmap = "magma_r")
 # set labels
