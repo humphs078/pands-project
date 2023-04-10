@@ -185,31 +185,34 @@ plt.show()
 
 # # # # # Outliers Demo # # # # #
 
-outliers = sns.boxplot(x='Sepal Width cms', data=iris).set_title("Sepal Width Outliers")
+outlier_test = pd.read_csv(url, names=["Sepal Length cms", "Sepal Width cms", "Petal Length cms",
+                                     "Petal Width cms", "Species"])
+
+outlier_test.drop(index=outlier_test.index[50:150], axis=0, inplace = True)
+
+sns.boxplot(x='Species', y="Petal Length cms", data=outlier_test).set_title("Petal Length Outliers")
 plt.savefig('images/plots/box_plots/outliers_box_plots.png')
 plt.show()
 
 # Define Q1 variable for numpy percentile method for the dataset column sepal width
-Q1 = np.percentile(iris['Sepal Width cms'], 25,
+Q1 = np.percentile(outlier_test['Petal Length cms'], 25,
                    method='midpoint')
 # Define Q1 variable for numpy percentile method for the dataset column sepal width
-Q3 = np.percentile(iris['Sepal Width cms'], 75,
+Q3 = np.percentile(outlier_test['Petal Length cms'], 75,
                    method='midpoint')
 IQR = Q3 - Q1
 
 # Upper bound
-upper = np.where(iris['Sepal Width cms'] >= (Q3 + 1.5 * IQR))
+upper = np.where(outlier_test['Petal Length cms'] >= (Q3 + 1.5 * IQR))
 
 # Lower bound
-lower = np.where(iris['Sepal Width cms'] <= (Q1 - 1.5 * IQR))
+lower = np.where(outlier_test['Petal Length cms'] <= (Q1 - 1.5 * IQR))
 
 # Removing the Outliers
-iris.drop(upper[0], inplace=True)
-iris.drop(lower[0], inplace=True)
-
-# print("New Shape: ", iris.shape) # validation test
+outlier_test.drop(upper[0], inplace=True)
+outlier_test.drop(lower[0], inplace=True)
 
 # plot box plot with outliers removed and save file
-sns.boxplot(x='Sepal Width cms', data=iris).set_title("Sepal Width Outliers Removed")
+sns.boxplot(x='Species', y="Petal Length cms", data=outlier_test).set_title("Petal Length Outliers Removed")
 plt.savefig('images/plots/box_plots/no_outliers_box_plots.png')
 plt.show()

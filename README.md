@@ -151,9 +151,21 @@ diamonds. Plot 1 demonstrates that the number of outliers is minimal.
 
 ![Boxplot](images/plots/box_plots/box_plots.png "Iris Data Set Boxplots")
 
-Using the interquartile method it is possible to remove outliers from the data set using pyhton. The challenge with the
-Irish data set is it's small size and small number of outliers. For demonstrative purposes one could look at cleansing
-the Iris-setosa petal length of outliers. To achieve this 
+Applying the [interquartile method](https://www.geeksforgeeks.org/detect-and-remove-the-outliers-using-python/) 
+it is possible to remove outliers from the data set using python. The challenge with the Iris data set is it's small
+size and relatively small number of outliers. For demonstrative purposes one could look at cleansing the Iris-setosa 
+petal length outliers. Plot 2 demonstrates the outliers for this subset of the data set. Plot 3 demonstrates the 
+boxplot for the subset that has been cleansed of outliers using the interquartile method. The boxplot indicates that 
+further outliers remain. The small dataset size is causing this anomaly. 4 data points are remove when applying the 
+interquartile method suggesting that cleansing data of outliers only adds value with larger data sets. 
+
+**Plot 2 - Outlier Demonstration**
+
+![Outliers](images/plots/box_plots/outliers_box_plots.png "Iris-setosa Petal Length Outliers")
+
+**Plot 3 - Outlier Cleansed Subset**
+
+![No Outliers](images/plots/box_plots/no_outliers_box_plots.png "Iris-setosa Petal Length No Outliers")
 
 ### Univariate Analysis
 The Seaborn library was used to create [histograms](#definitions). [Seaborn](https://seaborn.pydata.org/index.html) is 
