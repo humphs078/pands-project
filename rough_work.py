@@ -10,22 +10,36 @@ import numpy as np
 import sklearn
 
 # download iris data and read it into a dataframe
-url = 'https://datahub.io/machine-learning/iris/r/iris.csv'
-iris = pd.read_csv(url)
+url = 'http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
 
-print(iris.info())
-print(iris.head())
+outlier_test = pd.read_csv(url, names=["Sepal Length cms", "Sepal Width cms", "Petal Length cms",
+                                     "Petal Width cms", "Species"])
 
-plot = sns.FacetGrid(iris, hue="class")
-plot.map(plt.hist, "sepallength")
+outlier_test.drop(index=outlier_test.index[50:150], axis=0, inplace = True)
 
-plot = sns.FacetGrid(iris, hue="class")
-plot.map(plt.hist, "sepalwidth")
+sns.boxplot(x='Species', y="Petal Length cms", data=outlier_test).set_title("Petal Length Outliers")
+plt.savefig('images/plots/box_plots/outliers_box_plots.png')
+plt.show()
 
-plot = sns.FacetGrid(iris, hue="class")
-plot.map(plt.hist, "petallength")
+# Define Q1 variable for numpy percentile method for the dataset column sepal width
+Q1 = np.percentile(outlier_test['Petal Length cms'], 25,
+                   method='midpoint')
+# Define Q1 variable for numpy percentile method for the dataset column sepal width
+Q3 = np.percentile(outlier_test['Petal Length cms'], 75,
+                   method='midpoint')
+IQR = Q3 - Q1
 
-plot = sns.FacetGrid(iris, hue="class")
-plot.map(plt.hist, "petalwidth")
+# Upper bound
+upper = np.where(outlier_test['Petal Length cms'] >= (Q3 + 1.5 * IQR))
 
+# Lower bound
+lower = np.where(outlier_test['Petal Length cms'] <= (Q1 - 1.5 * IQR))
+
+# Removing the Outliers
+outlier_test.drop(upper[0], inplace=True)
+outlier_test.drop(lower[0], inplace=True)
+
+# plot box plot with outliers removed and save file
+sns.boxplot(x='Species', y="Petal Length cms", data=outlier_test).set_title("Petal Length Outliers Removed")
+plt.savefig('images/plots/box_plots/no_outliers_box_plots.png')
 plt.show()

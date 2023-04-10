@@ -39,6 +39,8 @@ Python can be used to do it.
 ---
 ## Definitions
 
++ [Boxplot](https://en.wikipedia.org/wiki/Box_plot) - is a method for graphically demonstrating the spread of numerical 
+data through their quantities 
 + [Histogram](https://en.wikipedia.org/wiki/Histogram) - is a representation of the approximated distribution of 
 numerical data.
 + [Multivariate Statistics](https://en.wikipedia.org/wiki/Iris_flower_data_set) - is a branch of statistics that is 
@@ -128,7 +130,7 @@ values.
 ![Missing Values](images/tables/missing_values.png "Irish Data Set Missing Values Count")
 
 
-The Pandas "describe" method crates a summary of the min, max, mean, std, etc. as demonstrated in Table . This allows 
+The Pandas "describe" method crates a summary of the min, max, mean, std, etc. as demonstrated in Table 2. This allows 
 for a summary of the distribution of the data within the data set. This method can also be used to validate the count 
 of the number of rows in the data set. As can be seen from the table this equals 150, as expected. 
 
@@ -139,7 +141,19 @@ of the number of rows in the data set. As can be seen from the table this equals
  
 
 
-**Note to self** - Data set quality - need to discuss duplicated and trueness
+Boxplots were used to to identify the presence of outliers in the data set. Outliers are described as objects that 
+deviate significantly from the rest for the objects. 
+[Outliers](https://medium.com/analytics-vidhya/its-all-about-outliers-cbe172aa1309) can be caused by a number of things 
+including measurement error, sampling problems and natural variation. The outliers are visisible on Plot 1 as 
+diamonds. Plot 1 demonstrates that the number of outliers is minimal.
+
+**Plot 1 - Iris Data Set Boxplots**
+
+![Boxplot](images/plots/box_plots/box_plots.png "Iris Data Set Boxplots")
+
+Using the interquartile method it is possible to remove outliers from the data set using pyhton. The challenge with the
+Irish data set is it's small size and small number of outliers. For demonstrative purposes one could look at cleansing
+the Iris-setosa petal length of outliers. To achieve this 
 
 ### Univariate Analysis
 The Seaborn library was used to create [histograms](#definitions). [Seaborn](https://seaborn.pydata.org/index.html) is 
@@ -188,13 +202,16 @@ length and width.
 
 ### Background Information
 1. https://digital.library.adelaide.edu.au/dspace/bitstream/2440/15227/1/138.pdf - accessed 27/03/2023
-2. https://en.wikipedia.org/wiki/Edgar_Anderson - accessed 27/03/2023
-3. https://en.wikipedia.org/wiki/Iris_flower_data_set - accessed 27/03/2023
-4. https://en.wikipedia.org/wiki/Histogram - accessed 06/04/2023
-5. https://en.wikipedia.org/wiki/Ronald_Fisher - accessed 27/03/2023
-6. https://en.wikipedia.org/wiki/Sepal - accessed 27/03/2023
-7. https://seaborn.pydata.org/index.html - accessed 06/04/2023
-8. https://www.kaggle.com/code/amrut11/iris-dataset-univariate-bivariate-multivariate - accessed 27/03/2023
+2. https://en.wikipedia.org/wiki/Box_plot - accessed 10/04/2023
+3. https://en.wikipedia.org/wiki/Edgar_Anderson - accessed 27/03/2023
+4. https://en.wikipedia.org/wiki/Iris_flower_data_set - accessed 27/03/2023
+5. https://en.wikipedia.org/wiki/Histogram - accessed 06/04/2023
+6. https://en.wikipedia.org/wiki/Ronald_Fisher - accessed 27/03/2023
+7. https://en.wikipedia.org/wiki/Sepal - accessed 27/03/2023
+8. (https://medium.com/analytics-vidhya/its-all-about-outliers-cbe172aa1309) - accessed 10/04/2023
+9. https://seaborn.pydata.org/index.html - accessed 06/04/2023
+10. https://www.kaggle.com/code/amrut11/iris-dataset-univariate-bivariate-multivariate - accessed 27/03/2023
+
 ---
 
 ## Appendix 1
