@@ -158,9 +158,10 @@ Applying the [interquartile method](https://www.geeksforgeeks.org/detect-and-rem
 it is possible to remove outliers from the data set using python. The challenge with the Iris data set is it's small
 size and relatively small number of outliers. For demonstrative purposes one could look at cleansing the Iris-setosa 
 petal length outliers. Plot 2 demonstrates the outliers for this subset of the data set. Plot 3 demonstrates the 
-boxplot for the subset that has been cleansed of outliers using the interquartile method. The boxplot indicates that 
-further outliers remain. The small dataset size is causing this anomaly. 4 data points are remove when applying the 
-interquartile method suggesting that cleansing data of outliers only adds value with larger data sets. 
+boxplot for the subset that has been cleansed of outliers using the interquartile method. Plot seems to indicate that 
+further outliers remain. The small dataset size is causing this anomaly. Four outlier data points are removed when 
+applying the interquartile method for this sub dataset. Given the anomaly caused by removing outliers, cleansing data 
+of outliers only adds value with larger data sets. 
 
 **Plot 2 - Outlier Demonstration**
 

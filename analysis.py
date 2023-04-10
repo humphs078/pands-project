@@ -23,8 +23,8 @@ url = 'http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data' 
 # # # # # Set Themes # # # # #
 
 # Set Seaborn theme to use pastel colours
-sns.set_theme(context='notebook', style='darkgrid', palette='pastel', font='sans-serif', font_scale=1, color_codes=True,
-              rc=None)
+#sns.set_theme(context='notebook', style='darkgrid', palette='pastel', font='sans-serif', font_scale=1, color_codes=True,
+#              rc=None)
 
 # # # # # Read in the data set set from URL # # # # #
 
@@ -126,8 +126,8 @@ fig4.write_image("images/tables/iris_data_set_full.png", scale=1)
 # # # # # Create & save histograms # # # # #
 
 # define theme for sns - https://seaborn.pydata.org/generated/seaborn.set_theme.html - accessed 30/03/2023
-sns.set_theme(context='notebook', style='darkgrid', palette='pastel', font='sans-serif', font_scale=1,
-              color_codes=True, rc=None)
+# sns.set_theme(context='notebook', style='darkgrid', palette='pastel', font='sans-serif', font_scale=1,
+#              color_codes=True, rc=None)
 # code to create histograms using seaborn module - https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 # - accessed 30/03/2023
 plot = sns.FacetGrid(iris, hue="Species", height=5)
@@ -245,4 +245,34 @@ plt.subplot(224)
 violin_graph('Petal Width cms')
 
 plt.savefig('images/plots/violin_plots/violin_plots.png')
+plt.show()
+
+# # # # # Generate Heatmap # # # # #
+
+iris_heatmap = pd.read_csv(url, names=["Sepal Length cms", "Sepal Width cms", "Petal Length cms",
+                                     "Petal Width cms", "Species"])
+
+iris_heatmap.drop('Species', axis=1, inplace=True)
+corr = iris_heatmap.corr()
+fig, ax = plt.subplots()
+img = ax.imshow(corr.values,cmap = "magma_r")
+# set labels
+ax.set_xticks(np.arange(len(corr.columns)))
+ax.set_yticks(np.arange(len(corr.columns)))
+ax.set_xticklabels(corr.columns)
+ax.set_yticklabels(corr.columns)
+cbar = ax.figure.colorbar(img, ax=ax ,cmap='')
+plt.setp(ax.get_xticklabels(), rotation=30, ha="right",
+         rotation_mode="anchor")
+# text annotations.
+for i in range(len(corr.columns)):
+    for j in range(len(corr.columns)):
+        if corr.iloc[i, j]<0:
+            text = ax.text(j, i, np.around(corr.iloc[i, j], decimals=2),
+                       ha="center", va="center", color="black")
+        else:
+            text = ax.text(j, i, np.around(corr.iloc[i, j], decimals=2),
+                       ha="center", va="center", color="white")
+
+plt.savefig('images/plots/heatmap/heatmap.png')
 plt.show()
