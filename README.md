@@ -49,6 +49,9 @@ Cluster Analysis, Factor Analysis, Multiple Regression Analysis, Principal Compo
 20 ways to perform multivariate analysis.
 + [Sepal](https://en.wikipedia.org/wiki/Sepal) - in plants that flower the sepal is the part of the flower that 
 functions as protection for the flower in bud and often as support for the petals when the flower is in bloom.
++ [Violin Plot](https://en.wikipedia.org/wiki/Violin_plot) - a statistical graphic for comparing 
+probability distributions
+
 ---
 ## Background
 
@@ -172,31 +175,41 @@ The Seaborn library was used to create [histograms](#definitions). [Seaborn](htt
 a Python data visualization library based on matplotlib. It allows for drawing attractive and informative statistical
 graphics.
 
-**Plot 1 - Petal Length Distribution Histogram**
+**Plot 4 - Petal Length Distribution Histogram**
 
 ![Histogram 1](images/plots/histograms/petal_length_histogram.png "Iris Data Set Petal Length Distribution")
 
-Plot 1 demonstrates that Iris-setosa has the smallest petal length falling roughly between 1-2cms. There is some 
+Plot 4 demonstrates that Iris-setosa has the smallest petal length falling roughly between 1-2cms. There is some 
 overlap in Petal Length between Iris-versicolor and Iris-virginica. 
 
-**Plot 2 - Petal Width Distribution Histogram**
+**Plot 5 - Petal Width Distribution Histogram**
 
 ![Histogram 2](images/plots/histograms/petal_width_histogram.png "Iris Data Set Petal Width Distribution")
 
-Plot 2 demonstrates that Iris-setosa has the smallest petal width. There is some overlap in the petal width upper 
+Plot 5 demonstrates that Iris-setosa has the smallest petal width. There is some overlap in the petal width upper 
 values of Iris-versicolor and the lower values of Iris-virginica. 
 
-**Plot 3 - Sepal Length Distribution Histogram**
+**Plot 6 - Sepal Length Distribution Histogram**
 
 ![Histogram 3](images/plots/histograms/sepal_length_histogram.png "Iris Data Set Sepal Length Distribution")
 
-Plot 3 & 4 demonstrate that there is overlap in the range of values for sepal length & sepal width for all species 
+Plot 6 & 7 demonstrate that there is overlap in the range of values for sepal length & sepal width for all species 
 measured. Based on this observation sepal width and sepal length are less accurate identifiers of species than petal 
 length and width.
 
-**Plot 4 - Sepal Width Distribution Histogram**
+**Plot 7 - Sepal Width Distribution Histogram**
 
 ![Histogram 4](images/plots/histograms/sepal_width_histogram.png "Iris Data Set Sepal Width Distribution")
+
+Violin plots  (see plot 8) are similar to boxplots. In simple terms denser regions of data are fatter while less dense regions are 
+thinner. The output of this analysis supports the view that there is clear separation in petal length and petal width
+for Iris-setosa, making these variables good identifiers of the Iris-setosa species. It also confirms that there is 
+overlap between sepal length and sepal width making them less ideal candidate for blind classification of the species.
+
+**Plot 8 - Iris Data Set Violin PLots**
+
+![Violin Plot](images/plots/violin_plots/violin_plots.png "Iris Data Set Violin PLots")
+
 
 ## Conclusion
 
@@ -222,6 +235,7 @@ length and width.
 5. https://en.wikipedia.org/wiki/Histogram - accessed 06/04/2023
 6. https://en.wikipedia.org/wiki/Ronald_Fisher - accessed 27/03/2023
 7. https://en.wikipedia.org/wiki/Sepal - accessed 27/03/2023
+8. https://en.wikipedia.org/wiki/Violin_plot - accessed 10/04/2023
 8. (https://medium.com/analytics-vidhya/its-all-about-outliers-cbe172aa1309) - accessed 10/04/2023
 9. https://seaborn.pydata.org/index.html - accessed 06/04/2023
 10. https://www.kaggle.com/code/amrut11/iris-dataset-univariate-bivariate-multivariate - accessed 27/03/2023

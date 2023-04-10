@@ -222,3 +222,27 @@ outlier_test.drop(lower[0], inplace=True)
 sns.boxplot(x='Species', y="Petal Length cms", data=outlier_test).set_title("Petal Length Outliers Removed")
 plt.savefig('images/plots/box_plots/no_outliers_box_plots.png')
 plt.show()
+
+# # # # # Violin PLots # # # # #
+def violin_graph(y):
+    sns.violinplot(x="Species", y=y, data=iris)
+
+
+# plot size
+plt.figure(figsize=(10, 10))
+# Adding the subplot at the specified
+# grid position
+plt.subplot(221)
+violin_graph('Sepal Length cms')
+
+plt.subplot(222)
+violin_graph('Sepal Width cms')
+
+plt.subplot(223)
+violin_graph('Petal Length cms')
+
+plt.subplot(224)
+violin_graph('Petal Width cms')
+
+plt.savefig('images/plots/violin_plots/violin_plots.png')
+plt.show()
