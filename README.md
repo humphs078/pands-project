@@ -133,9 +133,10 @@ values.
 ![Missing Values](images/tables/missing_values.png "Irish Data Set Missing Values Count")
 
 
-The Pandas "describe" method crates a summary of the min, max, mean, std, etc. as demonstrated in Table 2. This allows 
-for a summary of the distribution of the data within the data set. This method can also be used to validate the count 
-of the number of rows in the data set. As can be seen from the table this equals 150, as expected. 
+The Pandas "describe" method crates a summary of the min, max, mean, std, etc. as demonstrated in 
+[Table 2](images/tables/data_summary.png) . This allows for a summary of the distribution of the data within the 
+data set. This method can also be used to validate the count of the number of rows in the data set. As can be seen 
+from the table this equals 150, as expected. 
 
 **Table 2 - Data Summary** 
 
@@ -147,8 +148,8 @@ of the number of rows in the data set. As can be seen from the table this equals
 Boxplots were used to to identify the presence of outliers in the data set. Outliers are described as objects that 
 deviate significantly from the rest for the objects. 
 [Outliers](https://medium.com/analytics-vidhya/its-all-about-outliers-cbe172aa1309) can be caused by a number of things 
-including measurement error, sampling problems and natural variation. The outliers are visisible on Plot 1 as 
-diamonds. Plot 1 demonstrates that the number of outliers is minimal.
+including measurement error, sampling problems and natural variation. The outliers are visible on 
+[Plot 1](images/plots/box_plots/box_plots.png) as diamonds. Plot 1 demonstrates that the number of outliers is minimal.
 
 **Plot 1 - Iris Data Set Boxplots**
 
@@ -157,8 +158,9 @@ diamonds. Plot 1 demonstrates that the number of outliers is minimal.
 Applying the [interquartile method](https://www.geeksforgeeks.org/detect-and-remove-the-outliers-using-python/) 
 it is possible to remove outliers from the data set using python. The challenge with the Iris data set is it's small
 size and relatively small number of outliers. For demonstrative purposes one could look at cleansing the Iris-setosa 
-petal length outliers. Plot 2 demonstrates the outliers for this subset of the data set. Plot 3 demonstrates the 
-boxplot for the subset that has been cleansed of outliers using the interquartile method. Plot seems to indicate that 
+petal length outliers. [Plot 2](images/plots/box_plots/outliers_box_plots.png) demonstrates the outliers for this 
+subset of the data set. [Plot 3](images/plots/box_plots/no_outliers_box_plots.png) demonstrates the boxplot for the 
+subset that has been cleansed of outliers using the interquartile method. Plot seems to indicate that 
 further outliers remain. The small dataset size is causing this anomaly. Four outlier data points are removed when 
 applying the interquartile method for this sub dataset. Given the anomaly caused by removing outliers, cleansing data 
 of outliers only adds value with larger data sets. 
