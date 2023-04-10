@@ -185,15 +185,21 @@ plt.show()
 
 # # # # # Outliers Demo # # # # #
 
+# Read in the data set as a variable called outlier_test
 outlier_test = pd.read_csv(url, names=["Sepal Length cms", "Sepal Width cms", "Petal Length cms",
                                      "Petal Width cms", "Species"])
 
-outlier_test.drop(index=outlier_test.index[50:150], axis=0, inplace = True)
+# remove all rows so that only Iris-sertosa remains
+# https://www.shanelynn.ie/pandas-drop-delete-dataframe-rows-columns/ - accessed 10/04/2023
+outlier_test.drop(index=outlier_test.index[50:150], axis=0, inplace=True)
 
+# plot the boxplot demonstrating outliers
 sns.boxplot(x='Species', y="Petal Length cms", data=outlier_test).set_title("Petal Length Outliers")
 plt.savefig('images/plots/box_plots/outliers_box_plots.png')
 plt.show()
 
+# the follwoig lines of code are based on - https://www.geeksforgeeks.org/detect-and-remove-the-outliers-using-python/
+# accessed- 10/04/2023
 # Define Q1 variable for numpy percentile method for the dataset column sepal width
 Q1 = np.percentile(outlier_test['Petal Length cms'], 25,
                    method='midpoint')
