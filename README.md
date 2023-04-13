@@ -48,12 +48,16 @@ data through their quantities
 numerical data.
 + Kernel Density Estimation, KDE (https://en.wikipedia.org/wiki/Kernel_density_estimation) - is the application of 
 kernel smoothing for probability density estimation 
++ Lag plot (https://www.itl.nist.gov/div898/handbook/eda/section3/lagplot.htm) - checks whether a data set is random or 
+not
 + Multivariate Statistics (https://en.wikipedia.org/wiki/Iris_flower_data_set) - is a branch of statistics that is 
 used when two or more variables have to be analysed simultaneously. Types of Multivariate Analysis include 
 Cluster Analysis, Factor Analysis, Multiple Regression Analysis, Principal Component Analysis, etc. There is more than
 20 ways to perform multivariate analysis.
 + Paralell Coordinates (https://en.wikipedia.org/wiki/Parallel_coordinates) - are a common way of visualizing and 
 analyzing high-dimensional datasets. 
++ RadViz (https://pandas.pydata.org/pandas-docs/stable/user_guide/visualization.html#radviz) -  is a way of visualizing 
+multivariate data based on a simple spring tension minimization algorithm.
 + Sepal(https://en.wikipedia.org/wiki/Sepal) - in plants that flower the sepal is the part of the flower that 
 functions as protection for the flower in bud and often as support for the petals when the flower is in bloom.
 + [Violin Plot](https://en.wikipedia.org/wiki/Violin_plot) - a statistical graphic for comparing 
@@ -267,7 +271,27 @@ Each feature is plotted on a separate column. Lines are then drawn to connect th
 
 The above plot illustrates that Iris-setosa has a small petal length and petal width. It also indicates that 
 Iris-veriscolor and Iris-virginica have flowers with similar sized sepal widths and lengths. There is a small degree of 
-overlap
+overlap in petal lengths for Iris-veroscolor and Iris-virginica suggesting that this variable would be best suited for 
+blind classification of these species.
+
+#### Radviz
+
+The Radviz plot illustrates the data on a 2D plane, in this case a circle. The plot can be interpreted that 
+Iris-virginica are more random because they are closer to the centre of the circle where as Iris-setosa are more biased 
+towards the sepal-width of the these flowers.
+
+![Radviz](images/plots/multivariate/radviz.png "Iris-setosa Radviz Plot")
+
+#### Lag Plot
+
+The lag plot will check if a dat set is random or nor. Random data should not display any identifiable structure in the 
+plot.
+
+![Lag Plot](images/plots/multivariate/lag_plot.png)
+
+The above lag plot for the Iris Data set is displaying a linear pattern. The presence of outliers is observed on the 
+plot.
+
 ## Conclusion
 
 ## References
@@ -282,35 +306,38 @@ overlap
 5. https://stackoverflow.com/questions/69660844/count-not-conver-string-to-float-using-iris-dataset - accessed 
 10/04/2023
 6. https://towardsdatascience.com/6-lesser-known-pandas-plotting-tools-fda5adb232ef - accessed 13/04/2023
-6. http://uconn.science/wp-content/uploads/2017/07/iris_visualization.html#Andrews-Curves - accessed 13/04/2023
-7. http://uconn.science/wp-content/uploads/2017/07/iris_visualization.html#parallel_coordinates - accessed 13/04/2023
-8. http://uconn.science/wp-content/uploads/2017/07/iris_visualization.html#radviz - accessed 13/04/2023
-9. https://www.analyticsvidhya.com/blog/2021/06/guide-to-data-visualization-with-python-part-1/ - accessed 10/04/2023
-10. https://www.delftstack.com/howto/python-pandas/pandas-png/ - accessed 30/03/2023
-11. https://www.geeksforgeeks.org/detect-and-remove-the-outliers-using-python/ - accessed 10/04/2023
-12. https://www.geeksforgeeks.org/exploratory-data-analysis-on-iris-dataset/ - accessed 10/04/2023
-13. https://www.marsja.se/how-to-save-a-seaborn-plot-as-a-file-e-g-png-pdf-eps-tiff/ - accessed 30/03/2023
-14. https://www.shanelynn.ie/pandas-drop-delete-dataframe-rows-columns/ - accessed 10/04/2023
-15. https://www.statology.org/pandas-to-text-file/ - accessed 30/03/2023
-16. https://www.w3schools.com/python/pandas/ref_df_copy.asp - accessed 13/04/2023
+7. http://uconn.science/wp-content/uploads/2017/07/iris_visualization.html#Andrews-Curves - accessed 13/04/2023
+8. http://uconn.science/wp-content/uploads/2017/07/iris_visualization.html#parallel_coordinates - accessed 13/04/2023
+9. http://uconn.science/wp-content/uploads/2017/07/iris_visualization.html#radviz - accessed 13/04/2023
+10. https://www.analyticsvidhya.com/blog/2021/06/guide-to-data-visualization-with-python-part-1/ - accessed 10/04/2023
+11. https://www.delftstack.com/howto/python-pandas/pandas-png/ - accessed 30/03/2023
+12. https://www.geeksforgeeks.org/detect-and-remove-the-outliers-using-python/ - accessed 10/04/2023
+13. https://www.geeksforgeeks.org/exploratory-data-analysis-on-iris-dataset/ - accessed 10/04/2023
+14. https://www.marsja.se/how-to-save-a-seaborn-plot-as-a-file-e-g-png-pdf-eps-tiff/ - accessed 30/03/2023
+15. https://www.shanelynn.ie/pandas-drop-delete-dataframe-rows-columns/ - accessed 10/04/2023
+16. https://www.statology.org/pandas-to-text-file/ - accessed 30/03/2023
+17. https://www.w3schools.com/python/pandas/ref_df_copy.asp - accessed 13/04/2023
 
 ### Background Reading
-1. https://digital.library.adelaide.edu.au/dspace/bitstream/2440/15227/1/138.pdf - accessed 27/03/2023
-2. https://en.wikipedia.org/wiki/Andrews_plot - accessed 13/04/2023
-3. https://en.wikipedia.org/wiki/Box_plot - accessed 10/04/2023
-4. https://en.wikipedia.org/wiki/Edgar_Anderson - accessed 27/03/2023
-5. https://en.wikipedia.org/wiki/Histogram - accessed 06/04/2023
-6. https://en.wikipedia.org/wiki/Iris_flower_data_set - accessed 27/03/2023
-7. https://en.wikipedia.org/wiki/Kernel_density_estimation - accessed 13/04/2023
-8. https://en.wikipedia.org/wiki/Parallel_coordinates - accessed 13/04/2023
-8. https://en.wikipedia.org/wiki/Ronald_Fisher - accessed 27/03/2023
-9. https://en.wikipedia.org/wiki/Sepal - accessed 27/03/2023
-10. https://en.wikipedia.org/wiki/Violin_plot - accessed 10/04/2023
-11. https://medium.com/analytics-vidhya/its-all-about-outliers-cbe172aa1309 - accessed 10/04/2023
-12. https://www.learningtree.com/blog/using-a-pandas-andrews-curve-plot-for-multidimensional-data/ - accessed 13/04/2023
-13. https://www.questionpro.com/blog/bivariate-analysis/ - accessed 13/04/2023
-14. https://seaborn.pydata.org/index.html - accessed 06/04/2023
-15. https://www.kaggle.com/code/amrut11/iris-dataset-univariate-bivariate-multivariate - accessed 27/03/2023
+1. https://blog.finxter.com/radviz-in-pandas-plotting-how-it-works/ - accessed 14/04/2023
+2. https://digital.library.adelaide.edu.au/dspace/bitstream/2440/15227/1/138.pdf - accessed 27/03/2023
+3. https://en.wikipedia.org/wiki/Andrews_plot - accessed 13/04/2023
+4. https://en.wikipedia.org/wiki/Box_plot - accessed 10/04/2023
+5. https://en.wikipedia.org/wiki/Edgar_Anderson - accessed 27/03/2023
+6. https://en.wikipedia.org/wiki/Histogram - accessed 06/04/2023
+7. https://en.wikipedia.org/wiki/Iris_flower_data_set - accessed 27/03/2023
+8. https://en.wikipedia.org/wiki/Kernel_density_estimation - accessed 13/04/2023
+9. https://en.wikipedia.org/wiki/Parallel_coordinates - accessed 13/04/2023
+10. https://en.wikipedia.org/wiki/Ronald_Fisher - accessed 27/03/2023
+11. https://en.wikipedia.org/wiki/Sepal - accessed 27/03/2023
+12. https://en.wikipedia.org/wiki/Violin_plot - accessed 10/04/2023
+13. https://medium.com/analytics-vidhya/its-all-about-outliers-cbe172aa1309 - accessed 10/04/2023
+14. https://pandas.pydata.org/pandas-docs/stable/user_guide/visualization.html#radviz - accessed 13/04/2023
+15. https://www.questionpro.com/blog/bivariate-analysis/ - accessed 13/04/2023
+16. https://seaborn.pydata.org/index.html - accessed 06/04/2023
+17. https://www.itl.nist.gov/div898/handbook/eda/section3/lagplot.htm - accessed 13/04/2023
+18. https://www.learningtree.com/blog/using-a-pandas-andrews-curve-plot-for-multidimensional-data/ - accessed 13/04/2023
+19. https://www.kaggle.com/code/amrut11/iris-dataset-univariate-bivariate-multivariate - accessed 27/03/2023
 
 ---
 
