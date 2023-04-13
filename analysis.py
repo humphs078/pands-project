@@ -198,7 +198,7 @@ sns.boxplot(x='Species', y="Petal Length cms", data=outlier_test).set_title("Pet
 plt.savefig('images/plots/box_plots/outliers_box_plots.png')
 plt.show()
 
-# the follwoig lines of code are based on - https://www.geeksforgeeks.org/detect-and-remove-the-outliers-using-python/
+# the following lines of code are based on - https://www.geeksforgeeks.org/detect-and-remove-the-outliers-using-python/
 # accessed- 10/04/2023
 # Define Q1 variable for numpy percentile method for the dataset column sepal width
 Q1 = np.percentile(outlier_test['Petal Length cms'], 25,
@@ -260,6 +260,8 @@ iris_heatmap.drop('Species', axis=1, inplace=True)
 corr = iris_heatmap.corr()
 # The following lines of code to format the heatmap were taken from here
 # https://www.analyticsvidhya.com/blog/2021/06/guide-to-data-visualization-with-python-part-1/ - accessed 10/04/2023
+# and here https://stackoverflow.com/questions/32723798/how-do-i-add-a-title-and-axis-labels-to-seaborn-heatmap -
+# accessed 13/04/2023
 fig, ax = plt.subplots()
 img = ax.imshow(corr.values,cmap = "magma_r")
 # set labels
@@ -281,5 +283,5 @@ for i in range(len(corr.columns)):
             text = ax.text(j, i, np.around(corr.iloc[i, j], decimals=2),
                        ha="center", va="center", color="white")
 
-plt.savefig('images/plots/heatmap/heatmap.png')
+plt.savefig('images/plots/heatmap/heatmap.png', bbox_inches='tight')
 plt.show()

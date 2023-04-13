@@ -112,8 +112,8 @@ file of histogram for sepal length
 histogram for sepal width
 ---
 ## Discussion
-Python is an extremely powerful tool for automating the handling of large data sets. Using Python scripting the Iris 
-Data Set was automatically read in as a dataframe by a module within Python from an online data repository. The 
+Python is an extremely powerful tool for automating the handling of large datasets. Using Python scripting the Iris 
+Dataset was automatically read in as a dataframe, by a module within Python, from an online data repository. The 
 Pandas module was used to achieve this. Pandas is a library that can be imported into Python that allows for data 
 analysis through the use of specifically designed tools that automate complex functions on data sets. 
 
@@ -142,16 +142,13 @@ from the table this equals 150, as expected.
 
 ![Data Summary](images/tables/data_summary.png "Iris Data Set Summary")
 
- 
-
-
-Boxplots were used to to identify the presence of outliers in the data set. Outliers are described as objects that 
+Boxplots were used to identify the presence of outliers in the data set. Outliers are described as objects that 
 deviate significantly from the rest for the objects. 
 [Outliers](https://medium.com/analytics-vidhya/its-all-about-outliers-cbe172aa1309) can be caused by a number of things 
 including measurement error, sampling problems and natural variation. The outliers are visible on 
 [Plot 1](images/plots/box_plots/box_plots.png) as diamonds. Plot 1 demonstrates that the number of outliers is minimal.
 
-**Plot 1 - Iris Data Set Boxplots**
+**Plot 1 - Iris Dataset Boxplots**
 
 ![Boxplot](images/plots/box_plots/box_plots.png "Iris Data Set Boxplots")
 
@@ -159,11 +156,11 @@ Applying the [interquartile method](https://www.geeksforgeeks.org/detect-and-rem
 it is possible to remove outliers from the data set using python. The challenge with the Iris data set is it's small
 size and relatively small number of outliers. For demonstrative purposes one could look at cleansing the Iris-setosa 
 petal length outliers. [Plot 2](images/plots/box_plots/outliers_box_plots.png) demonstrates the outliers for this 
-subset of the data set. [Plot 3](images/plots/box_plots/no_outliers_box_plots.png) demonstrates the boxplot for the 
-subset that has been cleansed of outliers using the interquartile method. Plot seems to indicate that 
-further outliers remain. The small dataset size is causing this anomaly. Four outlier data points are removed when 
-applying the interquartile method for this sub dataset. Given the anomaly caused by removing outliers, cleansing data 
-of outliers only adds value with larger data sets. 
+subset of the dataset. [Plot 3](images/plots/box_plots/no_outliers_box_plots.png) demonstrates the boxplot for the 
+subset that has been cleansed of outliers using the interquartile method. Plot 3 appears to indicate that 
+further outliers remain. The small data set size is causing this anomaly. Four outlier data points are removed when 
+applying the interquartile method for this subset of the original data set. Given the anomaly caused by removing 
+outliers, cleansing data of outliers only adds value with larger datasets. 
 
 **Plot 2 - Outlier Demonstration**
 
@@ -204,16 +201,29 @@ length and width.
 
 ![Histogram 4](images/plots/histograms/sepal_width_histogram.png "Iris Data Set Sepal Width Distribution")
 
-Violin plots  (see plot 8) are similar to boxplots. In simple terms denser regions of data are fatter while less dense regions are 
-thinner. The output of this analysis supports the view that there is clear separation in petal length and petal width
-for Iris-setosa, making these variables good identifiers of the Iris-setosa species. It also confirms that there is 
-overlap between sepal length and sepal width making them less ideal candidate for blind classification of the species.
+Violin plots  (see plot 8) are similar to boxplots. In simple terms denser regions of data are fatter while less dense 
+regions are thinner. The output of this analysis supports the view that there is clear separation in petal length and 
+petal width for Iris-setosa, making these variables good identifiers of the Iris-setosa species. It also confirms that 
+there is overlap between sepal length and sepal width making them less ideal candidate for blind classification of the 
+species.
 
-**Plot 8 - Iris Data Set Violin PLots**
+**Plot 8 - Iris Dataset Violin PLots**
 
 ![Violin Plot](images/plots/violin_plots/violin_plots.png "Iris Data Set Violin PLots")
 
 ### Heatmaps
+Heatmaps are used to identify correlations between variables. Values that are closer to 1 or -1 indicate correlation 
+between variables. Colours with values of 1 are represented by dark colours and smaller values are represented by
+lighter colours. 
+
+**Plot 9 - Iris Data Set Heatmap**
+
+![Heatmap](images/plots/heatmap/heatmap.png "Iris Data Set Heatmap")
+
+The heatmap demonstrates a high level of correlation between petal width and petal length (having a vlue close to 1) and
+a low correlation between sepal width and sepal length. The heatmap also demonstrates a relationship between petal 
+length and sepal width and separately between petal width and sepal length.
+
 
 ## Conclusion
 
@@ -231,9 +241,11 @@ overlap between sepal length and sepal width making them less ideal candidate fo
 8. https://www.delftstack.com/howto/python-pandas/pandas-png/ - accessed 30/03/2023
 9. https://www.geeksforgeeks.org/exploratory-data-analysis-on-iris-dataset/ - accessed 03/04/2023
 10. https://www.marsja.se/how-to-save-a-seaborn-plot-as-a-file-e-g-png-pdf-eps-tiff/ - accessed 30/03/2023
-11. https://stackoverflow.com/questions/69660844/count-not-conver-string-to-float-using-iris-dataset - accessed 
+11. https://stackoverflow.com/questions/32723798/how-do-i-add-a-title-and-axis-labels-to-seaborn-heatmap - accessed
+13/04/2023
+12. https://stackoverflow.com/questions/69660844/count-not-conver-string-to-float-using-iris-dataset - accessed 
 10/04/2023
-12. https://www.statology.org/pandas-to-text-file/ - accessed 30/03/2023
+13. https://www.statology.org/pandas-to-text-file/ - accessed 30/03/2023
 
 ### Background Information
 1. https://digital.library.adelaide.edu.au/dspace/bitstream/2440/15227/1/138.pdf - accessed 27/03/2023
@@ -244,9 +256,9 @@ overlap between sepal length and sepal width making them less ideal candidate fo
 6. https://en.wikipedia.org/wiki/Ronald_Fisher - accessed 27/03/2023
 7. https://en.wikipedia.org/wiki/Sepal - accessed 27/03/2023
 8. https://en.wikipedia.org/wiki/Violin_plot - accessed 10/04/2023
-8. (https://medium.com/analytics-vidhya/its-all-about-outliers-cbe172aa1309) - accessed 10/04/2023
-9. https://seaborn.pydata.org/index.html - accessed 06/04/2023
-10. https://www.kaggle.com/code/amrut11/iris-dataset-univariate-bivariate-multivariate - accessed 27/03/2023
+9. (https://medium.com/analytics-vidhya/its-all-about-outliers-cbe172aa1309) - accessed 10/04/2023
+10. https://seaborn.pydata.org/index.html - accessed 06/04/2023
+11. https://www.kaggle.com/code/amrut11/iris-dataset-univariate-bivariate-multivariate - accessed 27/03/2023
 
 ---
 
