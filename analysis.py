@@ -267,6 +267,7 @@ ax.set_xticks(np.arange(len(corr.columns)))
 ax.set_yticks(np.arange(len(corr.columns)))
 ax.set_xticklabels(corr.columns)
 ax.set_yticklabels(corr.columns)
+ax.set_title('Iris Data Set Heartmap')
 cbar = ax.figure.colorbar(img, ax=ax ,cmap='')
 plt.setp(ax.get_xticklabels(), rotation=30, ha="right",
          rotation_mode="anchor")

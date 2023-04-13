@@ -213,6 +213,7 @@ overlap between sepal length and sepal width making them less ideal candidate fo
 
 ![Violin Plot](images/plots/violin_plots/violin_plots.png "Iris Data Set Violin PLots")
 
+### Heatmaps
 
 ## Conclusion
 
