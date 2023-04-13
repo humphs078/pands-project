@@ -17,7 +17,7 @@ import csv
 import numpy as np
 
 # # # # # Declare Global Variables # # # # #
-url = 'http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data' # declare a vairiable to define the
+url = 'http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data' # declare a variable to define the
 # Iris Data Set URL
 
 # # # # # Set Themes # # # # #
@@ -32,13 +32,12 @@ url = 'http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data' 
 # in the list variable called "names"
 # Reference https://gist.github.com/curran/a08a1080b88344b0c8a7#file-iris-csv - accessed 30/03/2023
 
-iris = pd.read_csv(url, names=["Sepal Length cms", "Sepal Width cms", "Petal Length cms",
-                                     "Petal Width cms", "Species"])
+iris = pd.read_csv(url, names=["Sepal Length cms", "Sepal Width cms", "Petal Length cms", "Petal Width cms", "Species"])
 # print(iris) # validation check ? remove
 
 # # # # # Check source data quality # # # # #
 
-# The code in this section checks the quality of the source data
+# The code in this section checks the quality of the source data and writes the output to a table
 
 # Define a variable to use the check for missing data using the isnull() method
 # https://www.geeksforgeeks.org/exploratory-data-analysis-on-iris-dataset/
@@ -185,11 +184,10 @@ plt.show()
 
 # # # # # Outliers Demo # # # # #
 
-# Read in the data set as a variable called outlier_test
-outlier_test = pd.read_csv(url, names=["Sepal Length cms", "Sepal Width cms", "Petal Length cms",
-                                     "Petal Width cms", "Species"])
+# create a deep copy of the original Iris dataframe - https://www.w3schools.com/python/pandas/ref_df_copy.asp
+outlier_test = iris.copy()
 
-# remove all rows so that only Iris-sertosa remains
+# remove all rows so that only Iris-setosa remains
 # https://www.shanelynn.ie/pandas-drop-delete-dataframe-rows-columns/ - accessed 10/04/2023
 outlier_test.drop(index=outlier_test.index[50:150], axis=0, inplace=True)
 
@@ -249,9 +247,9 @@ plt.show()
 
 # # # # # Generate Heatmap # # # # #
 
-# Read in the dtaa set
-iris_heatmap = pd.read_csv(url, names=["Sepal Length cms", "Sepal Width cms", "Petal Length cms",
-                                     "Petal Width cms", "Species"])
+# Read in the data set
+# create a deep copy of the original Iris dataframe - https://www.w3schools.com/python/pandas/ref_df_copy.asp
+iris_heatmap = iris.copy()
 # Drop the species column - solved issue using this post
 # https://stackoverflow.com/questions/69660844/count-not-conver-string-to-float-using-iris-dataset - accessed 10/04/2023
 iris_heatmap.drop('Species', axis=1, inplace=True)
@@ -269,7 +267,7 @@ ax.set_xticks(np.arange(len(corr.columns)))
 ax.set_yticks(np.arange(len(corr.columns)))
 ax.set_xticklabels(corr.columns)
 ax.set_yticklabels(corr.columns)
-ax.set_title('Iris Data Set Heartmap')
+ax.set_title('Iris Data Set Heatmap')
 cbar = ax.figure.colorbar(img, ax=ax ,cmap='')
 plt.setp(ax.get_xticklabels(), rotation=30, ha="right",
          rotation_mode="anchor")
@@ -284,4 +282,11 @@ for i in range(len(corr.columns)):
                        ha="center", va="center", color="white")
 
 plt.savefig('images/plots/heatmap/heatmap.png', bbox_inches='tight')
+plt.show()
+
+# # # # # Create Pairplot # # # # #
+# Pairplots based on code at - http://uconn.science/wp-content/uploads/2017/07/iris_visualization.html
+# Create the pairplot with Kernel Density Estimation as opposed histograms in the diagonal elements
+sns.pairplot(iris, hue="Species", height=3, diag_kind="kde")
+plt.savefig('images/plots/pairplots/pairplot.png')
 plt.show()

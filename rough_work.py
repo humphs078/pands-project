@@ -15,5 +15,5 @@ url = 'http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
 iris = pd.read_csv(url, names=["Sepal Length cms", "Sepal Width cms", "Petal Length cms",
                                      "Petal Width cms", "Species"])
 
-sns.pairplot(iris, hue='Species', height=2)
+sns.pairplot(iris, hue="Species", height=3, diag_kind="kde")
 plt.show()

@@ -39,11 +39,15 @@ Python can be used to do it.
 ---
 ## Definitions
 
-+ [Boxplot](https://en.wikipedia.org/wiki/Box_plot) - is a method for graphically demonstrating the spread of numerical 
++ Bivariate analysis (https://www.questionpro.com/blog/bivariate-analysis/) - is a statistical method for examining how
+two different things are related
++ Boxplot (https://en.wikipedia.org/wiki/Box_plot) - is a method for graphically demonstrating the spread of numerical 
 data through their quantities 
-+ [Histogram](https://en.wikipedia.org/wiki/Histogram) - is a representation of the approximated distribution of 
++ Histogram (https://en.wikipedia.org/wiki/Histogram) - is a representation of the approximated distribution of 
 numerical data.
-+ [Multivariate Statistics](https://en.wikipedia.org/wiki/Iris_flower_data_set) - is a branch of statistics that is 
++ Kernel Density Estimation, KDE (https://en.wikipedia.org/wiki/Kernel_density_estimation) - is the application of 
+kernel smoothing for probability density estimation 
++ Multivariate Statistics (https://en.wikipedia.org/wiki/Iris_flower_data_set) - is a branch of statistics that is 
 used when two or more variables have to be analysed simultaneously. Types of Multivariate Analysis include 
 Cluster Analysis, Factor Analysis, Multiple Regression Analysis, Principal Component Analysis, etc. There is more than
 20 ways to perform multivariate analysis.
@@ -114,7 +118,7 @@ histogram for sepal width
 ## Discussion
 Python is an extremely powerful tool for automating the handling of large datasets. Using Python scripting the Iris 
 Dataset was automatically read in as a dataframe, by a module within Python, from an online data repository. The 
-Pandas module was used to achieve this. Pandas is a library that can be imported into Python that allows for data 
+Pandas module was used to achieve this. Pandas is a library that can be imported into Python allowing for data 
 analysis through the use of specifically designed tools that automate complex functions on data sets. 
 
 
@@ -156,7 +160,7 @@ Applying the [interquartile method](https://www.geeksforgeeks.org/detect-and-rem
 it is possible to remove outliers from the data set using python. The challenge with the Iris data set is it's small
 size and relatively small number of outliers. For demonstrative purposes one could look at cleansing the Iris-setosa 
 petal length outliers. [Plot 2](images/plots/box_plots/outliers_box_plots.png) demonstrates the outliers for this 
-subset of the dataset. [Plot 3](images/plots/box_plots/no_outliers_box_plots.png) demonstrates the boxplot for the 
+subset of the data set. [Plot 3](images/plots/box_plots/no_outliers_box_plots.png) demonstrates the boxplot for the 
 subset that has been cleansed of outliers using the interquartile method. Plot 3 appears to indicate that 
 further outliers remain. The small data set size is causing this anomaly. Four outlier data points are removed when 
 applying the interquartile method for this subset of the original data set. Given the anomaly caused by removing 
@@ -201,7 +205,7 @@ length and width.
 
 ![Histogram 4](images/plots/histograms/sepal_width_histogram.png "Iris Data Set Sepal Width Distribution")
 
-Violin plots  (see plot 8) are similar to boxplots. In simple terms denser regions of data are fatter while less dense 
+Violin plots (see plot 8) are similar to boxplots. In simple terms, denser regions of data are fatter while less dense 
 regions are thinner. The output of this analysis supports the view that there is clear separation in petal length and 
 petal width for Iris-setosa, making these variables good identifiers of the Iris-setosa species. It also confirms that 
 there is overlap between sepal length and sepal width making them less ideal candidate for blind classification of the 
@@ -211,6 +215,7 @@ species.
 
 ![Violin Plot](images/plots/violin_plots/violin_plots.png "Iris Data Set Violin PLots")
 
+
 ### Heatmaps
 Heatmaps are used to identify correlations between variables. Values that are closer to 1 or -1 indicate correlation 
 between variables. Colours with values of 1 are represented by dark colours and smaller values are represented by
@@ -218,12 +223,25 @@ lighter colours.
 
 **Plot 9 - Iris Data Set Heatmap**
 
+
 ![Heatmap](images/plots/heatmap/heatmap.png "Iris Data Set Heatmap")
 
-The heatmap demonstrates a high level of correlation between petal width and petal length (having a vlue close to 1) and
+
+The heatmap demonstrates a high level of correlation between petal width and petal length (having a value close to 1) and
 a low correlation between sepal width and sepal length. The heatmap also demonstrates a relationship between petal 
 length and sepal width and separately between petal width and sepal length.
 
+### Bivariate Analysis
+
+Using Pairplots from the Seaborn module the bivariate relationship between each pair of features can be demonstrated. 
+The diagonal elements in the pairplot shows the Kernel Density Estimation (KDE). 
+
+**Plot 10 - Iris Data Set Pairplots**
+
+![Pairplot](images/plots/pairplots/pairplot.png "Iris Data Set Pairplots")
+
+Plot 10 highlights that the Iris-setosa species is separated from the other two species across all of the feature
+combinations supporting the observations made from the histogram plots.
 
 ## Conclusion
 
@@ -231,34 +249,36 @@ length and sepal width and separately between petal width and sepal length.
 
 ### Code Sources
 
-1. https://www.analyticsvidhya.com/blog/2021/06/guide-to-data-visualization-with-python-part-1/ - accessed 10/04/2023
-2. https://www.geeksforgeeks.org/detect-and-remove-the-outliers-using-python/ - accessed 10/04/2023
-3. https://www.geeksforgeeks.org/exploratory-data-analysis-on-iris-dataset/ - accessed 10/04/2023
-4. https://gist.github.com/curran/a08a1080b88344b0c8a7#file-iris-csv - accessed 30/03/2023
-5. https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751 - accessed 30/03/2023
-6. https://seaborn.pydata.org/generated/seaborn.set_theme.html - accessed 30/03/2023
-7. https://www.shanelynn.ie/pandas-drop-delete-dataframe-rows-columns/ - accessed 10/04/2023
-8. https://www.delftstack.com/howto/python-pandas/pandas-png/ - accessed 30/03/2023
-9. https://www.geeksforgeeks.org/exploratory-data-analysis-on-iris-dataset/ - accessed 03/04/2023
-10. https://www.marsja.se/how-to-save-a-seaborn-plot-as-a-file-e-g-png-pdf-eps-tiff/ - accessed 30/03/2023
-11. https://stackoverflow.com/questions/32723798/how-do-i-add-a-title-and-axis-labels-to-seaborn-heatmap - accessed
+1. https://gist.github.com/curran/a08a1080b88344b0c8a7#file-iris-csv - accessed 30/03/2023
+2. https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751 - accessed 30/03/2023
+3. https://seaborn.pydata.org/generated/seaborn.set_theme.html - accessed 30/03/2023
+4. https://stackoverflow.com/questions/32723798/how-do-i-add-a-title-and-axis-labels-to-seaborn-heatmap - accessed
 13/04/2023
-12. https://stackoverflow.com/questions/69660844/count-not-conver-string-to-float-using-iris-dataset - accessed 
+5. https://stackoverflow.com/questions/69660844/count-not-conver-string-to-float-using-iris-dataset - accessed 
 10/04/2023
-13. https://www.statology.org/pandas-to-text-file/ - accessed 30/03/2023
+6. https://www.analyticsvidhya.com/blog/2021/06/guide-to-data-visualization-with-python-part-1/ - accessed 10/04/2023
+7. https://www.delftstack.com/howto/python-pandas/pandas-png/ - accessed 30/03/2023
+8. https://www.geeksforgeeks.org/detect-and-remove-the-outliers-using-python/ - accessed 10/04/2023
+9. https://www.geeksforgeeks.org/exploratory-data-analysis-on-iris-dataset/ - accessed 10/04/2023
+10. https://www.marsja.se/how-to-save-a-seaborn-plot-as-a-file-e-g-png-pdf-eps-tiff/ - accessed 30/03/2023
+11. https://www.shanelynn.ie/pandas-drop-delete-dataframe-rows-columns/ - accessed 10/04/2023
+12. https://www.statology.org/pandas-to-text-file/ - accessed 30/03/2023
+13. https://www.w3schools.com/python/pandas/ref_df_copy.asp - accessed 13/04/2023
 
-### Background Information
+### Background Reading
 1. https://digital.library.adelaide.edu.au/dspace/bitstream/2440/15227/1/138.pdf - accessed 27/03/2023
 2. https://en.wikipedia.org/wiki/Box_plot - accessed 10/04/2023
 3. https://en.wikipedia.org/wiki/Edgar_Anderson - accessed 27/03/2023
-4. https://en.wikipedia.org/wiki/Iris_flower_data_set - accessed 27/03/2023
-5. https://en.wikipedia.org/wiki/Histogram - accessed 06/04/2023
-6. https://en.wikipedia.org/wiki/Ronald_Fisher - accessed 27/03/2023
-7. https://en.wikipedia.org/wiki/Sepal - accessed 27/03/2023
-8. https://en.wikipedia.org/wiki/Violin_plot - accessed 10/04/2023
-9. (https://medium.com/analytics-vidhya/its-all-about-outliers-cbe172aa1309) - accessed 10/04/2023
-10. https://seaborn.pydata.org/index.html - accessed 06/04/2023
-11. https://www.kaggle.com/code/amrut11/iris-dataset-univariate-bivariate-multivariate - accessed 27/03/2023
+4. https://en.wikipedia.org/wiki/Histogram - accessed 06/04/2023
+5. https://en.wikipedia.org/wiki/Iris_flower_data_set - accessed 27/03/2023
+6. https://en.wikipedia.org/wiki/Kernel_density_estimation - accessed 13/04/2023
+7. https://en.wikipedia.org/wiki/Ronald_Fisher - accessed 27/03/2023
+8. https://en.wikipedia.org/wiki/Sepal - accessed 27/03/2023
+9. https://en.wikipedia.org/wiki/Violin_plot - accessed 10/04/2023
+10. https://medium.com/analytics-vidhya/its-all-about-outliers-cbe172aa1309 - accessed 10/04/2023
+11. https://www.questionpro.com/blog/bivariate-analysis/ - accessed 13/04/2023
+12. https://seaborn.pydata.org/index.html - accessed 06/04/2023
+13. https://www.kaggle.com/code/amrut11/iris-dataset-univariate-bivariate-multivariate - accessed 27/03/2023
 
 ---
 
