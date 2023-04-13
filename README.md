@@ -107,6 +107,12 @@ set.
 + Demonstrates an example of removing the outliers and re-plotting a box plot
 
 ### Libraries used:
++ Pandas
++ Plotly
++ Seaborn
++ Matplotlib
++ csv
++ numpy
 
 ### Output files:
 + [data_summary.txt](images/tables/data_summary.png "Data Summary") - a text file containing a summary of the Iris Day 

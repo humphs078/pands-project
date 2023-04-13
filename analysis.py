@@ -1,7 +1,7 @@
 # Analysis.py
 # Author: Sean Humphreys
 # Script to read in and analyse the IRIS data set
-
+import os
 
 # # # # # Import Required Libraries # # # # #
 
@@ -23,29 +23,31 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import csv
 import numpy as np
+# time library used to save files with current date & time stamp in filename
+import time
 
 # # # # # Declare Global Variables # # # # #
-url = 'http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data' # declare a variable to define the
-# Iris Data Set URL
+# declare a variable to define the Iris Data Set URL
+url = 'http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
 
-# # # # # Set Themes # # # # #
+# # # # # Define Functions # # # # #
 
-# Set Seaborn theme to use pastel colours
-#sns.set_theme(context='notebook', style='darkgrid', palette='pastel', font='sans-serif', font_scale=1, color_codes=True,
-#              rc=None)
 
 # # # # # Read in the data set set from URL # # # # #
-
+print("Reading in the Iris Data Set as a dataframe..........")
 # Define data frame as variable iris. Use Pandas to read in file from the URL variable with the column names as defined
-# in the list variable called "names"
+# in the list = "names"
 # Reference https://gist.github.com/curran/a08a1080b88344b0c8a7#file-iris-csv - accessed 30/03/2023
 
 iris = pd.read_csv(url, names=["Sepal Length cms", "Sepal Width cms", "Petal Length cms", "Petal Width cms", "Species"])
 # print(iris) # validation check ? remove
-
+print("Data read in complete.")
 # # # # # Check source data quality # # # # #
-
-# The code in this section checks the quality of the source data and writes the output to a table
+print("Checking for missing data in data set..........")
+# The code in this section checks the quality of the source data and writes the output to a table. To achieve this the
+# isnull() method is used and transposed to a CSV. Headers are injected into the CSV to make it understandable. The CSV
+# is read in as a dataframe and a table based on the dataframe is then saved to file. This is a roundabout way however
+# it was the only way to be found to create a table with presentable formatting
 
 # Define a variable to use the check for missing data using the isnull() method
 # https://www.geeksforgeeks.org/exploratory-data-analysis-on-iris-dataset/
@@ -69,17 +71,28 @@ with open('missing_values.csv', 'r') as fp:
 # variable to define a data frame for the table
 missing_values_table_csv = pd.read_csv('missing_values_2.csv', sep=',')
 
+# declare a variable for the current date & time for filename
+timestamp = time.strftime("%Y%m%d-%H%M%S")
+
 # declare a variable for the ff.create table method
 fig = ff.create_table(missing_values_table_csv)
 #  method to change the look and feel of the table
 fig.update_layout(autosize=False, width=300, height=200)
 # write the table_plotly.png file to the images folder
-fig.write_image("images/tables/missing_values.png", scale=1)
+fig.write_image(f"script_output/{timestamp}.png", scale=1)
 
-# # # # # Output to txt file # # # # #
+# Delete CSV files no longer needed
+os.remove('missing_values.csv')
+os.remove('missing_values_2.csv')
+
+print(f"Check complete. Output saved to \"script_output\" folder as {timestamp}.png")
+
+# # # # # Output Variable to txt file # # # # #
+
+print("Creating a summary of each variable..........")
 
 # Output a summary of each variable to a text file - https://www.statology.org/pandas-to-text-file/ accessed 30/03/2023
-# variable that species path for outputting of .txt file
+# variable that specifies path for outputting of .txt file
 path = r'data_summary.txt'
 # open path defined above and w to file
 with open(path, 'w') as f:
@@ -88,7 +101,7 @@ with open(path, 'w') as f:
     # write the iris_string variable to the file path
     f.write(iris_string)
 
-# ? need to remove next statements for final submission
+print("Variable summary saved to file called data_summary.txt")
 # f = open("data_summary.txt") # validation test
 # print(f.read()) # validation test
 # print(df)  # validation test
@@ -114,13 +127,22 @@ with open('summary_stats.csv', 'r') as fp:
 
 data_summary = pd.read_csv('output.csv', sep=',')
 
+# declare a variable for the current date & time for filename
+timestamp_2 = time.strftime("%Y%m%d-%H%M%S")
+
+# Write the dataframe to a formatted tables using function
 fig3 = ff.create_table(data_summary)
 #  method to change the look and feel of the table
 fig3.update_layout(autosize=False, width=700, height=200)
 # write the table_plotly.png file to the images folder
-fig3.write_image("images/tables/data_summary.png", scale=1)
+fig3.write_image(f"script_output/{timestamp_2}.png", scale=1)
+os.remove("output.csv")
+os.remove("summary_stats.csv")
 
 # # # # # Create summary table of data for appendix 1 # # # # #
+
+# declare a variable for the current date & time for filename
+timestamp_3 = time.strftime("%Y%m%d-%H%M%S")
 
 # following code snippet from https://www.delftstack.com/howto/python-pandas/pandas-png/ - accessed 30/03/2023
 # variable called fig to define function to create a table using plotly module for the dataframe "df"
@@ -128,7 +150,7 @@ fig4 = ff.create_table(iris)
 #  method to change the look and feel of the table
 fig4.update_layout(autosize=True)
 # write the table_plotly.png file to the images folder
-fig4.write_image("images/tables/iris_data_set_full.png", scale=1)
+fig4.write_image(f"script_output/{timestamp_3}.png", scale=1)
 
 # # # # # Create & save histograms # # # # #
 
