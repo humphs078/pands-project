@@ -39,6 +39,7 @@ Python can be used to do it.
 ---
 ## Definitions
 
++ Andrew's Curves (https://en.wikipedia.org/wiki/Andrews_plot) - is a way to visualize structure in high-dimensional data
 + Bivariate analysis (https://www.questionpro.com/blog/bivariate-analysis/) - is a statistical method for examining how
 two different things are related
 + Boxplot (https://en.wikipedia.org/wiki/Box_plot) - is a method for graphically demonstrating the spread of numerical 
@@ -51,7 +52,9 @@ kernel smoothing for probability density estimation
 used when two or more variables have to be analysed simultaneously. Types of Multivariate Analysis include 
 Cluster Analysis, Factor Analysis, Multiple Regression Analysis, Principal Component Analysis, etc. There is more than
 20 ways to perform multivariate analysis.
-+ [Sepal](https://en.wikipedia.org/wiki/Sepal) - in plants that flower the sepal is the part of the flower that 
++ Paralell Coordinates (https://en.wikipedia.org/wiki/Parallel_coordinates) - are a common way of visualizing and 
+analyzing high-dimensional datasets. 
++ Sepal(https://en.wikipedia.org/wiki/Sepal) - in plants that flower the sepal is the part of the flower that 
 functions as protection for the flower in bud and often as support for the petals when the flower is in bloom.
 + [Violin Plot](https://en.wikipedia.org/wiki/Violin_plot) - a statistical graphic for comparing 
 probability distributions
@@ -243,6 +246,28 @@ The diagonal elements in the pairplot shows the Kernel Density Estimation (KDE).
 Plot 10 highlights that the Iris-setosa species is separated from the other two species across all of the feature
 combinations supporting the observations made from the histogram plots.
 
+### Multivariate Analysis
+The pandas.plotting module is capable of producing multivariate analysis. This module was used to produce all of the 
+plots in this section.
+
+#### Andrew's Curves
+
+**Plot 11 - Andrew's Curves**
+
+![Andrews Curves](images/plots/multivariate/andrews_curves.png "Iris Data Set Andrews Curves")
+
+Every curve on the plot represents a data point from the original dataset. The plot demonstrates that the curves from 
+Iris-setosa are separate from the other two species of Iris. There is considerable overlap between the other two sets 
+of curves. This is consistent with views of the data from the previous analysis
+
+#### Parallel Coordinates
+Each feature is plotted on a separate column. Lines are then drawn to connect the features for each data sample.
+
+![Parallel Coordinates](images/plots/multivariate/parallel_coordinates.png "Iris Data Set Parallel Coordinates Plot")
+
+The above plot illustrates that Iris-setosa has a small petal length and petal width. It also indicates that 
+Iris-veriscolor and Iris-virginica have flowers with similar sized sepal widths and lengths. There is a small degree of 
+overlap
 ## Conclusion
 
 ## References
@@ -256,29 +281,36 @@ combinations supporting the observations made from the histogram plots.
 13/04/2023
 5. https://stackoverflow.com/questions/69660844/count-not-conver-string-to-float-using-iris-dataset - accessed 
 10/04/2023
-6. https://www.analyticsvidhya.com/blog/2021/06/guide-to-data-visualization-with-python-part-1/ - accessed 10/04/2023
-7. https://www.delftstack.com/howto/python-pandas/pandas-png/ - accessed 30/03/2023
-8. https://www.geeksforgeeks.org/detect-and-remove-the-outliers-using-python/ - accessed 10/04/2023
-9. https://www.geeksforgeeks.org/exploratory-data-analysis-on-iris-dataset/ - accessed 10/04/2023
-10. https://www.marsja.se/how-to-save-a-seaborn-plot-as-a-file-e-g-png-pdf-eps-tiff/ - accessed 30/03/2023
-11. https://www.shanelynn.ie/pandas-drop-delete-dataframe-rows-columns/ - accessed 10/04/2023
-12. https://www.statology.org/pandas-to-text-file/ - accessed 30/03/2023
-13. https://www.w3schools.com/python/pandas/ref_df_copy.asp - accessed 13/04/2023
+6. https://towardsdatascience.com/6-lesser-known-pandas-plotting-tools-fda5adb232ef - accessed 13/04/2023
+6. http://uconn.science/wp-content/uploads/2017/07/iris_visualization.html#Andrews-Curves - accessed 13/04/2023
+7. http://uconn.science/wp-content/uploads/2017/07/iris_visualization.html#parallel_coordinates - accessed 13/04/2023
+8. http://uconn.science/wp-content/uploads/2017/07/iris_visualization.html#radviz - accessed 13/04/2023
+9. https://www.analyticsvidhya.com/blog/2021/06/guide-to-data-visualization-with-python-part-1/ - accessed 10/04/2023
+10. https://www.delftstack.com/howto/python-pandas/pandas-png/ - accessed 30/03/2023
+11. https://www.geeksforgeeks.org/detect-and-remove-the-outliers-using-python/ - accessed 10/04/2023
+12. https://www.geeksforgeeks.org/exploratory-data-analysis-on-iris-dataset/ - accessed 10/04/2023
+13. https://www.marsja.se/how-to-save-a-seaborn-plot-as-a-file-e-g-png-pdf-eps-tiff/ - accessed 30/03/2023
+14. https://www.shanelynn.ie/pandas-drop-delete-dataframe-rows-columns/ - accessed 10/04/2023
+15. https://www.statology.org/pandas-to-text-file/ - accessed 30/03/2023
+16. https://www.w3schools.com/python/pandas/ref_df_copy.asp - accessed 13/04/2023
 
 ### Background Reading
 1. https://digital.library.adelaide.edu.au/dspace/bitstream/2440/15227/1/138.pdf - accessed 27/03/2023
-2. https://en.wikipedia.org/wiki/Box_plot - accessed 10/04/2023
-3. https://en.wikipedia.org/wiki/Edgar_Anderson - accessed 27/03/2023
-4. https://en.wikipedia.org/wiki/Histogram - accessed 06/04/2023
-5. https://en.wikipedia.org/wiki/Iris_flower_data_set - accessed 27/03/2023
-6. https://en.wikipedia.org/wiki/Kernel_density_estimation - accessed 13/04/2023
-7. https://en.wikipedia.org/wiki/Ronald_Fisher - accessed 27/03/2023
-8. https://en.wikipedia.org/wiki/Sepal - accessed 27/03/2023
-9. https://en.wikipedia.org/wiki/Violin_plot - accessed 10/04/2023
-10. https://medium.com/analytics-vidhya/its-all-about-outliers-cbe172aa1309 - accessed 10/04/2023
-11. https://www.questionpro.com/blog/bivariate-analysis/ - accessed 13/04/2023
-12. https://seaborn.pydata.org/index.html - accessed 06/04/2023
-13. https://www.kaggle.com/code/amrut11/iris-dataset-univariate-bivariate-multivariate - accessed 27/03/2023
+2. https://en.wikipedia.org/wiki/Andrews_plot - accessed 13/04/2023
+3. https://en.wikipedia.org/wiki/Box_plot - accessed 10/04/2023
+4. https://en.wikipedia.org/wiki/Edgar_Anderson - accessed 27/03/2023
+5. https://en.wikipedia.org/wiki/Histogram - accessed 06/04/2023
+6. https://en.wikipedia.org/wiki/Iris_flower_data_set - accessed 27/03/2023
+7. https://en.wikipedia.org/wiki/Kernel_density_estimation - accessed 13/04/2023
+8. https://en.wikipedia.org/wiki/Parallel_coordinates - accessed 13/04/2023
+8. https://en.wikipedia.org/wiki/Ronald_Fisher - accessed 27/03/2023
+9. https://en.wikipedia.org/wiki/Sepal - accessed 27/03/2023
+10. https://en.wikipedia.org/wiki/Violin_plot - accessed 10/04/2023
+11. https://medium.com/analytics-vidhya/its-all-about-outliers-cbe172aa1309 - accessed 10/04/2023
+12. https://www.learningtree.com/blog/using-a-pandas-andrews-curve-plot-for-multidimensional-data/ - accessed 13/04/2023
+13. https://www.questionpro.com/blog/bivariate-analysis/ - accessed 13/04/2023
+14. https://seaborn.pydata.org/index.html - accessed 06/04/2023
+15. https://www.kaggle.com/code/amrut11/iris-dataset-univariate-bivariate-multivariate - accessed 27/03/2023
 
 ---
 

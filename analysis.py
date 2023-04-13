@@ -7,6 +7,14 @@
 
 # import the pandas module used to read in the data set file as a data frame
 import pandas as pd
+# Import andrews_curves from pandas.plotting required to produce Andrew's Curves plot
+from pandas.plotting import andrews_curves
+# Import parallel_coordinates from pandas.plotting required to produce parallel coordinates plot
+from pandas.plotting import parallel_coordinates
+# Import radviz from pandas.plotting required to produce radviz plot
+from pandas.plotting import radviz
+# Import lag_plot from pandas.plotting required to produce lag plot
+from pandas.plotting import lag_plot
 # import plotly module used to create a table of the data for display in the README.md file
 import plotly.figure_factory as ff
 # import the seaborn module as sns used for plotting data representation - more advanced functionality that matplotlib
@@ -289,4 +297,30 @@ plt.show()
 # Create the pairplot with Kernel Density Estimation as opposed histograms in the diagonal elements
 sns.pairplot(iris, hue="Species", height=3, diag_kind="kde")
 plt.savefig('images/plots/pairplots/pairplot.png')
+plt.show()
+
+# # # # # Andrews Curves # # # # #
+# code from - http://uconn.science/wp-content/uploads/2017/07/iris_visualization.html#Andrews-Curves
+andrews_curves(iris, "Species")
+plt.savefig('images/plots/multivariate/andrews_curves.png')
+plt.show()
+
+# # # # # Parallel Coordinates # # # # #
+# code from - http://uconn.science/wp-content/uploads/2017/07/iris_visualization.html#parallel_coordinates
+parallel_coordinates(iris, "Species")
+plt.savefig('images/plots/multivariate/parallel_coordinates.png')
+plt.show()
+
+# # # # # RadViz # # # # #
+# code frm - http://uconn.science/wp-content/uploads/2017/07/iris_visualization.html#radviz
+radviz(iris, "Species")
+plt.savefig('images/plots/multivariate/radviz.png')
+plt.show()
+
+# # # # # Lag Plot # # # # #
+# code from - https://towardsdatascience.com/6-lesser-known-pandas-plotting-tools-fda5adb232ef
+iris.drop('Species', axis=1, inplace=True)
+plt.figure(figsize=(10,6))
+lag_plot(iris)
+plt.savefig('images/plots/multivariate/lag_plot.png')
 plt.show()
