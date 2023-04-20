@@ -25,7 +25,7 @@ import csv
 import numpy as np
 import os
 # time library used to save files with current date & time stamp in filename
-import time
+# import time
 
 # # # # # Declare Global Variables # # # # #
 # declare a variable to define the Iris Data Set URL
@@ -45,6 +45,7 @@ sns.set_theme(context='notebook', style='white', palette='pastel', font='sans-se
               rc=None)
 
 # # # # # Read in the data set set from URL # # # # #
+
 print("Reading in the Iris Data Set as a dataframe..........")
 # Define data frame as variable iris. Use Pandas to read in file from the URL variable with the column names as defined
 # in the list = "names"
