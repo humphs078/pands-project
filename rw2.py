@@ -1,7 +1,7 @@
 # Analysis.py
 # Author: Sean Humphreys
 # Script to read in and analyse the IRIS data set
-
+import os
 
 # # # # # Import Required Libraries # # # # #
 
@@ -23,7 +23,6 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import csv
 import numpy as np
-import os
 # time library used to save files with current date & time stamp in filename
 import time
 
@@ -43,6 +42,7 @@ url = 'http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
 # https://seaborn.pydata.org/generated/seaborn.set_theme.html - accessed 20/04/2023
 sns.set_theme(context='notebook', style='white', palette='pastel', font='sans-serif', font_scale=1, color_codes=True,
               rc=None)
+
 
 # # # # # Read in the data set set from URL # # # # #
 print("Reading in the Iris Data Set as a dataframe..........")
