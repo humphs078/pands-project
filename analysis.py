@@ -28,10 +28,12 @@ import time
 
 # # # # # Declare Global Variables # # # # #
 # declare a variable to define the Iris Data Set URL
+
 url = 'http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
 
 # # # # # Define Functions # # # # #
-
+# ? need to remove if no functions
+# possible functions - function to save tables from dataframe -
 
 # # # # # Read in the data set set from URL # # # # #
 print("Reading in the Iris Data Set as a dataframe..........")
@@ -40,8 +42,9 @@ print("Reading in the Iris Data Set as a dataframe..........")
 # Reference https://gist.github.com/curran/a08a1080b88344b0c8a7#file-iris-csv - accessed 30/03/2023
 
 iris = pd.read_csv(url, names=["Sepal Length cms", "Sepal Width cms", "Petal Length cms", "Petal Width cms", "Species"])
-# print(iris) # validation check ? remove
+#print(iris) # validation check ? remove
 print("Data read in complete.")
+
 # # # # # Check source data quality # # # # #
 print("Checking for missing data in data set..........")
 # The code in this section checks the quality of the source data and writes the output to a table. To achieve this the
@@ -71,21 +74,18 @@ with open('missing_values.csv', 'r') as fp:
 # variable to define a data frame for the table
 missing_values_table_csv = pd.read_csv('missing_values_2.csv', sep=',')
 
-# declare a variable for the current date & time for filename
-timestamp = time.strftime("%Y%m%d-%H%M%S")
-
 # declare a variable for the ff.create table method
 fig = ff.create_table(missing_values_table_csv)
 #  method to change the look and feel of the table
 fig.update_layout(autosize=False, width=300, height=200)
 # write the table_plotly.png file to the images folder
-fig.write_image(f"script_output/{timestamp}.png", scale=1)
+fig.write_image(f"script_output/missing_data_summary.png", scale=1)
 
 # Delete CSV files no longer needed
 os.remove('missing_values.csv')
 os.remove('missing_values_2.csv')
 
-print(f"Check complete. Output saved to \"script_output\" folder as {timestamp}.png")
+print(f"Check complete. Output saved to \"script_output\" folder as missing_data_summary.png")
 
 # # # # # Output Variable to txt file # # # # #
 
@@ -109,6 +109,9 @@ print("Variable summary saved to file called data_summary.txt")
 
 # # # # # Create a summary table for analysis section # # # # #
 
+# Print statement to let the user know the script is progressing
+print('Creating a summary table of the Iris Data Set..........')
+
 # create a summary of the iris data set - min, max, mean, median, SD, etc
 summary = iris.describe()
 summary_round = iris.describe().T
@@ -127,22 +130,24 @@ with open('summary_stats.csv', 'r') as fp:
 
 data_summary = pd.read_csv('output.csv', sep=',')
 
-# declare a variable for the current date & time for filename
-timestamp_2 = time.strftime("%Y%m%d-%H%M%S")
-
 # Write the dataframe to a formatted tables using function
 fig3 = ff.create_table(data_summary)
 #  method to change the look and feel of the table
 fig3.update_layout(autosize=False, width=700, height=200)
 # write the table_plotly.png file to the images folder
-fig3.write_image(f"script_output/{timestamp_2}.png", scale=1)
+fig3.write_image(f"script_output/data_summary.png", scale=1)
+
+# Clean up unnecessary files
 os.remove("output.csv")
+
+# Clean up unnecessary files
 os.remove("summary_stats.csv")
+
+print(f"Data summary table complete. Output saved to \"script_output\" folder as data_summary.png")
 
 # # # # # Create summary table of data for appendix 1 # # # # #
 
-# declare a variable for the current date & time for filename
-timestamp_3 = time.strftime("%Y%m%d-%H%M%S")
+print('Creating a summary table of full data set..........')
 
 # following code snippet from https://www.delftstack.com/howto/python-pandas/pandas-png/ - accessed 30/03/2023
 # variable called fig to define function to create a table using plotly module for the dataframe "df"
@@ -150,9 +155,13 @@ fig4 = ff.create_table(iris)
 #  method to change the look and feel of the table
 fig4.update_layout(autosize=True)
 # write the table_plotly.png file to the images folder
-fig4.write_image(f"script_output/{timestamp_3}.png", scale=1)
+fig4.write_image(f"script_output/full_data_set_table.png", scale=1)
+
+print(f"Full data set summary table complete. Output saved to \"script_output\" folder as full_data_set_table.png")
 
 # # # # # Create & save histograms # # # # #
+
+print('Creating histograms analysis of the data set..........')
 
 # define theme for sns - https://seaborn.pydata.org/generated/seaborn.set_theme.html - accessed 30/03/2023
 # sns.set_theme(context='notebook', style='darkgrid', palette='pastel', font='sans-serif', font_scale=1,
@@ -165,21 +174,23 @@ plot = sns.FacetGrid(iris, hue="Species", height=5)
 plot.map(sns.histplot, "Sepal Length cms", kde=True).add_legend().set(title='Sepal Length Distribution')
 # save output to images folder - https://www.marsja.se/how-to-save-a-seaborn-plot-as-a-file-e-g-png-pdf-eps-tiff/
 # - accessed 30/03/2023
-plt.savefig('images/plots/histograms/sepal_length_histogram.png', bbox_inches='tight')
+plt.savefig('script_output/sepal_length_histogram.png', bbox_inches='tight')
 
 plot = sns.FacetGrid(iris, hue="Species", height=5)
 plot.map(sns.histplot, "Sepal Width cms", kde=True).add_legend().set(title='Sepal Width Distribution')
-plt.savefig('images/plots/histograms/sepal_width_histogram.png', bbox_inches='tight')
+plt.savefig('script_output/sepal_width_histogram.png', bbox_inches='tight')
 
 plot = sns.FacetGrid(iris, hue="Species", height=5)
 plot.map(sns.histplot, "Petal Length cms", kde=True).add_legend().set(title='Petal Length Distribution')
-plt.savefig('images/plots/histograms/petal_length_histogram.png', bbox_inches='tight')
+plt.savefig('script_output/petal_length_histogram.png', bbox_inches='tight')
 
 plot = sns.FacetGrid(iris, hue="Species", height=5)
 plot.map(sns.histplot, "Petal Width cms", kde=True).add_legend().set(title='Petal Width Distribution')
-plt.savefig('images/plots/histograms/petal_width_histogram.png', bbox_inches='tight')
+plt.savefig('script_output/petal_width_histogram.png', bbox_inches='tight')
 
 plt.show()
+
+print('Histograms have been saved in the \"script_output\" folder')
 
 # # # # # Create & save box plots # # # # #
 # Reference - https://www.geeksforgeeks.org/exploratory-data-analysis-on-iris-dataset/
