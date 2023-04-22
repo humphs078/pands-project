@@ -84,6 +84,10 @@ with open('missing_values.csv', 'r') as fp:
 # variable to define a data frame for the table
 missing_values_table_csv = pd.read_csv('missing_values_2.csv', sep=',')
 
+# following code snippet from
+# https://www.delftstack.com/howto/python-pandas/pandas-png/#convert-pandas-dataframe-table-into-png-image-with-plotly-and-kaleido
+# - accessed 30/03/2023
+
 # declare a variable for the ff.create table method
 fig = ff.create_table(missing_values_table_csv)
 #  method to change the look and feel of the table
@@ -91,7 +95,7 @@ fig.update_layout(autosize=False, width=300, height=200)
 # write the table_plotly.png file to the images folder
 fig.write_image(f"script_output/missing_data_summary.png", scale=1)
 
-# Delete CSV files no longer needed
+# Delete CSV files no longer needed - https://www.geeksforgeeks.org/python-os-remove-method/ - accessed 22/04/2023
 os.remove('missing_values.csv')
 os.remove('missing_values_2.csv')
 
@@ -126,7 +130,8 @@ print('Creating a summary table of the Iris Data Set..........')
 summary = iris.describe()
 summary_round = iris.describe().T
 summary_round.transpose().to_csv('summary_stats.csv', sep=',')
-# adding header
+# adding header - https://stackoverflow.com/questions/51463449/replace-csv-header-without-deleting-the-other-rows
+# accessed 22/04/2023
 header = [' ', 'Sepal Length cm', 'Sepal Width cm', 'Petal Length cm', 'Petal Width cm']
 with open('summary_stats.csv', 'r') as fp:
     reader = csv.DictReader(fp, fieldnames=header)
@@ -159,7 +164,6 @@ print(f"Data summary table complete. Output saved to \"script_output\" folder as
 
 print('Creating a summary table of full data set..........')
 
-# following code snippet from https://www.delftstack.com/howto/python-pandas/pandas-png/ - accessed 30/03/2023
 # variable called fig to define function to create a table using plotly module for the dataframe "df"
 fig4 = ff.create_table(iris)
 #  method to change the look and feel of the table
@@ -178,15 +182,18 @@ print('Creating histograms analysis of the data set..........')
 plot = sns.FacetGrid(iris, hue="Species", height=6)
 # originally used distplot function but got message that it is being depreciated, when code was run, so used
 # histplot function instead - https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751 - accessed 30/03/2023
-plot.map(sns.histplot, "Sepal Length cms", kde=True).set(title='Sepal Length Distribution')
+plot.map(sns.histplot, "Sepal Length cms", kde=True).set(title='Sepal Length Distribution')  # add a title to the plot
+# https://www.statology.org/seaborn-title/ - accessed 22/04/2023
+plt.legend()
 # save output to images folder - https://www.marsja.se/how-to-save-a-seaborn-plot-as-a-file-e-g-png-pdf-eps-tiff/
 # - accessed 30/03/2023
-plt.legend()
 plt.savefig('script_output/sepal_length_histogram.png', bbox_inches='tight')
 
 plot = sns.FacetGrid(iris, hue="Species", height=6)
 plot.map(sns.histplot, "Sepal Width cms", kde=True).set(title='Sepal Width Distribution')
 plt.legend()
+# prevent the title from being cut off the saved plot
+# https://stackoverflow.com/questions/35992492/savefig-cuts-off-title - accessed 22/04/2023
 plt.savefig('script_output/sepal_width_histogram.png', bbox_inches='tight')
 
 plot = sns.FacetGrid(iris, hue="Species", height=6)
@@ -216,10 +223,10 @@ def graph(y):
 
 # plot size
 plt.figure(figsize=(10, 10))
-plt.suptitle('Iris Data Set Box Plots', size=15)  # # https://matplotlib.org/stable/api/figure_api.html - accessed
-# 20/04/2023
-# Adding the subplot at the specified
-# grid position
+plt.suptitle('Iris Data Set Box Plots', size=15)  # add a title https://matplotlib.org/stable/api/figure_api.html
+# - accessed 20/04/2023
+
+# Adding the subplot at the specified grid position
 plt.subplot(221)
 graph('Sepal Length cms')
 
@@ -254,12 +261,10 @@ outlier_test.drop(index=outlier_test.index[50:150], axis=0, inplace=True)
 sns.boxplot(x="Species", y="Petal Length cms", data=outlier_test).set_title("Petal Length Outliers")
 plt.ylim(0.75, 2)  # https://stackoverflow.com/questions/33227473/how-to-set-the-range-of-y-axis-for-a-seaborn-boxplot
 # accessed 20/04/2023
-plt.legend([],[], frameon=False)  # https://www.delftstack.com/howto/seaborn/remove-legend-seaborn-plot/
-# accessed 20/04/2023
+plt.legend([],[], frameon=False)  # the leged was showing on the plot, to get rid of it solution found here -
+# https://www.delftstack.com/howto/seaborn/remove-legend-seaborn-plot/ accessed 20/04/2023
 plt.savefig('script_output/outliers_box_plots.png', bbox_inches='tight')
 plt.close()
-# plt.show()
-
 
 # the following lines of code are based on - https://www.geeksforgeeks.org/detect-and-remove-the-outliers-using-python/
 # accessed- 10/04/2023
@@ -287,11 +292,13 @@ plt.ylim(.75, 2)
 plt.legend([],[], frameon=False)
 plt.savefig('script_output/no_outliers_box_plots.png', bbox_inches='tight')
 plt.close()
-# plt.show()
 
 print('Outlier demonstration has been saved to \"script_output\" folder')
 
 # # # # # Violin PLots # # # # #
+# based on code found here -
+# https://medium.com/analytics-vidhya/exploratory-data-analysis-uni-variate-analysis-of-iris-data-set-690c87a5cd40
+# accessed 22/04/2023
 
 print('Creating violin plots..........')
 
@@ -299,11 +306,11 @@ print('Creating violin plots..........')
 def violin_graph(y):
     sns.violinplot(x="Species", y=y, data=iris)
 
+
 # plot size
 plt.figure(figsize=(10, 10))
 plt.suptitle('The Iris Data Set Violin Plots')  # Add title to plot
-# Adding the subplot at the specified
-# grid position
+# Adding the subplot at the specified grid position
 plt.subplot(221)
 violin_graph('Sepal Length cms')
 
@@ -368,7 +375,9 @@ print('Heatmap has been saved to the \"script_output\" folder')
 
 print("Creating pairplots..........")
 
-# Pairplots based on code at - http://uconn.science/wp-content/uploads/2017/07/iris_visualization.html
+# Pairplots based on code at - http://uconn.science/wp-content/uploads/2017/07/iris_visualization.html - accessed
+# 22/04/2023
+
 # Create the pairplot with Kernel Density Estimation as opposed histograms in the diagonal elements
 # Title format found here -
 # https://www.tutorialspoint.com/how-to-show-the-title-for-the-diagram-of-seaborn-pairplot-or-pridgrid-matplotlib
