@@ -9,11 +9,9 @@
 
 [Background](#Background)
 
-[analysis.py](analysis.py)
+[analysis.py](#analysispy)
 
 [Discussion](#Discussion)
-
-[Problem Statement](#problem-statement)
 
 [Conclusion](#Conclusion)
 
@@ -90,9 +88,9 @@ routinely used as a beginners dataset for machine learning purposes.
 ---
 
 
-## analysis.py
+## [analysis.py](analysis.py)
 
-This script is run from the command line with the command *python analysis.py*. There is no output to the command line.
+The script is run from the command line with the command *python analysis.py*. There is no output to the command line.
  The script generates a number of tables and graphs, listed [here](#output-files), that are used to analyse the data 
 set. 
 
