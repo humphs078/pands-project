@@ -197,21 +197,22 @@ graphics.
 
 ![Histogram 1](images/plots/histograms/petal_length_histogram.png "Iris Data Set Petal Length Distribution")
 
-Plot 4 demonstrates that Iris-setosa has the smallest petal length falling roughly between 1-2cms. There is some 
-overlap in Petal Length between Iris-versicolor and Iris-virginica. 
+[Plot 4](images/plots/histograms/petal_length_histogram.png) demonstrates that Iris-setosa has the smallest petal length 
+falling roughly between 1-2cms. There is some overlap in Petal Length between Iris-versicolor and Iris-virginica. 
 
 **Plot 5 - Petal Width Distribution Histogram**
 
 ![Histogram 2](images/plots/histograms/petal_width_histogram.png "Iris Data Set Petal Width Distribution")
 
-Plot 5 demonstrates that Iris-setosa has the smallest petal width. There is some overlap in the petal width upper 
-values of Iris-versicolor and the lower values of Iris-virginica. 
+[Plot 5](images/plots/histograms/petal_width_histogram.png) demonstrates that Iris-setosa has the smallest petal width. 
+There is some overlap in the petal width upper values of Iris-versicolor and the lower values of Iris-virginica. 
 
 **Plot 6 - Sepal Length Distribution Histogram**
 
 ![Histogram 3](images/plots/histograms/sepal_length_histogram.png "Iris Data Set Sepal Length Distribution")
 
-Plot 6 & 7 demonstrate that there is overlap in the range of values for sepal length & sepal width for all species 
+[Plot 6](images/plots/histograms/sepal_length_histogram.png) & [plot 7](images/plots/histograms/sepal_width_histogram.png) 
+demonstrate that there is overlap in the range of values for sepal length & sepal width for all species 
 measured. Based on this observation sepal width and sepal length are less accurate identifiers of species than petal 
 length and width.
 
@@ -254,8 +255,8 @@ The diagonal elements in the pairplot shows the Kernel Density Estimation (KDE).
 
 ![Pairplot](images/plots/pairplots/pairplot.png "Iris Data Set Pairplots")
 
-Plot 10 highlights that the Iris-setosa species is separated from the other two species across all of the feature
-combinations supporting the observations made from the histogram plots.
+[Plot 10](images/plots/pairplots/pairplot.png) highlights that the Iris-setosa species is separated from the other two 
+species across all the feature combinations supporting the observations made from the histogram plots.
 
 ### Multivariate Analysis
 The pandas.plotting module is capable of producing multivariate analysis. This module was used to produce all of the 
@@ -278,20 +279,20 @@ Each feature is plotted on a separate column. Lines are then drawn to connect th
 
 The above plot illustrates that Iris-setosa has a small petal length and petal width. It also indicates that 
 Iris-veriscolor and Iris-virginica have flowers with similar sized sepal widths and lengths. There is a small degree of 
-overlap in petal lengths for Iris-veroscolor and Iris-virginica suggesting that this variable would be best suited for 
+overlap in petal lengths for Iris-veriscolor and Iris-virginica suggesting that this variable would be best suited for 
 blind classification of these species.
 
 #### Radviz
 
 The Radviz plot illustrates the data on a 2D plane, in this case a circle. The plot can be interpreted that 
-Iris-virginica are more random because they are closer to the centre of the circle where as Iris-setosa are more biased 
+Iris-virginica are more random because they are closer to the centre of the circle whereas Iris-setosa are more biased 
 towards the sepal-width of the these flowers.
 
 ![Radviz](images/plots/multivariate/radviz.png "Iris-setosa Radviz Plot")
 
 #### Lag Plot
 
-The lag plot will check if a dat set is random or nor. Random data should not display any identifiable structure in the 
+The lag plot will check if a data set is random or not. Random data should not display any identifiable structure in the 
 plot.
 
 ![Lag Plot](images/plots/multivariate/lag_plot.png)
@@ -357,10 +358,10 @@ accessed 20/04/2023
 14. https://pandas.pydata.org/pandas-docs/stable/user_guide/visualization.html#radviz - accessed 13/04/2023
 15. https://s4be.cochrane.org/blog/2021/09/09/multivariate-analysis-an-overview/ - accessed 22/04/2023
 16. https://seaborn.pydata.org/index.html - accessed 06/04/2023
-16. https://www.itl.nist.gov/div898/handbook/eda/section3/lagplot.htm - accessed 13/04/2023
-17. https://www.kaggle.com/code/amrut11/iris-dataset-univariate-bivariate-multivariate - accessed 27/03/2023
-18. https://www.learningtree.com/blog/using-a-pandas-andrews-curve-plot-for-multidimensional-data/ - accessed 13/04/2023
-19. https://www.questionpro.com/blog/bivariate-analysis/ - accessed 13/04/2023
+17. https://www.itl.nist.gov/div898/handbook/eda/section3/lagplot.htm - accessed 13/04/2023
+18. https://www.kaggle.com/code/amrut11/iris-dataset-univariate-bivariate-multivariate - accessed 27/03/2023
+19. https://www.learningtree.com/blog/using-a-pandas-andrews-curve-plot-for-multidimensional-data/ - accessed 13/04/2023
+20. https://www.questionpro.com/blog/bivariate-analysis/ - accessed 13/04/2023
 
 
 ---
