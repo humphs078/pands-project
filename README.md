@@ -24,7 +24,7 @@
 This repository contains the files for the submission of the module assignment in the Programming and Scripting module
 for the ATU Mayo & Galway Higher Diploma in Computer Programming and Data Analytics.
 
-To run the script from the command line type - *"python analysis.py"*
+To run the script from the command line type - *python analysis.py*
 
 ### Problem Statement
 This project concerns the well-known [Fisher’s Iris data set](#Background).
@@ -48,17 +48,17 @@ numerical data.
 kernel smoothing for probability density estimation 
 + Lag plot (https://www.itl.nist.gov/div898/handbook/eda/section3/lagplot.htm) - checks whether a data set is random or 
 not
-+ Multivariate Statistics (https://en.wikipedia.org/wiki/Iris_flower_data_set) - is a branch of statistics that is 
-used when two or more variables have to be analysed simultaneously. Types of Multivariate Analysis include 
-Cluster Analysis, Factor Analysis, Multiple Regression Analysis, Principal Component Analysis, etc. There is more than
-20 ways to perform multivariate analysis.
++ Multivariate Statistics (https://s4be.cochrane.org/blog/2021/09/09/multivariate-analysis-an-overview/) - is a branch 
+of statistics that is used when two or more variables have to be analysed simultaneously. Types of Multivariate Analysis 
+include Cluster Analysis, Factor Analysis, Multiple Regression Analysis, Principal Component Analysis, etc. There is 
+more than 20 ways to perform multivariate analysis.
 + Paralell Coordinates (https://en.wikipedia.org/wiki/Parallel_coordinates) - are a common way of visualizing and 
 analyzing high-dimensional datasets. 
 + RadViz (https://pandas.pydata.org/pandas-docs/stable/user_guide/visualization.html#radviz) -  is a way of visualizing 
 multivariate data based on a simple spring tension minimization algorithm.
-+ Sepal(https://en.wikipedia.org/wiki/Sepal) - in plants that flower the sepal is the part of the flower that 
++ Sepal (https://en.wikipedia.org/wiki/Sepal) - in plants that flower the sepal is the part of the flower that 
 functions as protection for the flower in bud and often as support for the petals when the flower is in bloom.
-+ [Violin Plot](https://en.wikipedia.org/wiki/Violin_plot) - a statistical graphic for comparing 
++ Violin Plot (https://en.wikipedia.org/wiki/Violin_plot) - a statistical graphic for comparing 
 probability distributions
 
 ---
@@ -163,6 +163,8 @@ deviate significantly from the rest for the objects.
 [Outliers](https://medium.com/analytics-vidhya/its-all-about-outliers-cbe172aa1309) can be caused by a number of things 
 including measurement error, sampling problems and natural variation. The outliers are visible on 
 [Plot 1](images/plots/box_plots/box_plots.png) as diamonds. Plot 1 demonstrates that the number of outliers is minimal.
+The outliers and also be visualised on the [lag plot](#lag-plot) as data points that are lying outside the overall 
+pattern of the data demonstrated on the plot.
 
 **Plot 1 - Iris Dataset Boxplots**
 
@@ -353,7 +355,8 @@ accessed 20/04/2023
 12. https://en.wikipedia.org/wiki/Violin_plot - accessed 10/04/2023
 13. https://medium.com/analytics-vidhya/its-all-about-outliers-cbe172aa1309 - accessed 10/04/2023
 14. https://pandas.pydata.org/pandas-docs/stable/user_guide/visualization.html#radviz - accessed 13/04/2023
-15. https://seaborn.pydata.org/index.html - accessed 06/04/2023
+15. https://s4be.cochrane.org/blog/2021/09/09/multivariate-analysis-an-overview/ - accessed 22/04/2023
+16. https://seaborn.pydata.org/index.html - accessed 06/04/2023
 16. https://www.itl.nist.gov/div898/handbook/eda/section3/lagplot.htm - accessed 13/04/2023
 17. https://www.kaggle.com/code/amrut11/iris-dataset-univariate-bivariate-multivariate - accessed 27/03/2023
 18. https://www.learningtree.com/blog/using-a-pandas-andrews-curve-plot-for-multidimensional-data/ - accessed 13/04/2023
