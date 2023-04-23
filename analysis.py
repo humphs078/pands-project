@@ -27,7 +27,7 @@ import plotly.figure_factory as ff
 import seaborn as sns
 # import the matplotlib module used to plot data for visual representation
 import matplotlib.pyplot as plt
-# import the csv library
+# import the csv library used for csv file reading and writing
 import csv
 # import the nummpy package as np
 import numpy as np
