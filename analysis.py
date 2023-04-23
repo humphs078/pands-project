@@ -102,7 +102,7 @@ missing_values_table = iris.isnull().sum().T
 missing_values_table.transpose().to_csv('missing_values.csv', sep=',')
 
 # define headers for the csv file
-header = ['Species', 'Missing Values']
+header = ['Column', 'Missing Values']
 # open the csv file in read mode
 with open('missing_values.csv', 'r') as fp:
     reader = csv.DictReader(fp, fieldnames=header)
