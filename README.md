@@ -37,7 +37,8 @@ Python can be used to do it.
 ---
 ## Definitions
 
-+ Andrew's Curves (https://en.wikipedia.org/wiki/Andrews_plot) - is a way to visualize structure in high-dimensional data
++ Andrew's Curves (https://en.wikipedia.org/wiki/Andrews_plot) - are a way to visualize structure in high-dimensional
+data
 + Bivariate analysis (https://www.questionpro.com/blog/bivariate-analysis/) - is a statistical method for examining how
 two different things are related
 + Boxplot (https://en.wikipedia.org/wiki/Box_plot) - is a method for graphically demonstrating the spread of numerical 
@@ -92,12 +93,13 @@ routinely used as a beginners dataset for machine learning purposes.
 
 The script is run from the command line with the command *python analysis.py*.
 
-There is no output to the command line. 
+A series of updates are outputted as the script executes. The purpose of this is to indicate to the user that the script
+is executing.
 
 The script generates a number of tables and graphs, listed [here](#output-files), that are used to analyse the data 
 set. 
 
-### The script:
+### The Python script:
 + Reads in the Iris Data Set CSV from a URL
 + Creates a folder to save the output of the script in the user's home directory. This works independently of operating 
 system
@@ -110,7 +112,7 @@ system
 + Demonstrates an example of removing the outliers and re-plotting a box plot
 + Creates and outputs violin plots to demonstrate density of the distribution of data within the data set
 + Generates and saves a heatmap of the data set
-+ Generates and saves pair plots of the data set for bivariate analysis
++ Generates and saves pairplots of the data set for bivariate analysis
 + Creates and saves a set of Andrew's Curves used in multivariate analaysis of the data set 
 + Generates and saves parallel coordinates plots used in multivariate analysis of the data set
 + Outputs a radviz plot of the Iris sata set
@@ -118,10 +120,10 @@ system
 
 ### Libraries used:
 + pandas as pd - pandas module used to read in the data set file as a data frame 
-+ pandas.plotting - required to produce Andrew's Curves plot, parallel_coordinates, radviz & lag plot 
++ pandas.plotting - required to produce Andrew's Curves plot, parallel_coordinates plot, radviz plot & lag plot 
 + plotly.figure_factory - module used to create a table of the data for display in the README.md file 
 + seaborn - the seaborn module used for plotting data representation - more advanced functionality that matplotlib 
-+ matplotlib.pyplot as plt - the matplotlib module used to plot data for visual representation 
++ matplotlib.pyplot - the matplotlib module used to plot data for visual representation 
 + import csv - used for csv file reading and writing 
 + numpy - library used for working with arrays
 + os - this module provides a portable way of using operating system dependent functionality 
@@ -153,14 +155,14 @@ box plot of the petal length subset of data for the Iris_setosa species cleansed
 + [violin_plots.png](images/plots/violin_plots/violin_plots.png "Iris Data Set Violin Plots") - violin plots of the Iris
 Data Set
 + [heatmap.png](images/plots/heatmap/heatmap.png "Iris Data Set Heatmap") - heatmap of the Iris Data set
-  + [pairplots.png](images/plots/pairplots/pairplot.png "Iris Data Set Bivariate Analysis") - pairplots of the Iris Data
++ [pairplots.png](images/plots/pairplots/pairplot.png "Iris Data Set Bivariate Analysis") - pairplots of the Iris Data
 set
-  + [andrews_curves](images/plots/multivariate/andrews_curves.png "Andrew's Curves") - Andrew's curves plots of the Iris
++ [andrews_curves](images/plots/multivariate/andrews_curves.png "Andrew's Curves") - Andrew's curves plots of the Iris
 Data Set
-  + [parallel_coordinates.png](images/plots/multivariate/parallel_coordinates.png "Iris Data Set Parallel Coordinates") -
++ [parallel_coordinates.png](images/plots/multivariate/parallel_coordinates.png "Iris Data Set Parallel Coordinates") -
 Parallel Coordinates plots of the Iris Data Set
-  + [radviz.png](images/plots/multivariate/radviz.png "Radviz Plot") - Radviz plot of the Iris Data set
-  + [lag_plots.png](images/plots/multivariate/lag_plot.png "Iris Data Set Lag Plot") - Lag plot of the Iris Data set.
++ [radviz.png](images/plots/multivariate/radviz.png "Radviz Plot") - Radviz plot of the Iris Data set
++ [lag_plots.png](images/plots/multivariate/lag_plot.png "Iris Data Set Lag Plot") - Lag plot of the Iris Data set.
 
 ---
 ## Discussion
@@ -199,7 +201,7 @@ deviate significantly from the rest for the objects.
 [Outliers](https://medium.com/analytics-vidhya/its-all-about-outliers-cbe172aa1309) can be caused by a number of things 
 including measurement error, sampling problems and natural variation. The outliers are visible on 
 [Plot 1](images/plots/box_plots/box_plots.png) as diamonds. Plot 1 demonstrates that the number of outliers is minimal.
-The outliers and also be visualised on the [lag plot](#lag-plot) as data points that are lying outside the overall 
+The outliers can also be visualised on the [lag plot](#lag-plot) as data points that are lying outside the overall 
 pattern of the data demonstrated on the plot.
 
 **Plot 1 - Iris Dataset Boxplots**
