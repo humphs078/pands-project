@@ -1,7 +1,13 @@
 # Analysis.py
 # Author: Sean Humphreys
-# Script to read in and analyse the IRIS data set
-
+# Script to read in and analyse the IRIS data set. The location of the data is defined in the url variable in line XX
+# of the script. The output of the script is saved to a folder called "script_output" in the home directory on the
+# machine on which the script is run. This allows for portability of the script between different machines and OS's. If
+# the directory does not exist the script will create the directory. The output to the "script_output" folder consists
+# af a number of tables and graphs. The tables will give a summary of the dataset and the plots demonstrate univariate,
+# bivariate and multivariate analysis on the dataset. A file called "data_summary.txt" is created that gives a summary
+# of the dataset variables. The script prints a series of updates to let the user know that the script is working. The
+# script does not show or open any of the tables or plots.
 
 # # # # # Import Required Libraries # # # # #
 
@@ -21,16 +27,26 @@ import plotly.figure_factory as ff
 import seaborn as sns
 # import the matplotlib module used to plot data for visual representation
 import matplotlib.pyplot as plt
+# import the csv library
 import csv
+# import the nummpy package as np
 import numpy as np
+# import the OS library needed for checking, creation and deletion of files and folders
 import os
+# import the earthpy packages used to check the home directory
+import earthpy as et
 # time library used to save files with current date & time stamp in filename
-# import time
+import datetime
 
 # # # # # Declare Global Variables # # # # #
 # declare a variable to define the Iris Data Set URL
 
 url = 'http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
+
+# define timestamp for output filenames
+# https://stackoverflow.com/questions/10607688/how-to-create-a-file-name-with-the-current-date-time-in-python
+# - accessed 23/04/2023
+time_stamp = datetime.datetime.now().strftime('%d_%m_%Y_%H_%M_%S')
 
 # # # # # Define Functions # # # # #
 # ? need to remove if no functions
@@ -43,6 +59,19 @@ url = 'http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
 # https://seaborn.pydata.org/generated/seaborn.set_theme.html - accessed 20/04/2023
 sns.set_theme(context='notebook', style='white', palette='pastel', font='sans-serif', font_scale=1, color_codes=True,
               rc=None)
+
+# # # # # Create "script_output" folder # # # # #
+
+# code in this section is based on tutorial found here -
+# https://www.earthdatascience.org/courses/intro-to-earth-data-science/python-code-fundamentals/work-with-files-directories-paths-in-python/set-working-directory-os-package/
+# accessed 23/04/2023
+
+# define a variable to the "script_output" folder in the home directory of the os
+script_output_folder = os.path.join(et.io.HOME, "script_output")
+
+# if statement to check if the "script_output" folder exists. If not create the folder in the users home directory
+if os.path.exists(script_output_folder) != True:
+    os.mkdir(script_output_folder)
 
 # # # # # Read in the data set set from URL # # # # #
 
@@ -93,7 +122,7 @@ fig = ff.create_table(missing_values_table_csv)
 #  method to change the look and feel of the table
 fig.update_layout(autosize=False, width=300, height=200)
 # write the table_plotly.png file to the images folder
-fig.write_image(f"script_output/missing_data_summary.png", scale=1)
+fig.write_image(f"{script_output_folder}/missing_data_summary_{time_stamp}.png", scale=1)
 
 # Delete CSV files no longer needed - https://www.geeksforgeeks.org/python-os-remove-method/ - accessed 22/04/2023
 os.remove('missing_values.csv')
@@ -146,11 +175,11 @@ with open('summary_stats.csv', 'r') as fp:
 data_summary = pd.read_csv('output.csv', sep=',')
 
 # Write the dataframe to a formatted tables using function
-fig3 = ff.create_table(data_summary)
+fig_2 = ff.create_table(data_summary)
 #  method to change the look and feel of the table
-fig3.update_layout(autosize=False, width=700, height=200)
+fig_2.update_layout(autosize=False, width=700, height=200)
 # write the table_plotly.png file to the images folder
-fig3.write_image(f"script_output/data_summary.png", scale=1)
+fig_2.write_image(f"{script_output_folder}/data_summary_{time_stamp}.png", scale=1)
 
 # Clean up unnecessary files
 os.remove("output.csv")
@@ -165,11 +194,11 @@ print(f"Data summary table complete. Output saved to \"script_output\" folder as
 print('Creating a summary table of full data set..........')
 
 # variable called fig to define function to create a table using plotly module for the dataframe "df"
-fig4 = ff.create_table(iris)
+fig_3 = ff.create_table(iris)
 #  method to change the look and feel of the table
-fig4.update_layout(autosize=True)
+fig_3.update_layout(autosize=True)
 # write the table_plotly.png file to the images folder
-fig4.write_image(f"script_output/full_data_set_table.png", scale=1)
+fig_3.write_image(f"{script_output_folder}/full_data_set_table_{time_stamp}.png", scale=1)
 
 print(f"Full data set summary table complete. Output saved to \"script_output\" folder as full_data_set_table.png")
 
@@ -187,24 +216,24 @@ plot.map(sns.histplot, "Sepal Length cms", kde=True).set(title='Sepal Length Dis
 plt.legend()
 # save output to images folder - https://www.marsja.se/how-to-save-a-seaborn-plot-as-a-file-e-g-png-pdf-eps-tiff/
 # - accessed 30/03/2023
-plt.savefig('script_output/sepal_length_histogram.png', bbox_inches='tight')
+plt.savefig(f'{script_output_folder}/sepal_length_histogram_{time_stamp}.png', bbox_inches='tight')
 
 plot = sns.FacetGrid(iris, hue="Species", height=6)
 plot.map(sns.histplot, "Sepal Width cms", kde=True).set(title='Sepal Width Distribution')
 plt.legend()
 # prevent the title from being cut off the saved plot
 # https://stackoverflow.com/questions/35992492/savefig-cuts-off-title - accessed 22/04/2023
-plt.savefig('script_output/sepal_width_histogram.png', bbox_inches='tight')
+plt.savefig(f'{script_output_folder}/sepal_width_histogram_{time_stamp}.png', bbox_inches='tight')
 
 plot = sns.FacetGrid(iris, hue="Species", height=6)
 plot.map(sns.histplot, "Petal Length cms", kde=True).set(title='Petal Length Distribution')
 plt.legend()
-plt.savefig('script_output/petal_length_histogram.png', bbox_inches='tight')
+plt.savefig(f'{script_output_folder}/petal_length_histogram.png', bbox_inches='tight')
 
 plot = sns.FacetGrid(iris, hue="Species", height=6)
 plot.map(sns.histplot, "Petal Width cms", kde=True).set(title='Petal Width Distribution')
 plt.legend()
-plt.savefig('script_output/petal_width_histogram.png', bbox_inches='tight')
+plt.savefig(f'{script_output_folder}/petal_width_histogram_{time_stamp}.png', bbox_inches='tight')
 plt.close()  # https://stackoverflow.com/questions/9622163/save-plot-to-image-file-instead-of-displaying-it accessed
 # 20/04/2023
 print('Histograms have been saved in the \"script_output\" folder')
@@ -241,7 +270,7 @@ graph('Petal Width cms')
 
 
 # Save plot to file
-plt.savefig('script_output/box_plots.png')
+plt.savefig(f'{script_output_folder}/box_plots_{time_stamp}.png')
 plt.close()
 
 print('Boxplots have been saved in the \"script_output\" folder')
@@ -263,7 +292,7 @@ plt.ylim(0.75, 2)  # https://stackoverflow.com/questions/33227473/how-to-set-the
 # accessed 20/04/2023
 plt.legend([],[], frameon=False)  # the leged was showing on the plot, to get rid of it solution found here -
 # https://www.delftstack.com/howto/seaborn/remove-legend-seaborn-plot/ accessed 20/04/2023
-plt.savefig('script_output/outliers_box_plots.png', bbox_inches='tight')
+plt.savefig(f'{script_output_folder}/outliers_box_plots_{time_stamp}.png', bbox_inches='tight')
 plt.close()
 
 # the following lines of code are based on - https://www.geeksforgeeks.org/detect-and-remove-the-outliers-using-python/
@@ -290,7 +319,7 @@ outlier_test.drop(lower[0], inplace=True)
 sns.boxplot(x='Species', y="Petal Length cms", data=outlier_test).set_title("Petal Length Outliers Removed")
 plt.ylim(.75, 2)
 plt.legend([],[], frameon=False)
-plt.savefig('script_output/no_outliers_box_plots.png', bbox_inches='tight')
+plt.savefig(f'{script_output_folder}/no_outliers_box_plots_{time_stamp}.png', bbox_inches='tight')
 plt.close()
 
 print('Outlier demonstration has been saved to \"script_output\" folder')
@@ -323,7 +352,7 @@ violin_graph('Petal Length cms')
 plt.subplot(224)
 violin_graph('Petal Width cms')
 
-plt.savefig('script_output/violin_plots.png')
+plt.savefig(f'{script_output_folder}/violin_plots_{time_stamp}.png')
 plt.close()
 
 print('Violin plots have been saved to the \"script_output\" folder')
@@ -366,7 +395,7 @@ for i in range(len(corr.columns)):
             text = ax.text(j, i, np.around(corr.iloc[i, j], decimals=2),
                        ha="center", va="center", color="white")
 
-plt.savefig('script_output/heatmap.png', bbox_inches='tight')
+plt.savefig(f'{script_output_folder}/heatmap_{time_stamp}.png', bbox_inches='tight')
 plt.close()
 
 print('Heatmap has been saved to the \"script_output\" folder')
@@ -385,7 +414,7 @@ print("Creating pairplots..........")
 plt.rcParams["figure.figsize"] = [7.50, 3.50]
 plt.rcParams["figure.autolayout"] = True
 sns.pairplot(iris, hue="Species", height=3.5, diag_kind="kde").fig.suptitle("Iris Data Set Pairplot")
-plt.savefig('script_output/pairplot.png',bbox_inches='tight')
+plt.savefig(f'{script_output_folder}/pairplot.png',bbox_inches='tight')
 plt.close()
 
 print('Pairplots saved to the \"script_output\" folder')
@@ -399,7 +428,7 @@ plt.figure().clear()
 
 # code from - http://uconn.science/wp-content/uploads/2017/07/iris_visualization.html#Andrews-Curves
 andrews_curves(iris, "Species").set(title='Iris Data Set Andrew\'s Curves')
-plt.savefig('script_output/andrews_curves.png', bbox_inches='tight')
+plt.savefig(f'{script_output_folder}/andrews_curves_{time_stamp}.png', bbox_inches='tight')
 plt.close()
 
 print('Andrew\'s Curves plot saved to the \"script_output\" folder')
@@ -410,7 +439,7 @@ print('Creating parallel coordinates plot..........')
 plt.figure().clear()
 # code from - http://uconn.science/wp-content/uploads/2017/07/iris_visualization.html#parallel_coordinates
 parallel_coordinates(iris, "Species").set(title='Iris Data Set Parallel Coordinates')
-plt.savefig('script_output/parallel_coordinates.png', bbox_inches='tight')
+plt.savefig(f'{script_output_folder}/parallel_coordinates_{time_stamp}.png', bbox_inches='tight')
 plt.close()
 
 print('Parallel coordinates plot saved to \"script_output\" folder')
@@ -421,7 +450,7 @@ print('Creating radviz plot..........')
 plt.figure().clear()
 # code frm - http://uconn.science/wp-content/uploads/2017/07/iris_visualization.html#radviz
 radviz(iris, "Species").set(title='Iris Data Set Radviz')
-plt.savefig('script_output/radviz.png', bbox_inches='tight')
+plt.savefig(f'{script_output_folder}/radviz_{time_stamp}.png', bbox_inches='tight')
 plt.close()
 
 print('Parallel coordinates plot saved to \"script_output\" folder')
@@ -436,7 +465,10 @@ sns.reset_defaults()
 iris.drop('Species', axis=1, inplace=True)
 plt.figure(figsize=(10,6))
 lag_plot(iris).set(title='Iris Data Set Lag Plot')
-plt.savefig('script_output/lag_plot.png', bbox_inches='tight')
+plt.savefig(f'{script_output_folder}/lag_plot_{time_stamp}.png', bbox_inches='tight')
 plt.close()
 
 print('Lag plot saved to \"script_output\" folder')
+
+print(f'\nThe script has completed successfully. All tables and plots have been saved in the "{script_output_folder}" '
+      f'folder.')

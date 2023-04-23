@@ -306,40 +306,44 @@ plot.
 
 ### Code Sources
 
-1. https://gist.github.com/curran/a08a1080b88344b0c8a7#file-iris-csv - accessed 30/03/2023
-2. https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751 - accessed 30/03/2023
-3. https://matplotlib.org/stable/api/figure_api.html - accessed 20/04/2023
-4. https://medium.com/analytics-vidhya/exploratory-data-analysis-uni-variate-analysis-of-iris-data-set-690c87a5cd40 - 
+1. https://www.earthdatascience.org/courses/intro-to-earth-data-science/python-code-fundamentals/work-with-files-directories-paths-in-python/set-working-directory-os-package/ -
+accessed 23/04/2023
+2. https://gist.github.com/curran/a08a1080b88344b0c8a7#file-iris-csv - accessed 30/03/2023
+3. https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751 - accessed 30/03/2023
+4. https://matplotlib.org/stable/api/figure_api.html - accessed 20/04/2023
+5. https://medium.com/analytics-vidhya/exploratory-data-analysis-uni-variate-analysis-of-iris-data-set-690c87a5cd40 - 
 accessed 22/04/2023
-5. https://seaborn.pydata.org/generated/seaborn.set_theme.html - accessed 20/04/2023
-6. https://stackoverflow.com/questions/32723798/how-do-i-add-a-title-and-axis-labels-to-seaborn-heatmap - accessed
+6. https://seaborn.pydata.org/generated/seaborn.set_theme.html - accessed 20/04/2023
+7. https://stackoverflow.com/questions/10607688/how-to-create-a-file-name-with-the-current-date-time-in-python - 
+accessed 23/04/2023
+8. https://stackoverflow.com/questions/32723798/how-do-i-add-a-title-and-axis-labels-to-seaborn-heatmap - accessed
 13/04/2023
-7. https://stackoverflow.com/questions/33227473/how-to-set-the-range-of-y-axis-for-a-seaborn-boxplot accessed 20/04/2023
-8. https://stackoverflow.com/questions/35992492/savefig-cuts-off-title - accessed 22/04/2023
-9.  https://stackoverflow.com/questions/51463449/replace-csv-header-without-deleting-the-other-rows - accessed 22/04/2023
-10. https://stackoverflow.com/questions/69660844/count-not-conver-string-to-float-using-iris-dataset - accessed 
+9. https://stackoverflow.com/questions/33227473/how-to-set-the-range-of-y-axis-for-a-seaborn-boxplot accessed 20/04/2023
+10. https://stackoverflow.com/questions/35992492/savefig-cuts-off-title - accessed 22/04/2023
+11. https://stackoverflow.com/questions/51463449/replace-csv-header-without-deleting-the-other-rows - accessed 22/04/2023
+12. https://stackoverflow.com/questions/69660844/count-not-conver-string-to-float-using-iris-dataset - accessed 
 10/04/2023
-11. https://stackoverflow.com/questions/9622163/save-plot-to-image-file-instead-of-displaying-it - accessed 20/04/2023
-12. https://towardsdatascience.com/6-lesser-known-pandas-plotting-tools-fda5adb232ef - accessed 13/04/2023
-13. http://uconn.science/wp-content/uploads/2017/07/iris_visualization.html - accessed 22/04/2023
-14. http://uconn.science/wp-content/uploads/2017/07/iris_visualization.html#Andrews-Curves - accessed 13/04/2023
-15. http://uconn.science/wp-content/uploads/2017/07/iris_visualization.html#parallel_coordinates - accessed 13/04/2023
-16. http://uconn.science/wp-content/uploads/2017/07/iris_visualization.html#radviz - accessed 13/04/2023
-17. https://www.analyticsvidhya.com/blog/2021/06/guide-to-data-visualization-with-python-part-1/ - accessed 10/04/2023
-18. https://www.delftstack.com/howto/python-pandas/pandas-png/#convert-pandas-dataframe-table-into-png-image-with-plotly-and-kaleido - 
+13. https://stackoverflow.com/questions/9622163/save-plot-to-image-file-instead-of-displaying-it - accessed 20/04/2023
+14. https://towardsdatascience.com/6-lesser-known-pandas-plotting-tools-fda5adb232ef - accessed 13/04/2023
+15. http://uconn.science/wp-content/uploads/2017/07/iris_visualization.html - accessed 22/04/2023
+16. http://uconn.science/wp-content/uploads/2017/07/iris_visualization.html#Andrews-Curves - accessed 13/04/2023
+17. http://uconn.science/wp-content/uploads/2017/07/iris_visualization.html#parallel_coordinates - accessed 13/04/2023
+18. http://uconn.science/wp-content/uploads/2017/07/iris_visualization.html#radviz - accessed 13/04/2023
+19. https://www.analyticsvidhya.com/blog/2021/06/guide-to-data-visualization-with-python-part-1/ - accessed 10/04/2023
+20. https://www.delftstack.com/howto/python-pandas/pandas-png/#convert-pandas-dataframe-table-into-png-image-with-plotly-and-kaleido - 
 accessed 30/03/2023
-19. https://www.delftstack.com/howto/seaborn/remove-legend-seaborn-plot/ - accessed 20/04/2023
-20. https://www.geeksforgeeks.org/detect-and-remove-the-outliers-using-python/ - accessed 10/04/2023
-21. https://www.geeksforgeeks.org/exploratory-data-analysis-on-iris-dataset/ - accessed 10/04/2023
-22. https://www.geeksforgeeks.org/python-os-remove-method/ - accessed 22/04/2023
-23. https://www.marsja.se/how-to-save-a-seaborn-plot-as-a-file-e-g-png-pdf-eps-tiff/ - accessed 30/03/2023
-24. https://www.shanelynn.ie/pandas-drop-delete-dataframe-rows-columns/ - accessed 10/04/2023
-25. https://www.statology.org/pandas-to-text-file/ - accessed 30/03/2023
-26. https://www.statology.org/seaborn-title/ - accessed 22/04/2023
-27. https://www.tutorialspoint.com/how-to-clear-the-memory-completely-of-all-matplotlib-plots - accessed 20/04/2023
-28. https://www.tutorialspoint.com/how-to-show-the-title-for-the-diagram-of-seaborn-pairplot-or-pridgrid-matplotlib - 
+21. https://www.delftstack.com/howto/seaborn/remove-legend-seaborn-plot/ - accessed 20/04/2023
+22. https://www.geeksforgeeks.org/detect-and-remove-the-outliers-using-python/ - accessed 10/04/2023
+23. https://www.geeksforgeeks.org/exploratory-data-analysis-on-iris-dataset/ - accessed 10/04/2023
+24. https://www.geeksforgeeks.org/python-os-remove-method/ - accessed 22/04/2023
+25. https://www.marsja.se/how-to-save-a-seaborn-plot-as-a-file-e-g-png-pdf-eps-tiff/ - accessed 30/03/2023
+26. https://www.shanelynn.ie/pandas-drop-delete-dataframe-rows-columns/ - accessed 10/04/2023
+27. https://www.statology.org/pandas-to-text-file/ - accessed 30/03/2023
+28. https://www.statology.org/seaborn-title/ - accessed 22/04/2023
+29. https://www.tutorialspoint.com/how-to-clear-the-memory-completely-of-all-matplotlib-plots - accessed 20/04/2023
+30. https://www.tutorialspoint.com/how-to-show-the-title-for-the-diagram-of-seaborn-pairplot-or-pridgrid-matplotlib - 
 accessed 20/04/2023
-29. https://www.w3schools.com/python/pandas/ref_df_copy.asp - accessed 13/04/2023
+31. https://www.w3schools.com/python/pandas/ref_df_copy.asp - accessed 13/04/2023
 
 ### Background Reading
 1. https://blog.finxter.com/radviz-in-pandas-plotting-how-it-works/ - accessed 14/04/2023
