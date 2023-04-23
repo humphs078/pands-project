@@ -48,6 +48,12 @@ url = 'http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
 # - accessed 23/04/2023
 time_stamp = datetime.datetime.now().strftime('%d_%m_%Y_%H_%M_%S')
 
+
+# https://www.earthdatascience.org/courses/intro-to-earth-data-science/python-code-fundamentals/work-with-files-directories-paths-in-python/set-working-directory-os-package/
+# accessed 23/04/2023
+# define a variable to the "script_output" folder in the home directory of the os
+script_output_folder = os.path.join(et.io.HOME, "script_output")
+
 # # # # # Define Functions # # # # #
 # ? need to remove if no functions
 # possible functions - function to save tables from dataframe -
@@ -66,10 +72,8 @@ sns.set_theme(context='notebook', style='white', palette='pastel', font='sans-se
 # https://www.earthdatascience.org/courses/intro-to-earth-data-science/python-code-fundamentals/work-with-files-directories-paths-in-python/set-working-directory-os-package/
 # accessed 23/04/2023
 
-# define a variable to the "script_output" folder in the home directory of the os
-script_output_folder = os.path.join(et.io.HOME, "script_output")
-
-# if statement to check if the "script_output" folder exists. If not create the folder in the users home directory
+# if statement to check if the "script_output" folder exists. If not create the folder in the users home directory. If
+# the folder exists and the method tries to create it and error will be thrown so only create folder if it doesn't exist
 if os.path.exists(script_output_folder) != True:
     os.mkdir(script_output_folder)
 
@@ -228,7 +232,7 @@ plt.savefig(f'{script_output_folder}/sepal_width_histogram_{time_stamp}.png', bb
 plot = sns.FacetGrid(iris, hue="Species", height=6)
 plot.map(sns.histplot, "Petal Length cms", kde=True).set(title='Petal Length Distribution')
 plt.legend()
-plt.savefig(f'{script_output_folder}/petal_length_histogram.png', bbox_inches='tight')
+plt.savefig(f'{script_output_folder}/petal_length_histogram_{time_stamp}.png', bbox_inches='tight')
 
 plot = sns.FacetGrid(iris, hue="Species", height=6)
 plot.map(sns.histplot, "Petal Width cms", kde=True).set(title='Petal Width Distribution')
@@ -414,7 +418,7 @@ print("Creating pairplots..........")
 plt.rcParams["figure.figsize"] = [7.50, 3.50]
 plt.rcParams["figure.autolayout"] = True
 sns.pairplot(iris, hue="Species", height=3.5, diag_kind="kde").fig.suptitle("Iris Data Set Pairplot")
-plt.savefig(f'{script_output_folder}/pairplot.png',bbox_inches='tight')
+plt.savefig(f'{script_output_folder}/pairplot_{time_stamp}.png',bbox_inches='tight')
 plt.close()
 
 print('Pairplots saved to the \"script_output\" folder')
