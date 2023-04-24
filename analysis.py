@@ -139,26 +139,6 @@ os.remove('missing_values_2.csv')
 
 print(f"Check complete. Output saved to \"script_output\" folder as missing_data_summary.png")
 
-# # # # # Output Variable to txt file # # # # #
-
-print("Creating a summary of each variable..........")
-
-# Output a summary of each variable to a text file - https://www.statology.org/pandas-to-text-file/ accessed 30/03/2023
-# variable that specifies path for outputting of .txt file
-path = r'data_summary.txt'
-# open path defined above and w to file
-with open(path, 'w') as f:
-    # define variable to convert the dataframe to a string, include the header and exclude the index
-    iris_string = iris.to_string(header=True, index=False)
-    # write the iris_string variable to the file path
-    f.write(iris_string)
-
-print("Variable summary saved to file called data_summary.txt")
-# f = open("data_summary.txt") # validation test
-# print(f.read()) # validation test
-# print(df)  # validation test
-# data.shape # validation test to make sure that there 150 rows of data and number of columns
-
 # # # # # Create a summary table for analysis section # # # # #
 
 # Print statement to let the user know the script is progressing
@@ -210,6 +190,41 @@ fig_3.update_layout(autosize=True)
 fig_3.write_image(f"{script_output_folder}/full_data_set_table_{time_stamp}.png", scale=1)
 
 print(f"Full data set summary table complete. Output saved to \"script_output\" folder as full_data_set_table.png")
+
+# # # # # Output Variables to txt file # # # # #
+
+print("Creating a summary of each variable..........")
+
+# Output a summary of each variable to a text file - https://www.statology.org/pandas-to-text-file/ accessed 30/03/2023
+# variable that specifies path for outputting of .txt file
+path = r'data_summary.txt'
+# open path defined above and w to file
+with open(path, 'w') as f:
+    # define variable to convert the dataframe to a string, include the header and exclude the index
+
+    is_null_string = missing_values_table.to_string(header=True, index=True)
+    data_summary_string = data_summary.to_string(header=True, index=False)
+    iris_string = iris.to_string(index=False)
+    # write the variables to the file path
+    f.write('Iris Data Set Dataframe Information \n')
+    # https://stackoverflow.com/questions/35436331/how-to-save-output-from-dataframe-info-to-file-a-excel-or-text-file
+    # - accessed 24/04/2023
+    iris.info(buf=f)
+    f.write('\n \n')
+    f.write('Iris Data Set Missing Data Summary \n')
+    f.write(is_null_string)
+    f.write('\n \n')
+    f.write('Iris Data Set Summary \n')
+    f.write(data_summary_string)
+    f.write('\n \n')
+    f.write('Iris Data Set \n')
+    f.write(iris_string)
+
+print("Variable summary saved to file called data_summary.txt")
+# f = open("data_summary.txt") # validation test
+# print(f.read()) # validation test
+# print(df)  # validation test
+# data.shape # validation test to make sure that there 150 rows of data and number of columns
 
 # # # # # Create & save histograms # # # # #
 
