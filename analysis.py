@@ -6,8 +6,8 @@
 # the directory does not exist the script will create the directory. The output to the "script_output" folder consists
 # af a number of tables and graphs. The tables will give a summary of the dataset and the plots demonstrate univariate,
 # bivariate and multivariate analysis on the dataset. A file called "data_summary.txt" is created that gives a summary
-# of the dataset variables. The script prints a series of updates to let the user know that the script is working. The
-# script does not show or open any of the tables or plots.
+# of the dataset variables. The script prints a series of updates to the command line to let the user know that the
+# script is working. The script does not show or open any of the tables or plots.
 
 # # # # # Import Required Libraries # # # # #
 
@@ -29,7 +29,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 # import the csv library used for csv file reading and writing
 import csv
-# import the nummpy package as np
+# import the numpy package as np
 import numpy as np
 # import the OS library needed for checking, creation and deletion of files and folders
 import os
@@ -73,23 +73,29 @@ sns.set_theme(context='notebook', style='white', palette='pastel', font='sans-se
 # accessed 23/04/2023
 
 # if statement to check if the "script_output" folder exists. If not create the folder in the users home directory. If
-# the folder exists and the method tries to create it and error will be thrown so only create folder if it doesn't exist
-if os.path.exists(script_output_folder) != True:
+# the folder exists and the method tries to create it an error will be thrown so only create folder if it doesn't exist
+if not os.path.exists(script_output_folder):
     os.mkdir(script_output_folder)
 
 # # # # # Read in the data set set from URL # # # # #
 
 print("Reading in the Iris Data Set as a dataframe..........")
-# Define data frame as variable iris. Use Pandas to read in file from the URL variable with the column names as defined
+
+# Define dataframe as variable iris. Use Pandas to read in file from the URL variable with the column names as defined
 # in the list = "names"
 # Reference https://gist.github.com/curran/a08a1080b88344b0c8a7#file-iris-csv - accessed 30/03/2023
 
 iris = pd.read_csv(url, names=["Sepal Length cms", "Sepal Width cms", "Petal Length cms", "Petal Width cms", "Species"])
-# print(iris) # validation check ? remove
+
+# print(iris) # validation check - commented out (left in to demonstrate that consideration was given to validating
+# dataframe read in
+
 print("Data read in complete.")
 
 # # # # # Check source data quality # # # # #
+
 print("Checking for missing data in data set..........")
+
 # The code in this section checks the quality of the source data and writes the output to a table. To achieve this the
 # isnull() method is used and transposed to a CSV. Headers are injected into the CSV to make it understandable. The CSV
 # is read in as a dataframe and a table based on the dataframe is then saved to file. This is a roundabout way however
@@ -106,7 +112,6 @@ header = ['Column', 'Missing Values']
 # open the csv file in read mode
 with open('missing_values.csv', 'r') as fp:
     reader = csv.DictReader(fp, fieldnames=header)
-
     # use newline='' to avoid adding new CR at end of line
     with open('missing_values_2.csv', 'w', newline='') as fh:
         writer = csv.DictWriter(fh, fieldnames=reader.fieldnames)
@@ -250,6 +255,7 @@ print('Creating box plots..........')
 
 # function to pass arguments to sns.boxplot method
 
+
 def graph(y):
     sns.boxplot(x="Species", y=y, data=iris)
 
@@ -272,7 +278,6 @@ graph('Petal Length cms')
 plt.subplot(224)
 graph('Petal Width cms')
 
-
 # Save plot to file
 plt.savefig(f'{script_output_folder}/box_plots_{time_stamp}.png')
 plt.close()
@@ -294,7 +299,7 @@ outlier_test.drop(index=outlier_test.index[50:150], axis=0, inplace=True)
 sns.boxplot(x="Species", y="Petal Length cms", data=outlier_test).set_title("Petal Length Outliers")
 plt.ylim(0.75, 2)  # https://stackoverflow.com/questions/33227473/how-to-set-the-range-of-y-axis-for-a-seaborn-boxplot
 # accessed 20/04/2023
-plt.legend([],[], frameon=False)  # the leged was showing on the plot, to get rid of it solution found here -
+plt.legend([], [], frameon=False)  # the legend was showing on the plot, to get rid of it solution found here -
 # https://www.delftstack.com/howto/seaborn/remove-legend-seaborn-plot/ accessed 20/04/2023
 plt.savefig(f'{script_output_folder}/outliers_box_plots_{time_stamp}.png', bbox_inches='tight')
 plt.close()
@@ -322,7 +327,7 @@ outlier_test.drop(lower[0], inplace=True)
 # plot box plot with outliers removed and save file
 sns.boxplot(x='Species', y="Petal Length cms", data=outlier_test).set_title("Petal Length Outliers Removed")
 plt.ylim(.75, 2)
-plt.legend([],[], frameon=False)
+plt.legend([], [], frameon=False)
 plt.savefig(f'{script_output_folder}/no_outliers_box_plots_{time_stamp}.png', bbox_inches='tight')
 plt.close()
 
@@ -379,25 +384,23 @@ corr = iris_heatmap.corr()
 # and here https://stackoverflow.com/questions/32723798/how-do-i-add-a-title-and-axis-labels-to-seaborn-heatmap -
 # accessed 13/04/2023
 fig, ax = plt.subplots()
-img = ax.imshow(corr.values,cmap = "magma_r")
+img = ax.imshow(corr.values, cmap="magma_r")
 # set labels
 ax.set_xticks(np.arange(len(corr.columns)))
 ax.set_yticks(np.arange(len(corr.columns)))
 ax.set_xticklabels(corr.columns)
 ax.set_yticklabels(corr.columns)
 ax.set_title('Iris Data Set Heatmap')
-cbar = ax.figure.colorbar(img, ax=ax ,cmap='')
+cbar = ax.figure.colorbar(img, ax=ax, cmap='')
 plt.setp(ax.get_xticklabels(), rotation=30, ha="right",
          rotation_mode="anchor")
 # text annotations.
 for i in range(len(corr.columns)):
     for j in range(len(corr.columns)):
-        if corr.iloc[i, j]<0:
-            text = ax.text(j, i, np.around(corr.iloc[i, j], decimals=2),
-                       ha="center", va="center", color="black")
+        if corr.iloc[i, j] < 0:
+            text = ax.text(j, i, np.around(corr.iloc[i, j], decimals=2), ha="center", va="center", color="black")
         else:
-            text = ax.text(j, i, np.around(corr.iloc[i, j], decimals=2),
-                       ha="center", va="center", color="white")
+            text = ax.text(j, i, np.around(corr.iloc[i, j], decimals=2), ha="center", va="center", color="white")
 
 plt.savefig(f'{script_output_folder}/heatmap_{time_stamp}.png', bbox_inches='tight')
 plt.close()
@@ -418,7 +421,7 @@ print("Creating pairplots..........")
 plt.rcParams["figure.figsize"] = [7.50, 3.50]
 plt.rcParams["figure.autolayout"] = True
 sns.pairplot(iris, hue="Species", height=3.5, diag_kind="kde").fig.suptitle("Iris Data Set Pairplot")
-plt.savefig(f'{script_output_folder}/pairplot_{time_stamp}.png',bbox_inches='tight')
+plt.savefig(f'{script_output_folder}/pairplot_{time_stamp}.png', bbox_inches='tight')
 plt.close()
 
 print('Pairplots saved to the \"script_output\" folder')
@@ -441,7 +444,8 @@ print('Andrew\'s Curves plot saved to the \"script_output\" folder')
 
 print('Creating parallel coordinates plot..........')
 plt.figure().clear()
-# code from - http://uconn.science/wp-content/uploads/2017/07/iris_visualization.html#parallel_coordinates
+# code from - http://uconn.science/wp-content/uploads/2017/07/iris_visualization.html#parallel_coordinates - accessed
+# 20/04/2023
 parallel_coordinates(iris, "Species").set(title='Iris Data Set Parallel Coordinates')
 plt.savefig(f'{script_output_folder}/parallel_coordinates_{time_stamp}.png', bbox_inches='tight')
 plt.close()
@@ -452,7 +456,7 @@ print('Parallel coordinates plot saved to \"script_output\" folder')
 
 print('Creating radviz plot..........')
 plt.figure().clear()
-# code frm - http://uconn.science/wp-content/uploads/2017/07/iris_visualization.html#radviz
+# code from - http://uconn.science/wp-content/uploads/2017/07/iris_visualization.html#radviz - accessed 20/04/2023
 radviz(iris, "Species").set(title='Iris Data Set Radviz')
 plt.savefig(f'{script_output_folder}/radviz_{time_stamp}.png', bbox_inches='tight')
 plt.close()
@@ -465,9 +469,9 @@ print('Creating Lag Plot..........')
 
 sns.reset_defaults()
 
-# code from - https://towardsdatascience.com/6-lesser-known-pandas-plotting-tools-fda5adb232ef
+# code from - https://towardsdatascience.com/6-lesser-known-pandas-plotting-tools-fda5adb232ef - accessed 20/04/2023
 iris.drop('Species', axis=1, inplace=True)
-plt.figure(figsize=(10,6))
+plt.figure(figsize=(10, 6))
 lag_plot(iris).set(title='Iris Data Set Lag Plot')
 plt.savefig(f'{script_output_folder}/lag_plot_{time_stamp}.png', bbox_inches='tight')
 plt.close()
