@@ -93,6 +93,11 @@ routinely used as a beginners dataset for machine learning purposes.
 
 The script is run from the command line with the command *python analysis.py*.
 
+The repository contains a [requirements.txt](requirements.txt) file. to install all the libraries required to run the 
+script run the following command *pip install -r requirements.txt* 
+(https://www.geeksforgeeks.org/how-to-automatically-install-required-packages-from-a-python-script/ - accessed 
+27/04/2023)
+
 A series of updates are outputted as the script executes. The purpose of this is to indicate to the user that the script
 is executing.
 
@@ -119,6 +124,7 @@ system
 + Creates and saves a lag plot of the data set
 
 ### Libraries used:
+
 + pandas as pd - pandas module used to read in the data set file as a data frame 
 + pandas.plotting - required to produce Andrew's Curves plot, parallel_coordinates plot, radviz plot & lag plot 
 + plotly.figure_factory - module used to create a table of the data for display in the README.md file 
@@ -399,14 +405,16 @@ accessed 20/04/2023
 11. https://en.wikipedia.org/wiki/Ronald_Fisher - accessed 27/03/2023
 12. https://en.wikipedia.org/wiki/Sepal - accessed 27/03/2023
 13. https://en.wikipedia.org/wiki/Violin_plot - accessed 10/04/2023
-14. https://medium.com/analytics-vidhya/its-all-about-outliers-cbe172aa1309 - accessed 10/04/2023
+15. https://medium.com/analytics-vidhya/its-all-about-outliers-cbe172aa1309 - accessed 10/04/2023
 15. https://pandas.pydata.org/pandas-docs/stable/user_guide/visualization.html#radviz - accessed 13/04/2023
 16. https://s4be.cochrane.org/blog/2021/09/09/multivariate-analysis-an-overview/ - accessed 22/04/2023
 17. https://seaborn.pydata.org/index.html - accessed 06/04/2023
-18. https://www.itl.nist.gov/div898/handbook/eda/section3/lagplot.htm - accessed 13/04/2023
-19. https://www.kaggle.com/code/amrut11/iris-dataset-univariate-bivariate-multivariate - accessed 27/03/2023
-20. https://www.learningtree.com/blog/using-a-pandas-andrews-curve-plot-for-multidimensional-data/ - accessed 13/04/2023
-21. https://www.questionpro.com/blog/bivariate-analysis/ - accessed 13/04/2023
+18. https://www.geeksforgeeks.org/how-to-automatically-install-required-packages-from-a-python-script/ - accessed 
+27/04/2023
+19. https://www.itl.nist.gov/div898/handbook/eda/section3/lagplot.htm - accessed 13/04/2023
+20. https://www.kaggle.com/code/amrut11/iris-dataset-univariate-bivariate-multivariate - accessed 27/03/2023
+21. https://www.learningtree.com/blog/using-a-pandas-andrews-curve-plot-for-multidimensional-data/ - accessed 13/04/2023
+22. https://www.questionpro.com/blog/bivariate-analysis/ - accessed 13/04/2023
 
 
 ---
