@@ -24,43 +24,48 @@
 This repository contains the files for the submission of the module assignment in the Programming and Scripting module
 for the ATU Mayo & Galway Higher Diploma in Computer Programming and Data Analytics.
 
-To run the script from the command line type - *python analysis.py*
+The script is run fom the command line with the desired output folder as an argument 
+e.g. "python analysis.py output_folder".
 
-### Problem Statement
+Dependencies can be installed by running the following command - "pip install -r requirements.txt".
+
+## Problem Statement
 This project concerns the well-known [Fisher’s Iris data set](#Background).
 
 Imagine that your manager has asked you to investigate the data set, with a
 view to explaining it to your colleagues. Imagine that you are to give a presentation on the
 data set in a few weeks’ time, where you explain what investigating a data set entails and how
-Python can be used to do it. 
+Python can be used to do it.
 
 ---
 ## Definitions
 
 + Andrew's Curves (https://en.wikipedia.org/wiki/Andrews_plot) - are a way to visualize structure in high-dimensional
-data
+data.
 + Bivariate analysis (https://www.questionpro.com/blog/bivariate-analysis/) - is a statistical method for examining how
-two different things are related
+two different things are related.
 + Boxplot (https://en.wikipedia.org/wiki/Box_plot) - is a method for graphically demonstrating the spread of numerical 
-data through their quantities 
+data through their quantities.
 + Histogram (https://en.wikipedia.org/wiki/Histogram) - is a representation of the approximated distribution of 
 numerical data.
 + Kernel Density Estimation, KDE (https://en.wikipedia.org/wiki/Kernel_density_estimation) - is the application of 
-kernel smoothing for probability density estimation 
+kernel smoothing for probability density estimation.
 + Lag plot (https://www.itl.nist.gov/div898/handbook/eda/section3/lagplot.htm) - checks whether a data set is random or 
-not
+not.
 + Multivariate Statistics (https://s4be.cochrane.org/blog/2021/09/09/multivariate-analysis-an-overview/) - is a branch 
 of statistics that is used when two or more variables have to be analysed simultaneously. Types of Multivariate Analysis 
 include Cluster Analysis, Factor Analysis, Multiple Regression Analysis, Principal Component Analysis, etc. There is 
 more than 20 ways to perform multivariate analysis.
-+ Paralell Coordinates (https://en.wikipedia.org/wiki/Parallel_coordinates) - are a common way of visualizing and 
++ Parallel Coordinates (https://en.wikipedia.org/wiki/Parallel_coordinates) - are a common way of visualizing and 
 analyzing high-dimensional datasets. 
 + RadViz (https://pandas.pydata.org/pandas-docs/stable/user_guide/visualization.html#radviz) -  is a way of visualizing 
 multivariate data based on a simple spring tension minimization algorithm.
 + Sepal (https://en.wikipedia.org/wiki/Sepal) - in plants that flower the sepal is the part of the flower that 
 functions as protection for the flower in bud and often as support for the petals when the flower is in bloom.
++ Univariate Data Analysis (https://home.csulb.edu/~msaintg/ppa696/696uni.htm)- explores each variable in a data set 
+individually.
 + Violin Plot (https://en.wikipedia.org/wiki/Violin_plot) - a statistical graphic for comparing 
-probability distributions
+probability distributions.
 
 ---
 ## Background
@@ -91,50 +96,53 @@ routinely used as a beginners dataset for machine learning purposes.
 
 ## [analysis.py](analysis.py)
 
-The script is run from the command line with the command *python analysis.py*.
+The script is run fom the command line with the desired output folder as an argument 
+e.g. "python analysis.py output_folder".
 
 The repository contains a [requirements.txt](requirements.txt) file. To install all the libraries required to run the 
 script run the following command *pip install -r requirements.txt* 
 (https://www.geeksforgeeks.org/how-to-automatically-install-required-packages-from-a-python-script/ - accessed 
-27/04/2023)
+27/04/2023).
 
 A series of updates are outputted as the script executes. The purpose of this is to indicate to the user that the script
 is executing.
 
+A summary of the variables is saved to the same folder as the script in a file named 
+[data_summary.txt](data_summary.txt).
+
 The script generates a number of tables and graphs, listed [here](#output-files), that are used to analyse the data 
-set. 
+set.
 
 ### The Python script:
 + Reads in the Iris Data Set CSV from a URL
-+ Creates a folder to save the output of the script in the user's home directory. This works independently of operating 
-system
-+ Checks for missing values in the data and outputs the results to a summary table
-+ Outputs the Iris Data Set variables to a text file
-+ Creates a summary of the data in the tabular form
-+ Outputs the full data set in tabular form
-+ Creates histograms used to analyse the data set
-+ Creates and outputs box plots of the data set
-+ Demonstrates an example of removing the outliers and re-plotting a box plot
-+ Creates and outputs violin plots to demonstrate density of the distribution of data within the data set
-+ Generates and saves a heatmap of the data set
-+ Generates and saves pairplots of the data set for bivariate analysis
-+ Creates and saves a set of Andrew's Curves used in multivariate analaysis of the data set 
-+ Generates and saves parallel coordinates plots used in multivariate analysis of the data set
-+ Outputs a radviz plot of the Iris sata set
-+ Creates and saves a lag plot of the data set
++ Creates a folder to save the output of the script in the user's home directory. The name of the folder is passed as 
+a command line argument. Folder creation works independently of operating system.
++ Checks for missing values in the data and outputs the results to a summary table using the isnull() method.
++ Outputs the Iris Data Set variables to a text file.
++ Creates a summary of the data in the tabular form.
++ Outputs the full data set in tabular form.
++ Creates histograms used to analyse the data set.
++ Creates and outputs box plots of the data set.
++ Demonstrates an example of removing the outliers and re-plotting a box plot.
++ Creates and outputs violin plots to demonstrate distribution density of data within the data set.
++ Generates and saves a heatmap of the data set.
++ Generates and saves pairplots of the data set for bivariate analysis.
++ Creates and saves a set of Andrew's Curves used in multivariate analaysis of the data set. 
++ Generates and saves parallel coordinates plots used in multivariate analysis of the data set.
++ Outputs a radviz plot of the Iris sata set.
++ Creates and saves a lag plot of the data set.
 
 ### Libraries used:
-
-+ pandas as pd - pandas module used to read in the data set file as a data frame 
-+ pandas.plotting - required to produce Andrew's Curves plot, parallel_coordinates plot, radviz plot & lag plot 
-+ plotly.figure_factory - module used to create a table of the data for display in the README.md file 
-+ seaborn - the seaborn module used for plotting data representation - more advanced functionality that matplotlib 
-+ matplotlib.pyplot - the matplotlib module used to plot data for visual representation 
-+ import csv - used for csv file reading and writing 
-+ numpy - library used for working with arrays
-+ os - this module provides a portable way of using operating system dependent functionality 
-+ earthpy - specific function in this library used to the home directory 
-+ datetime - used to save files with current date & time stamp in filename
++ pandas as pd - pandas module used to read in the data set file as a data frame. 
++ pandas.plotting - required to produce Andrew's Curves plot, parallel_coordinates plot, radviz plot & lag plot. 
++ plotly.figure_factory - module used to create a table of the data for display in the README.md file.
++ seaborn - the seaborn module used for plotting data representation - more advanced functionality that matplotlib.
++ matplotlib.pyplot - the matplotlib module used to plot data for visual representation.
++ csv - used for csv file reading and writing.
++ numpy - library used for working with arrays.
++ os - this module provides a portable way of using operating system dependent functionality.
++ earthpy - specific function in this library used for the home directory.
++ datetime - used to save files with current date & time stamp in filename.
 
 ### Output files:
 + [data_summary.txt](images/tables/data_summary.png "Data Summary") - a text file containing a summary of the Iris Day 
@@ -172,21 +180,20 @@ Parallel Coordinates plots of the Iris Data Set
 
 ---
 ## Discussion
-Python is an extremely powerful tool for automating the handling of large datasets. Using Python scripting the Iris 
-Dataset was automatically read in as a dataframe, by a module within Python, from an online data repository. The 
-Pandas module was used to achieve this. Pandas is a library that can be imported into Python allowing for data 
-analysis through the use of specifically designed tools that automate complex functions on data sets. 
+Python is an extremely powerful tool for automating handling of large datasets. Using Python scripting the Iris 
+Data Set was read in as a Pandas dataframe. Pandas is a library that can be imported into Python allowing for data 
+analysis through the use of specifically designed tools that automate complex functions. 
 
-
-All the tables summarising data set were produced using the Plotly & Kaleido modules within python. These tools 
-automate the creation of formatted tables. For the full tabulated Iris Data set please see [Appendix 1](#appendix-1).
+All the tables summarising data set were produced using the Plotly module within python. Plotly 
+automates creation of formatted tables in python. For the full tabulated Iris Data set please 
+see [Appendix 1](#appendix-1).
 
 ### Data Quality
-
-The quality of the source data was checked using a number of python methods imported from the Pandas module.
-The "isnull" method within Pandas allows the source data set to be checked for any missing values. 
-[Table 1](images/tables/missing_values.png) demonstrates the completeness of the data set and the absense of any missing 
-values.
+The quality of the source data was checked using a number of Pandas functions. The "isnull" function within Pandas 
+allows the source data set to be checked for any missing values this giving an indcation of the completeness of the 
+data set.
+[Table 1](images/tables/missing_values.png) demonstrates the output of the isnull function in tabular form. As can be 
+seen there are no missing values.
 
 **Table 1 - Missing Values**
 
@@ -194,9 +201,9 @@ values.
 
 
 The Pandas "describe" method crates a summary of the min, max, mean, std, etc. as demonstrated in 
-[Table 2](images/tables/data_summary.png) . This allows for a summary of the distribution of the data within the 
+[Table 2](images/tables/data_summary.png). This allows for a summary of the distribution of the data within the 
 data set. This method can also be used to validate the count of the number of rows in the data set. As can be seen 
-from the table this equals 150, as expected. 
+from the table this equals 150, as expected.
 
 **Table 2 - Data Summary** 
 
@@ -242,14 +249,14 @@ graphics.
 ![Histogram 1](images/plots/histograms/petal_length_histogram.png "Iris Data Set Petal Length Distribution")
 
 [Plot 4](images/plots/histograms/petal_length_histogram.png) demonstrates that Iris-setosa has the smallest petal length 
-falling roughly between 1-2cms. There is some overlap in Petal Length between Iris-versicolor and Iris-virginica. 
+falling roughly between 1-2cms. There is some overlap in Petal Length between Iris-versicolor and Iris-virginica.
 
 **Plot 5 - Petal Width Distribution Histogram**
 
 ![Histogram 2](images/plots/histograms/petal_width_histogram.png "Iris Data Set Petal Width Distribution")
 
 [Plot 5](images/plots/histograms/petal_width_histogram.png) demonstrates that Iris-setosa has the smallest petal width. 
-There is some overlap in the petal width upper values of Iris-versicolor and the lower values of Iris-virginica. 
+There is some overlap in the petal width upper values of Iris-versicolor and the lower values of Iris-virginica.
 
 **Plot 6 - Sepal Length Distribution Histogram**
 
@@ -278,20 +285,17 @@ species.
 ### Heatmaps
 Heatmaps are used to identify correlations between variables. Values that are closer to 1 or -1 indicate correlation 
 between variables. Colours with values of 1 are represented by dark colours and smaller values are represented by
-lighter colours. 
+lighter colours.
 
 **Plot 9 - Iris Data Set Heatmap**
 
-
 ![Heatmap](images/plots/heatmap/heatmap.png "Iris Data Set Heatmap")
-
 
 The heatmap demonstrates a high level of correlation between petal width and petal length (having a value close to 1) and
 a low correlation between sepal width and sepal length. The heatmap also demonstrates a relationship between petal 
 length and sepal width and separately between petal width and sepal length.
 
 ### Bivariate Analysis
-
 Using Pairplots from the Seaborn module the bivariate relationship between each pair of features can be demonstrated. 
 The diagonal elements in the pairplot shows the Kernel Density Estimation (KDE). 
 
@@ -303,8 +307,8 @@ The diagonal elements in the pairplot shows the Kernel Density Estimation (KDE).
 species across all the feature combinations supporting the observations made from the histogram plots.
 
 ### Multivariate Analysis
-The pandas.plotting module is capable of producing multivariate analysis. This module was used to produce all of the 
-plots in this section.
+The pandas.plotting module is capable of producing multivariate analysis. This module was used to produce the plots in 
+this section.
 
 #### Andrew's Curves
 
@@ -345,6 +349,17 @@ The above lag plot for the Iris Data set is displaying a linear pattern. The pre
 plot.
 
 ## Conclusion
+Using Python to automate handling, processing and analysis of the Iris Data set has enables the following conclusions 
+to be drawn:
+1. The Iris Data Set is a complete data set.
+2. The Iris Data Set is not a random data set.
+3. The presence of outliers in the data set is minimal.
+4. Petal width and length are distinct in the Iris-setosa species of Iris when compared to the Iris-virginica and 
+Iris-versicolor. As a result it should be possible to predict the species of Iris to a high probability based on these 
+measurements.
+5. There is overlap in the range of values between sepal width and sepal length of all species of Iris in the data set.
+6. There is a strong correlation between petal width and petal length. Therefore, it should be possible to predict 
+the measurement of one variable from the known value of the other variable.
 
 ## References
 
@@ -407,6 +422,7 @@ accessed 20/04/2023
 11. https://en.wikipedia.org/wiki/Ronald_Fisher - accessed 27/03/2023
 12. https://en.wikipedia.org/wiki/Sepal - accessed 27/03/2023
 13. https://en.wikipedia.org/wiki/Violin_plot - accessed 10/04/2023
+14. https://home.csulb.edu/~msaintg/ppa696/696uni.htm - accessed 27/04/2023
 15. https://medium.com/analytics-vidhya/its-all-about-outliers-cbe172aa1309 - accessed 10/04/2023
 15. https://pandas.pydata.org/pandas-docs/stable/user_guide/visualization.html#radviz - accessed 13/04/2023
 16. https://s4be.cochrane.org/blog/2021/09/09/multivariate-analysis-an-overview/ - accessed 22/04/2023

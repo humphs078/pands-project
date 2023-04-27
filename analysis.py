@@ -503,5 +503,5 @@ except IndexError:
 # the user to input an output folder
 except ModuleNotFoundError:
     print('Error: A required library has not been installed. Use the following command to satisfy all dependencies'
-          ' pip install -r requirements.txt')  # https://linuxhint.com/conda-install-requirements-txt/ - accessed
+          'pip install -r requirements.txt')  # https://linuxhint.com/conda-install-requirements-txt/ - accessed
     # 27/04/2023
