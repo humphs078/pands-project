@@ -62,7 +62,7 @@ analyzing high-dimensional datasets.
 multivariate data based on a simple spring tension minimization algorithm.
 + Sepal (https://en.wikipedia.org/wiki/Sepal) - in plants that flower the sepal is the part of the flower that 
 functions as protection for the flower in bud and often as support for the petals when the flower is in bloom.
-+ Univariate Data Analysis (https://home.csulb.edu/~msaintg/ppa696/696uni.htm)- explores each variable in a data set 
++ Univariate Data Analysis (https://home.csulb.edu/~msaintg/ppa696/696uni.htm) - explores each variable in a data set 
 individually.
 + Violin Plot (https://en.wikipedia.org/wiki/Violin_plot) - a statistical graphic for comparing 
 probability distributions.
